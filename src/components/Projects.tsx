@@ -132,27 +132,6 @@ const Projects = () => {
             </Card>
           ))}
         </div>
-        
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <Card className="max-w-2xl mx-auto shadow-card bg-gradient-accent border-accent/30 animate-scale-in">
-            <CardContent className="pt-6">
-              <h3 className="text-xl font-semibold text-accent-foreground mb-4">
-                Looking for More?
-              </h3>
-              <p className="text-accent-foreground/80 mb-6">
-                Check out my GitHub profile for additional projects and contributions to open source.
-              </p>
-              <Button 
-                size="lg"
-                className="bg-accent-foreground text-accent hover:bg-accent-foreground/90 shadow-glow transition-all duration-300"
-              >
-                <ExternalLink className="mr-2 h-5 w-5" />
-                View GitHub Profile
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
       </div>
     </section>
   );

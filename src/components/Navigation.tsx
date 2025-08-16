@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { useDownloadResume } from "@/hooks/useDownloadResume";
+import { PERSONAL_INFO } from "@/lib/constants";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { downloadResume } = useDownloadResume();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,7 +51,7 @@ const Navigation = () => {
             onClick={() => scrollToSection('#home')}
           >
             <span className={scrolled ? 'text-foreground' : 'text-primary-foreground'}>
-              Liam Duncan
+              {PERSONAL_INFO.name}
             </span>
           </div>
 
@@ -68,8 +71,9 @@ const Navigation = () => {
             <Button 
               size="sm"
               className="bg-primary hover:bg-primary/90 shadow-glow transition-all duration-300"
+              onClick={downloadResume}
             >
-              Download CV
+              Download Resume
             </Button>
           </div>
 
@@ -105,8 +109,9 @@ const Navigation = () => {
                 <Button 
                   size="sm"
                   className="w-full bg-primary hover:bg-primary/90 shadow-glow transition-all duration-300"
+                  onClick={downloadResume}
                 >
-                  Download CV
+                  Download Resume
                 </Button>
               </div>
             </div>

@@ -1,8 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, Linkedin, MapPin, Download } from "lucide-react";
+import { Mail, Linkedin, MapPin, Download } from "lucide-react";
+import { useDownloadResume } from "@/hooks/useDownloadResume";
+import { PERSONAL_INFO } from "@/lib/constants";
 
 const Contact = () => {
+  const { downloadResume } = useDownloadResume();
+
   return (
     <section id="contact" className="py-20 bg-background">
       <div className="container mx-auto px-6">
@@ -31,15 +35,7 @@ const Contact = () => {
                     <Mail className="h-5 w-5 text-primary" />
                     <div>
                       <div className="font-medium text-foreground">Email</div>
-                      <div className="text-sm text-muted-foreground">liammduncan@protonmail.com</div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50 hover:bg-secondary/70 transition-colors">
-                    <Phone className="h-5 w-5 text-primary" />
-                    <div>
-                      <div className="font-medium text-foreground">Phone</div>
-                      <div className="text-sm text-muted-foreground">+1 250-863-1803</div>
+                      <div className="text-sm text-muted-foreground">{PERSONAL_INFO.email}</div>
                     </div>
                   </div>
                   
@@ -47,7 +43,7 @@ const Contact = () => {
                     <Linkedin className="h-5 w-5 text-primary" />
                     <div>
                       <div className="font-medium text-foreground">LinkedIn</div>
-                      <div className="text-sm text-muted-foreground">linkedin.com/in/liamduncan</div>
+                      <div className="text-sm text-muted-foreground">{PERSONAL_INFO.linkedin.displayUrl}</div>
                     </div>
                   </div>
                 </div>
@@ -74,6 +70,7 @@ const Contact = () => {
                 <Button 
                   size="lg" 
                   className="w-full bg-primary hover:bg-primary/90 shadow-glow transition-all duration-300 hover:scale-[1.02]"
+                  onClick={downloadResume}
                 >
                   <Download className="mr-2 h-5 w-5" />
                   Download Resume PDF
@@ -104,8 +101,7 @@ const Contact = () => {
                       Availability
                     </h4>
                     <p className="text-sm text-muted-foreground">
-                      Open to remote opportunities worldwide and on-site positions. 
-                      Currently exploring new challenges in software engineering and team leadership.
+                      {PERSONAL_INFO.availability}
                     </p>
                   </div>
                 </div>
