@@ -6,37 +6,37 @@ const skillCategories = [
   {
     title: "Frontend Development",
     icon: Laptop,
-    skills: ["JavaScript", "TypeScript", "React", "Angular", "HTML/CSS", "Tailwind CSS"],
+    skills: ["JavaScript", "TypeScript", "React", "React Native", "Angular", "HTML/CSS", "Tailwind CSS"],
     color: "bg-blue-500/10 text-blue-600 border-blue-500/20"
   },
   {
     title: "Backend Development", 
     icon: Server,
-    skills: ["Node.js", "Python", "Django", "Express.js", "C#", ".NET", "REST APIs", "GraphQL"],
+    skills: ["Node.js", "Python", "Django", "Express.js", "C#", ".NET", "GraphQL", "Microservices", "Event Streaming"],
     color: "bg-green-500/10 text-green-600 border-green-500/20"
   },
   {
     title: "Databases",
     icon: Database,
-    skills: ["PostgreSQL", "MongoDB", "Redis", "SQL", "Database Design"],
+    skills: ["PostgreSQL", "MongoDB", "Redis", "MySQL", "Snowflake", "Query Optimization"],
     color: "bg-purple-500/10 text-purple-600 border-purple-500/20"
   },
   {
     title: "Cloud & DevOps",
     icon: Cloud,
-    skills: ["AWS", "Azure", "Docker", "Kubernetes", "GitLab CI/CD", "Microservices"],
+    skills: ["AWS", "Azure", "Docker", "Kubernetes", "GitLab CI/CD"],
     color: "bg-orange-500/10 text-orange-600 border-orange-500/20"
   },
   {
     title: "Testing & Tools",
     icon: Wrench,
-    skills: ["Jest", "Mocha", "Puppeteer", "Git", "Jira", "Confluence"],
+    skills: ["Jest", "Mocha", "Puppeteer", "Git", "Jira", "Confluence", "Datadog", "Raygun"],
     color: "bg-red-500/10 text-red-600 border-red-500/20"
   },
   {
-    title: "Specialized",
+    title: "AI & Developer Tools",
     icon: Code,
-    skills: ["Payment Systems", "Financial Services", "Team Leadership", "System Architecture"],
+    skills: ["Claude Code", "GitHub Copilot", "OpenAI API", "Lovable", "Cursor", "Prompt Engineering"],
     color: "bg-indigo-500/10 text-indigo-600 border-indigo-500/20"
   }
 ];
@@ -86,39 +86,6 @@ const Skills = () => {
               </CardContent>
             </Card>
           ))}
-        </div>
-        
-        {/* Additional Skills List */}
-        <div className="mt-16 max-w-4xl mx-auto">
-          <Card className="shadow-card bg-gradient-card border-border/50 animate-fade-in">
-            <CardHeader>
-              <CardTitle className="text-center text-xl font-semibold text-foreground">
-                Additional Technologies & Tools
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 gap-4 text-sm text-muted-foreground">
-                <div>
-                  <strong className="text-foreground">Mobile & Cross-Platform:</strong> React Native, Cordova
-                </div>
-                <div>
-                  <strong className="text-foreground">Integration & APIs:</strong> SendGrid, Salesforce, Intercom, Google APIs
-                </div>
-                <div>
-                  <strong className="text-foreground">Build Tools:</strong> Webpack, Vite, FlywayDB
-                </div>
-                <div>
-                  <strong className="text-foreground">Monitoring:</strong> Raygun, Application Performance Monitoring
-                </div>
-                <div>
-                  <strong className="text-foreground">Platforms:</strong> OpenShift, Sitecore, Amazon Chime SDK
-                </div>
-                <div>
-                  <strong className="text-foreground">Methodologies:</strong> Agile, DevOps, Microservices Architecture
-                </div>
-              </div>
-            </CardContent>
-          </Card>
         </div>
       </div>
     </section>

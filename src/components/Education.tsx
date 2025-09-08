@@ -44,40 +44,13 @@ const Education = () => {
                 </div>
               </div>
             </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="font-semibold text-foreground mb-3">Core Subjects</h4>
-                  <div className="space-y-2 text-sm text-muted-foreground">
-                    <div>• Software Architecture & Design</div>
-                    <div>• Data Structures & Algorithms</div>
-                    <div>• Database Systems</div>
-                    <div>• Computer Networks</div>
-                    <div>• Operating Systems</div>
-                    <div>• Web Technologies</div>
-                  </div>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-foreground mb-3">Key Skills Developed</h4>
-                  <div className="space-y-2 text-sm text-muted-foreground">
-                    <div>• Full-Stack Development</div>
-                    <div>• System Design</div>
-                    <div>• Project Management</div>
-                    <div>• Team Collaboration</div>
-                    <div>• Problem Solving</div>
-                    <div>• Technical Communication</div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="pt-4 border-t border-border/50">
-                <p className="text-foreground leading-relaxed">
-                  Comprehensive 4-year engineering program focusing on software development, 
-                  system design, and engineering principles. Recognized for academic excellence 
-                  with Dean's List honors, demonstrating consistent high performance and 
-                  dedication to learning.
-                </p>
-              </div>
+            <CardContent>
+              <p className="text-foreground leading-relaxed">
+                Comprehensive 4-year engineering program focusing on software development, 
+                system design, and engineering principles. Recognized for academic excellence 
+                with Dean's List honors, demonstrating consistent high performance and 
+                dedication to learning.
+              </p>
             </CardContent>
           </Card>
         </div>

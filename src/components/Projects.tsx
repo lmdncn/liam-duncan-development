@@ -22,14 +22,13 @@ const projects = [
     year: "2017",
     event: "Personal Project",
     awards: ["Over 3K users"],
-    description: "Web application displaying Western Recreation Center attendance and analytics obtained through Twitter API and web scraping. Helped students plan their gym visits during peak hours.",
+    description: "Web application displaying Western Recreation Center attendance and analytics obtained through Twitter API and web scraping. Helped students plan their gym visits based on trend projections.",
     technologies: ["MongoDB", "Express", "Angular", "Node.js", "Cheerio", "Twitter API"],
     highlights: [
       "Reached over 3,000 active users",
       "Real-time data processing and visualization",
       "Solved real campus problem for students"
     ],
-    url: "www.wrcstats.com (offline)"
   }
 ];
 
