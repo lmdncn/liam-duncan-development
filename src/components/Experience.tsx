@@ -10,9 +10,10 @@ const experiences = [
     location: "Remote (Canada)",
     description: [
       "Modernized a $100M+ payments API, migrating from Django DRF to Pydantic services and implementing Template Method, Strategy, and Policy design patterns to decouple domain logic and enable faster delivery of new payout workflows.",
+      "Built an automated Snowflake pipeline with Claude AI integration to enrich transactions with Canadian business classification and scoring, delivering enhanced spending insights through client updates and a Retool admin interface.",
       "Improved customer satisfaction by cutting payments endpoint response times by over 50%, optimizing queries and backend logic to handle high-volume data retrieval smoothly."
     ],
-    skills: ["Python", "Django", "React", "TypeScript"]
+    skills: ["Python", "Django", "React", "TypeScript", "Snowflake", "Anthropic API"]
   },
   {
     company: "Career Break",
