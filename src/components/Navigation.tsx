@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 import { useDownloadResume } from "@/hooks/useDownloadResume";
 import { PERSONAL_INFO } from "@/lib/constants";
 
@@ -73,7 +73,8 @@ const Navigation = () => {
               className="bg-primary hover:bg-primary/90 shadow-glow transition-all duration-300"
               onClick={downloadResume}
             >
-              Download Resume
+              <Download className="mr-2 h-4 w-4" />
+              Resume
             </Button>
           </div>
 
@@ -111,7 +112,8 @@ const Navigation = () => {
                   className="w-full bg-primary hover:bg-primary/90 shadow-glow transition-all duration-300"
                   onClick={downloadResume}
                 >
-                  Download Resume
+                  <Download className="mr-2 h-4 w-4" />
+                  Resume
                 </Button>
               </div>
             </div>

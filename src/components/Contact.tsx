@@ -1,8 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Mail, Linkedin, MapPin, Download } from "lucide-react";
+import { Mail, Linkedin, MapPin, Download, Github } from "lucide-react";
 import { useDownloadResume } from "@/hooks/useDownloadResume";
-import { PERSONAL_INFO } from "@/lib/constants";
+import { PERSONAL_INFO, EMAIL_TEMPLATES } from "@/lib/constants";
 
 const Contact = () => {
   const { downloadResume } = useDownloadResume();
@@ -73,13 +73,14 @@ const Contact = () => {
                   onClick={downloadResume}
                 >
                   <Download className="mr-2 h-5 w-5" />
-                  Download Resume PDF
+                  Download Resume
                 </Button>
                 
                 <Button 
                   size="lg" 
                   variant="outline"
                   className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-[1.02]"
+                  onClick={() => window.location.href = EMAIL_TEMPLATES.contact.getMailtoUrl()}
                 >
                   <Mail className="mr-2 h-5 w-5" />
                   Send Email
@@ -89,9 +90,20 @@ const Contact = () => {
                   size="lg" 
                   variant="outline"
                   className="w-full border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-[1.02]"
+                  onClick={() => window.open(PERSONAL_INFO.linkedin.url, '_blank')}
                 >
                   <Linkedin className="mr-2 h-5 w-5" />
                   View LinkedIn Profile
+                </Button>
+                
+                <Button 
+                  size="lg" 
+                  variant="outline"
+                  className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-[1.02]"
+                  onClick={() => window.open('https://github.com/lmdncn', '_blank')}
+                >
+                  <Github className="mr-2 h-5 w-5" />
+                  View GitHub Profile
                 </Button>
                 
                 <div className="pt-4 border-t border-border/50">
