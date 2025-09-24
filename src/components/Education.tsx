@@ -16,7 +16,7 @@ const Education = () => {
         </div>
         
         <div className="max-w-3xl mx-auto">
-          <Card className="shadow-card hover:shadow-hover transition-all duration-300 hover:scale-[1.02] bg-gradient-card border-border/50 animate-fade-in">
+          <Card className="shadow-card bg-gradient-card border-border/50 animate-fade-in">
             <CardHeader>
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div className="flex items-start gap-4">
@@ -31,8 +31,8 @@ const Education = () => {
                       Bachelor of Engineering Science in Software Engineering
                     </CardDescription>
                     <div className="flex items-center gap-2 mt-2">
-                      <Award className="h-4 w-4 text-accent" />
-                      <Badge className="bg-accent/20 text-accent border-accent/30">
+                      <Badge className="bg-accent/20 text-accent border-accent/30 flex items-center gap-1">
+                        <Award className="h-3 w-3" />
                         Dean's List Award
                       </Badge>
                     </div>

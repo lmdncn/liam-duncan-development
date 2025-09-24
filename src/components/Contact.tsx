@@ -22,7 +22,7 @@ const Contact = () => {
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8">
             {/* Contact Information */}
-            <Card className="shadow-card hover:shadow-hover transition-all duration-300 bg-gradient-card border-border/50 animate-fade-in">
+            <Card className="shadow-card bg-gradient-card border-border/50 animate-fade-in">
               <CardHeader>
                 <CardTitle className="text-2xl font-bold text-foreground flex items-center gap-2">
                   <Mail className="h-6 w-6 text-primary" />
@@ -31,7 +31,7 @@ const Contact = () => {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-4">
-                  <div className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50 hover:bg-secondary/70 transition-colors">
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50">
                     <Mail className="h-5 w-5 text-primary" />
                     <div>
                       <div className="font-medium text-foreground">Email</div>
@@ -39,7 +39,7 @@ const Contact = () => {
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50 hover:bg-secondary/70 transition-colors">
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50">
                     <Linkedin className="h-5 w-5 text-primary" />
                     <div>
                       <div className="font-medium text-foreground">LinkedIn</div>
@@ -59,7 +59,7 @@ const Contact = () => {
             </Card>
             
             {/* Quick Actions */}
-            <Card className="shadow-card hover:shadow-hover transition-all duration-300 bg-gradient-card border-border/50 animate-fade-in">
+            <Card className="shadow-card bg-gradient-card border-border/50 animate-fade-in">
               <CardHeader>
                 <CardTitle className="text-2xl font-bold text-foreground flex items-center gap-2">
                   <Download className="h-6 w-6 text-primary" />

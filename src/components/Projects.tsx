@@ -49,7 +49,7 @@ const Projects = () => {
           {projects.map((project, index) => (
             <Card 
               key={index}
-              className="shadow-card hover:shadow-hover transition-all duration-300 hover:scale-[1.01] bg-gradient-card border-border/50 animate-fade-in"
+              className="shadow-card bg-gradient-card border-border/50 animate-fade-in"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
               <CardHeader>
@@ -108,7 +108,7 @@ const Projects = () => {
                       <Badge 
                         key={techIndex}
                         variant="secondary"
-                        className="bg-secondary/80 text-secondary-foreground hover:bg-secondary transition-colors"
+                        className="bg-secondary/80 text-secondary-foreground"
                       >
                         {tech}
                       </Badge>

@@ -28,7 +28,7 @@ const experiences = [
   {
     company: "Moves",
     position: "Engineering Technical Lead & Manager",
-    duration: "Nov 2021 – Jan 2024",
+    duration: "Jul 2021 – Jan 2024",
     location: "Remote (Canada)",
     prevPosition: "Senior Software Developer (Jul 2021 – Nov 2021)",
     description: [
@@ -42,7 +42,7 @@ const experiences = [
   {
     company: "Konrad",
     position: "Senior Software Developer",
-    duration: "Oct 2020 – Jul 2021",
+    duration: "May 2017 – Jul 2021",
     location: "Toronto, Canada",
     prevPosition: ["Software Developer (Jul 2018 – Oct 2020)", "Software Developer Intern (May 2017 – Sep 2017)"],
     description: [
@@ -103,7 +103,7 @@ const Experience = () => {
               {/* Timeline dot */}
               <div className="absolute left-4 top-8 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-card hidden md:block"></div>
               
-              <Card className="md:ml-16 shadow-card hover:shadow-hover transition-all duration-300 hover:scale-[1.02] bg-gradient-card border-border/50">
+              <Card className="md:ml-16 shadow-card bg-gradient-card border-border/50">
                 <CardHeader>
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <div>
@@ -156,7 +156,7 @@ const Experience = () => {
                         <Badge 
                           key={skillIndex} 
                           variant="secondary"
-                          className="bg-secondary/80 text-secondary-foreground hover:bg-secondary transition-colors"
+                          className="bg-secondary/80 text-secondary-foreground"
                         >
                           {skill}
                         </Badge>
