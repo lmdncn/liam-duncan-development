@@ -5,9 +5,6 @@ excerpt: "After six years in tech, I stepped away for a year to travel across fo
 category: "Career"
 readTime: "5 min"
 ---
-
-# How a Year Off Rewired My Perspective
-
 After six years of working as a software engineer and tech lead, I hit pause. Not because I was burned out. Not because I hated my work. I just wanted perspective. I’d always dreamed of traveling the world, and last year I finally took the leap. A year-long career break across four continents and more than 15 countries.
 
 Here’s what I realized. Over years of work, you get wired a certain way. Routines, systems, and habits make you efficient, but they also make you rigid. Sometimes, to really grow, you have to cut those wires and allow yourself to be rewired.

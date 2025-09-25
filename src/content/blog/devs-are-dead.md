@@ -5,9 +5,6 @@ excerpt: "After a decade of sharpening my coding skills, I realized the develope
 category: "AI & Software Engineering"
 readTime: "7 min"
 ---
-
-# Devs Are Dead: My Rebirth as an AI Agent Manager
-
 Like many developers, my AI journey started with **GitHub Copilot**. Inside VS Code, it felt like autocomplete on steroids. Later, moving to **Cursor** gave me a smoother UI and better ways to pass context. But the tools had limits. Without carefully feeding them instruction files and file context, they struggled to truly understand the systems I was working on. Helpful, yes, but transformative? Not yet.
 
 Then I took a step back. On summer vacation in the French Riviera, I had time to reflect: why was I hesitant? Why were so many of us biased against letting AI take the driver’s seat? It reminded me of the industrial robotics revolution, when workers stopped assembling every piece by hand and instead learned to manage the machines that did it faster, more efficiently, and at greater scale. New skills became essential: communication, management, organization, systems thinking. Old skills weren’t irrelevant, but their value shifted.

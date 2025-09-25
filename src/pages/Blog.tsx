@@ -3,37 +3,11 @@ import BlogCard, { BlogPost } from "@/components/BlogCard";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
-// This will be replaced with dynamic loading from markdown files
-const SAMPLE_POSTS: BlogPost[] = [
-  {
-    slug: "building-with-ai-tools",
-    title: "Building Scalable Applications with AI Tools",
-    date: "January 2025",
-    excerpt: "My experience integrating Claude Code, GitHub Copilot, and other AI tools into development workflows. From faster prototyping to production deployments, here's what I've learned.",
-    category: "Technical",
-    readTime: "8 min read"
-  },
-  {
-    slug: "lessons-from-fintech",
-    title: "Lessons from Building Fintech at Scale",
-    date: "December 2024", 
-    excerpt: "Reflections on architecting payment systems that process millions in transactions. Event-driven architecture, data consistency, and the importance of monitoring in financial applications.",
-    category: "Engineering",
-    readTime: "12 min read"
-  },
-  {
-    slug: "career-break-insights",
-    title: "What I Learned During My Year-Long Career Break",
-    date: "November 2024",
-    excerpt: "Taking time off to travel the world taught me more than just cultural insights. Here are the professional lessons I gained from stepping away from code.",
-    category: "Career",
-    readTime: "6 min read"
-  }
-];
+import { getAllBlogPosts } from "@/lib/blog";
 
 const Blog = () => {
   const navigate = useNavigate();
+  const blogPosts = getAllBlogPosts();
 
   return (
     <div className="min-h-screen bg-background">
@@ -71,7 +45,7 @@ const Blog = () => {
       <section className="py-20">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto space-y-8">
-            {SAMPLE_POSTS.map((post, index) => (
+            {blogPosts.map((post, index) => (
               <div 
                 key={post.slug}
                 className="animate-fade-in"
