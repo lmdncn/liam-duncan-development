@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Menu, X, Download, BookOpen } from "lucide-react";
-import { useDownloadResume } from "@/hooks/useDownloadResume";
-import { PERSONAL_INFO } from "@/lib/constants";
 import { useNavigate, useLocation } from "react-router-dom";
+import NavigationLogo from "./Navigation/NavigationLogo";
+import NavigationItems from "./Navigation/NavigationItems";
+import MobileMenu from "./Navigation/MobileMenu";
+import type { NavItem } from "@/types";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { downloadResume } = useDownloadResume();
   const navigate = useNavigate();
   const location = useLocation();
   
@@ -24,7 +23,7 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = [
+  const navItems: NavItem[] = [
     { label: "Home", href: "#home" },
     { label: "Experience", href: "#experience" },
     { label: "Projects", href: "#projects" },
@@ -33,7 +32,7 @@ const Navigation = () => {
     { label: "Contact", href: "#contact" }
   ];
 
-  const handleNavigation = (href: string) => {
+  const handleNavigation = (href: string): void => {
     if (isOnBlogPage) {
       // If on blog page, navigate back to main page with section hash
       if (href === '#home') {
@@ -61,112 +60,24 @@ const Navigation = () => {
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div 
-            className="font-bold text-xl cursor-pointer transition-colors duration-300 hover:text-primary"
-            onClick={() => navigate('/')}
-          >
-            <span className={scrolled ? 'text-foreground' : 'text-primary-foreground'}>
-              {PERSONAL_INFO.name}
-            </span>
-          </div>
+          <NavigationLogo scrolled={scrolled} />
+          
+          <NavigationItems 
+            navItems={navItems}
+            scrolled={scrolled}
+            isOnBlogPage={isOnBlogPage}
+            handleNavigation={handleNavigation}
+          />
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {!isOnBlogPage && (
-              <>
-                {navItems.map((item) => (
-                  <button
-                    key={item.label}
-                    onClick={() => handleNavigation(item.href)}
-                    className={`transition-colors duration-300 hover:text-primary font-medium ${
-                      scrolled ? 'text-foreground' : 'text-primary-foreground'
-                    }`}
-                  >
-                    {item.label}
-                  </button>
-                ))}
-                <Button
-                  size="sm"
-                  variant="outline"
-                  className={`transition-all duration-300 hover:bg-accent hover:text-accent-foreground ${
-                    scrolled 
-                      ? 'bg-accent/10 text-accent border-accent/30' 
-                      : 'bg-primary-foreground/10 text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground hover:text-primary'
-                  }`}
-                  onClick={() => navigate('/blog')}
-                >
-                  <BookOpen className="mr-2 h-4 w-4" />
-                  Read My Blog!
-                </Button>
-              </>
-            )}
-            <Button 
-              size="sm"
-              className="bg-primary hover:bg-primary/90 shadow-glow transition-all duration-300"
-              onClick={downloadResume}
-            >
-              <Download className="mr-2 h-4 w-4" />
-              Resume
-            </Button>
-          </div>
-
-          {/* Mobile menu button */}
-          <Button
-            variant="ghost"
-            size="sm"
-            className="md:hidden"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? (
-              <X className={`h-6 w-6 ${scrolled ? 'text-foreground' : 'text-primary-foreground'}`} />
-            ) : (
-              <Menu className={`h-6 w-6 ${scrolled ? 'text-foreground' : 'text-primary-foreground'}`} />
-            )}
-          </Button>
+          <MobileMenu
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            navItems={navItems}
+            scrolled={scrolled}
+            isOnBlogPage={isOnBlogPage}
+            handleNavigation={handleNavigation}
+          />
         </div>
-
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden bg-background/95 backdrop-blur-md border-t border-border/50 animate-fade-in">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              {!isOnBlogPage && (
-                <>
-                  {navItems.map((item) => (
-                    <button
-                      key={item.label}
-                      onClick={() => handleNavigation(item.href)}
-                      className="block w-full text-left px-3 py-2 text-foreground hover:text-primary hover:bg-secondary/50 rounded-md transition-colors duration-300 font-medium"
-                    >
-                      {item.label}
-                    </button>
-                  ))}
-                  <div className="px-3 py-2">
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="w-full bg-accent/10 text-accent border-accent/30 hover:bg-accent hover:text-accent-foreground transition-all duration-300 mb-2"
-                      onClick={() => navigate('/blog')}
-                    >
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Read My Blog!
-                    </Button>
-                  </div>
-                </>
-              )}
-              <div className="px-3 py-2">
-                <Button 
-                  size="sm"
-                  className="w-full bg-primary hover:bg-primary/90 shadow-glow transition-all duration-300"
-                  onClick={downloadResume}
-                >
-                  <Download className="mr-2 h-4 w-4" />
-                  Resume
-                </Button>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </nav>
   );

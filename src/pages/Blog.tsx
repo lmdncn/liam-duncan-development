@@ -1,5 +1,5 @@
 import Navigation from "@/components/Navigation";
-import BlogCard, { BlogPost } from "@/components/BlogCard";
+import BlogCard from "@/components/BlogCard";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";

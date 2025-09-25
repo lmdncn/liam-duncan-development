@@ -2,19 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
-export interface BlogPost {
-  slug: string;
-  title: string;
-  date: string;
-  excerpt: string;
-  category: string;
-  readTime?: string;
-}
-
-interface BlogCardProps {
-  post: BlogPost;
-}
+import type { BlogCardProps } from '@/types';
 
 const BlogCard = ({ post }: BlogCardProps) => {
   const navigate = useNavigate();

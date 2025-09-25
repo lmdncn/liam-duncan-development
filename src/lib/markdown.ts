@@ -1,20 +1,7 @@
-// Simple frontmatter parser to avoid Node.js dependencies
-
-export interface BlogPostMetadata {
-  title: string;
-  date: string;
-  excerpt: string;
-  category: string;
-  readTime?: string;
-}
-
-export interface BlogPost extends BlogPostMetadata {
-  slug: string;
-  content: string;
-}
+import type { BlogPost, BlogPostMetadata, ParsedFrontmatter } from '@/types';
 
 // Simple frontmatter parser
-const parseFrontmatter = (markdownContent: string) => {
+const parseFrontmatter = (markdownContent: string): ParsedFrontmatter => {
   const frontmatterRegex = /^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/;
   const match = markdownContent.match(frontmatterRegex);
   
@@ -38,7 +25,12 @@ const parseFrontmatter = (markdownContent: string) => {
   return { data, content };
 };
 
-// This function will be used to dynamically import and parse markdown files
+/**
+ * Parses a markdown blog post with frontmatter and returns structured data
+ * @param markdownContent - Raw markdown content with frontmatter
+ * @param slug - Unique identifier for the blog post
+ * @returns Structured blog post object with metadata and content
+ */
 export const parseBlogPost = (markdownContent: string, slug: string): BlogPost => {
   const { data, content } = parseFrontmatter(markdownContent);
   

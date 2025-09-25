@@ -1,9 +1,14 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Section } from "@/components/ui/section";
+import { SectionHeader } from "@/components/ui/section-header";
+import { Container } from "@/components/ui/container";
+import { AnimatedCard } from "@/components/ui/animated-card";
 import { Award, Users, ExternalLink, Calendar } from "lucide-react";
+import type { Project } from "@/types";
 
-const projects = [
+const projects: Project[] = [
   {
     title: "LifeLine",
     year: "2017",
@@ -34,30 +39,26 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-20 bg-secondary/30">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-            Personal Portfolio
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Innovative projects that showcase problem-solving skills and technical creativity
-          </p>
-        </div>
+    <Section id="projects" variant="alternate">
+      <Container>
+        <SectionHeader 
+          title="Personal Portfolio"
+          subtitle="Innovative projects that showcase problem-solving skills and technical creativity"
+        />
         
-        <div className="max-w-4xl mx-auto space-y-8">
+        <div className="space-y-8">
           {projects.map((project, index) => (
-            <Card 
-              key={index}
-              className="shadow-card bg-gradient-card border-border/50 animate-fade-in"
-              style={{ animationDelay: `${index * 0.2}s` }}
+            <AnimatedCard
+              key={project.title}
+              index={index}
+              animationDelay={0.2}
             >
               <CardHeader>
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
                   <div className="space-y-2">
                     <CardTitle className="text-2xl font-bold text-foreground flex items-center gap-2">
                       {project.title}
-                      {project.url && <ExternalLink className="h-4 w-4 text-muted-foreground" />}
+                      {project.demoUrl && <ExternalLink className="h-4 w-4 text-muted-foreground" />}
                     </CardTitle>
                     <CardDescription className="text-lg font-medium text-primary">
                       {project.event}
@@ -116,23 +117,24 @@ const Projects = () => {
                   </div>
                 </div>
                 
-                {project.url && (
+                {project.demoUrl && (
                   <div className="pt-4 border-t border-border/50">
                     <Button 
                       variant="outline" 
                       className="flex items-center gap-2 hover:bg-secondary transition-colors"
+                      onClick={() => window.open(project.demoUrl, '_blank')}
                     >
                       <ExternalLink className="h-4 w-4" />
-                      {project.url}
+                      View Project
                     </Button>
                   </div>
                 )}
               </CardContent>
-            </Card>
+            </AnimatedCard>
           ))}
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 };
 

@@ -1,5 +1,7 @@
+import type { PersonalInfo, EmailTemplate, ResumeConfig, SiteConfig } from '@/types';
+
 // Personal Information
-export const PERSONAL_INFO = {
+export const PERSONAL_INFO: PersonalInfo = {
   name: "Liam Duncan",
   title: "Software Engineer",
   description: "Full-stack software engineer passionate about leveraging AI to build faster and smarter. From fintech to edtech, I'm experienced leading event-driven microservice architecture, building profitable products, and architecting solutions that process millions in transactions.",
@@ -13,7 +15,7 @@ export const PERSONAL_INFO = {
 };
 
 // Email Templates
-export const EMAIL_TEMPLATES = {
+export const EMAIL_TEMPLATES: Record<string, EmailTemplate> = {
   contact: {
     subject: "Saw your website and looking to connect!",
     getMailtoUrl: () => `mailto:${PERSONAL_INFO.email}?subject=${encodeURIComponent(EMAIL_TEMPLATES.contact.subject)}`
@@ -21,12 +23,12 @@ export const EMAIL_TEMPLATES = {
 };
 
 // Resume Configuration
-export const RESUME_CONFIG = {
+export const RESUME_CONFIG: ResumeConfig = {
   filename: "Liam_Duncan_Resume_2025.pdf",
   path: "/liam-duncan-resume/Liam_Duncan_Resume_2025.pdf"
 };
 
 // Site Configuration
-export const SITE_CONFIG = {
+export const SITE_CONFIG: SiteConfig = {
   basePath: "/liam-duncan-resume"
 };

@@ -1,4 +1,5 @@
-import { parseBlogPost, generateSlug, estimateReadingTime, BlogPost } from './markdown';
+import { parseBlogPost, generateSlug, estimateReadingTime } from './markdown';
+import type { BlogPost } from '@/types';
 
 // Use Vite's glob import to load all markdown files at build time
 const blogModules = import.meta.glob('../content/blog/*.md', { 
@@ -39,17 +40,27 @@ const allBlogPosts: BlogPost[] = Object.entries(blogModules)
     return dateB.getTime() - dateA.getTime();
   });
 
-// Get all blog posts
+/**
+ * Retrieves all blog posts sorted by date (newest first)
+ * @returns Array of all blog posts with metadata
+ */
 export const getAllBlogPosts = (): BlogPost[] => {
   return allBlogPosts;
 };
 
-// Get a specific blog post by slug
+/**
+ * Retrieves a specific blog post by its slug
+ * @param slug - The unique identifier for the blog post
+ * @returns The blog post if found, undefined otherwise
+ */
 export const getBlogPostBySlug = (slug: string): BlogPost | undefined => {
   return allBlogPosts.find(post => post.slug === slug);
 };
 
-// Get blog post slugs (useful for routing)
+/**
+ * Retrieves all blog post slugs for routing purposes
+ * @returns Array of all blog post slugs
+ */
 export const getAllBlogSlugs = (): string[] => {
   return allBlogPosts.map(post => post.slug);
 };
