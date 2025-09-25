@@ -99,18 +99,14 @@ const parseBlogPosts = (): BlogPost[] => {
     };
   });
 
-  const parseDate = (dateStr: string): Date => {
-    if (!dateStr) return new Date(0);
-    return dateStr.includes(',') ? new Date(dateStr) : new Date(`${dateStr} 1`);
-  };
-
+  // Sort posts by order field only (no date parsing)
   posts.sort((a, b) => {
     if (a.order !== undefined && b.order !== undefined) {
       return b.order - a.order;
     }
     if (a.order !== undefined) return -1;
     if (b.order !== undefined) return 1;
-    return parseDate(b.date).getTime() - parseDate(a.date).getTime();
+    return 0; // maintain original order for posts without order field
   });
 
   return posts;
@@ -129,6 +125,12 @@ const buildHtml = (template: string, meta: RouteMeta): string => {
   const ogType = meta.type ?? 'website';
 
   let html = template;
+
+  // Remove problematic modulepreload links with data URLs for static pages
+  html = html.replace(/<link rel="modulepreload" href="data:[^"]*"\s*\/?>[\r\n]?\s*/g, '');
+  
+  // Remove any scripts that might be causing CSP issues
+  html = html.replace(/<script[^>]*src="[^"]*commons\.bundle\.js[^"]*"[^>]*>[\s\S]*?<\/script>/gi, '');
 
   html = replaceTag(html, /<title>.*?<\/title>/, `<title>${escapeHtml(fullTitle)}</title>`);
   html = replaceTag(html, /<meta name="description" content="[^"]*"\s*\/?>/, `<meta name="description" content="${escapeHtml(description)}" />`);
