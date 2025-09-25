@@ -5,7 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { getAllBlogPosts } from "@/lib/blog";
 import SEO from "@/components/SEO";
-import { OG_IMAGES } from "@/lib/constants";
+import { BLOG_PAGE_SEO } from "@/lib/pageMeta";
 
 const Blog = () => {
   const blogPosts = getAllBlogPosts();
@@ -13,10 +13,11 @@ const Blog = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO 
-        title="Blog"
-        description="Thoughts on software engineering, AI tools, career development, and lessons learned from building scalable applications."
-        image={OG_IMAGES.blog}
-        url="/blog"
+        title={BLOG_PAGE_SEO.title}
+        description={BLOG_PAGE_SEO.description}
+        image={BLOG_PAGE_SEO.image}
+        url={BLOG_PAGE_SEO.url}
+        type={BLOG_PAGE_SEO.type}
       />
       <Navigation />
       
