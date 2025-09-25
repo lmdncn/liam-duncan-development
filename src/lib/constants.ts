@@ -35,7 +35,7 @@ export const SITE_CONFIG: SiteConfig = {
 
 // SEO Configuration
 export const SEO_CONFIG = {
-  baseUrl: 'https://liamduncan.github.io/liam-duncan-development',
+  baseUrl: 'https://lmdncn.github.io/liam-duncan-development',
   siteName: PERSONAL_INFO.name,
   locale: 'en_US',
   themeColor: '#000000',
