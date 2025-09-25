@@ -31,9 +31,26 @@ export const generateBlogPostSEO = (post: BlogPost) => {
 };
 
 export const formatDateForISO = (dateString: string): string => {
-  const date = dateString.includes(',') 
-    ? new Date(dateString)
-    : new Date(`${dateString} 1`); // For "September 2025" format
+  let date: Date;
+  
+  if (dateString.includes(',')) {
+    // Handle "September 24, 2025" format
+    date = new Date(dateString);
+  } else {
+    // Handle "September 2025" format - convert to mobile-safe parsing
+    const [month, year] = dateString.split(' ');
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                       'July', 'August', 'September', 'October', 'November', 'December'];
+    const monthIndex = monthNames.indexOf(month);
+    
+    if (monthIndex === -1) {
+      console.warn(`Invalid month name: ${month}`);
+      date = new Date(); // fallback to current date
+    } else {
+      // Use Date constructor with numeric parameters (mobile-safe)
+      date = new Date(parseInt(year), monthIndex, 1);
+    }
+  }
   
   return date.toISOString();
 };

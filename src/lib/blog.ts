@@ -1,24 +1,11 @@
 import { parseBlogPost, generateSlug, estimateReadingTime } from './markdown';
 import type { BlogPost } from '@/types';
 
-/**
- * Parses date strings in various formats to Date objects
- * @param dateStr - Date string in format "September 2025" or "September 24, 2025"
- * @returns Parsed Date object
- */
-const parseDate = (dateStr: string): Date => {
-  if (dateStr.includes(',')) {
-    return new Date(dateStr);
-  } else {
-    // For "September 2025" format, assume first of the month
-    return new Date(`${dateStr} 1`);
-  }
-};
 
 /**
- * Sorts blog posts with the following priority:
+ * Sorts blog posts by order field only
  * 1. Posts with order field (descending: highest numbers first)
- * 2. Posts without order field (by date, newest first)
+ * 2. Posts without order field (maintain original array order)
  * @param a - First blog post to compare
  * @param b - Second blog post to compare
  * @returns Comparison result for Array.sort()
@@ -37,10 +24,8 @@ const sortBlogPosts = (a: BlogPost, b: BlogPost): number => {
     return 1;
   }
   
-  // Both posts have no order: sort by date (newest first)
-  const dateA = parseDate(a.date);
-  const dateB = parseDate(b.date);
-  return dateB.getTime() - dateA.getTime();
+  // Both posts have no order: maintain original order
+  return 0;
 };
 
 // Use Vite's glob import to load all markdown files at build time
@@ -50,7 +35,7 @@ const blogModules = import.meta.glob('../content/blog/*.md', {
   eager: true 
 });
 
-// Parse all blog posts and sort by date (newest first)
+// Parse all blog posts and sort by order field
 const allBlogPosts: BlogPost[] = Object.entries(blogModules)
   .map(([path, content]) => {
     const filename = path.split('/').pop() || '';
@@ -67,7 +52,7 @@ const allBlogPosts: BlogPost[] = Object.entries(blogModules)
   .sort(sortBlogPosts);
 
 /**
- * Retrieves all blog posts sorted by order field (descending) then by date (newest first)
+ * Retrieves all blog posts sorted by order field (descending)
  * @returns Array of all blog posts with metadata
  */
 export const getAllBlogPosts = (): BlogPost[] => {
