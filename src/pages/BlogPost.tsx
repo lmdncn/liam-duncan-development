@@ -2,13 +2,12 @@ import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { getBlogPostBySlug } from "@/lib/blog";
 
 
 const BlogPost = () => {
-  const navigate = useNavigate();
   const { slug } = useParams<{ slug: string }>();
   
   const post = slug ? getBlogPostBySlug(slug) : undefined;
@@ -20,12 +19,8 @@ const BlogPost = () => {
           <h1 className="text-6xl font-light text-muted-foreground mb-4">404</h1>
           <h2 className="text-2xl font-normal text-foreground mb-2">Not Found</h2>
           <p className="text-lg text-muted-foreground mb-8">The article you are looking for doesn't exist</p>
-          <Button
-            variant="ghost"
-            onClick={() => navigate('/blog')}
-            className="text-primary hover:bg-primary/10 transition-colors"
-          >
-            Return to Blog
+          <Button variant="ghost" asChild className="text-primary hover:bg-primary/10 transition-colors">
+            <Link to="/blog">Return to Blog</Link>
           </Button>
         </div>
       </div>
@@ -45,11 +40,13 @@ const BlogPost = () => {
               <Button
                 variant="ghost"
                 size="sm"
-                onClick={() => navigate('/blog')}
+                asChild
                 className="text-primary-foreground hover:bg-primary-foreground/10"
               >
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Back to Blog
+                <Link to="/blog">
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  Back to Blog
+                </Link>
               </Button>
             </div>
             
@@ -132,11 +129,13 @@ const BlogPost = () => {
                 </div>
                 <Button
                   variant="ghost"
-                  onClick={() => navigate('/blog')}
+                  asChild
                   className="text-primary hover:bg-primary/10 transition-colors"
                 >
-                  <ArrowLeft className="mr-2 h-4 w-4" />
-                  More Articles
+                  <Link to="/blog">
+                    <ArrowLeft className="mr-2 h-4 w-4" />
+                    More Articles
+                  </Link>
                 </Button>
               </div>
             </footer>

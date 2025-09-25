@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Download, BookOpen } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDownloadResume } from "@/hooks/useDownloadResume";
 import type { NavItem } from "@/types";
 
@@ -17,7 +17,6 @@ const NavigationItems = ({
   isOnBlogPage, 
   handleNavigation 
 }: NavigationItemsProps) => {
-  const navigate = useNavigate();
   const { downloadResume } = useDownloadResume();
 
   return (
@@ -38,16 +37,37 @@ const NavigationItems = ({
           <Button
             size="sm"
             variant="outline"
+            asChild
             className={`transition-all duration-300 hover:bg-accent hover:text-accent-foreground ${
               scrolled 
                 ? 'bg-accent/10 text-accent border-accent/30' 
                 : 'bg-primary-foreground/10 text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground hover:text-primary'
             }`}
-            onClick={() => navigate('/blog')}
           >
-            <BookOpen className="mr-2 h-4 w-4" />
-            Read My Blog!
+            <Link to="/blog">
+              <BookOpen className="mr-2 h-4 w-4" />
+              Read My Blog!
+            </Link>
           </Button>
+        </>
+      )}
+      {isOnBlogPage && (
+        <>
+          {navItems.map((item) => (
+            <Button
+              key={item.label}
+              variant="ghost"
+              size="sm"
+              asChild
+              className={`transition-colors duration-300 hover:text-primary font-medium ${
+                scrolled ? 'text-foreground' : 'text-primary-foreground'
+              }`}
+            >
+              <Link to={`/${item.href}`}>
+                {item.label}
+              </Link>
+            </Button>
+          ))}
         </>
       )}
       <Button 

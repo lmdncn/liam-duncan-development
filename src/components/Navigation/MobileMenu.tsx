@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Download, BookOpen, X, Menu } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDownloadResume } from "@/hooks/useDownloadResume";
 import type { NavItem } from "@/types";
 
@@ -21,7 +21,6 @@ const MobileMenu = ({
   isOnBlogPage, 
   handleNavigation 
 }: MobileMenuProps) => {
-  const navigate = useNavigate();
   const { downloadResume } = useDownloadResume();
 
   return (
@@ -59,13 +58,32 @@ const MobileMenu = ({
                   <Button
                     size="sm"
                     variant="outline"
+                    asChild
                     className="w-full bg-accent/10 text-accent border-accent/30 hover:bg-accent hover:text-accent-foreground transition-all duration-300 mb-2"
-                    onClick={() => navigate('/blog')}
                   >
-                    <BookOpen className="mr-2 h-4 w-4" />
-                    Read My Blog!
+                    <Link to="/blog">
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Read My Blog!
+                    </Link>
                   </Button>
                 </div>
+              </>
+            )}
+            {isOnBlogPage && (
+              <>
+                {navItems.map((item) => (
+                  <Button
+                    key={item.label}
+                    variant="ghost"
+                    size="sm"
+                    asChild
+                    className="block w-full text-left px-3 py-2 text-foreground hover:text-primary hover:bg-secondary/50 rounded-md transition-colors duration-300 font-medium"
+                  >
+                    <Link to={`/${item.href}`}>
+                      {item.label}
+                    </Link>
+                  </Button>
+                ))}
               </>
             )}
             <div className="px-3 py-2">

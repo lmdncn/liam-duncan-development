@@ -2,11 +2,10 @@ import Navigation from "@/components/Navigation";
 import BlogCard from "@/components/BlogCard";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getAllBlogPosts } from "@/lib/blog";
 
 const Blog = () => {
-  const navigate = useNavigate();
   const blogPosts = getAllBlogPosts();
 
   return (
@@ -21,11 +20,13 @@ const Blog = () => {
               <Button
                 variant="ghost"
                 size="sm"
-                onClick={() => navigate('/')}
+                asChild
                 className="text-primary-foreground hover:bg-primary-foreground/10"
               >
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Back to Resume
+                <Link to="/">
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  Back to Resume
+                </Link>
               </Button>
             </div>
             

@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { PERSONAL_INFO } from "@/lib/constants";
 
 interface NavigationLogoProps {
@@ -6,17 +6,15 @@ interface NavigationLogoProps {
 }
 
 const NavigationLogo = ({ scrolled }: NavigationLogoProps) => {
-  const navigate = useNavigate();
-
   return (
-    <div 
+    <Link 
+      to="/"
       className="font-bold text-xl cursor-pointer transition-colors duration-300 hover:text-primary"
-      onClick={() => navigate('/')}
     >
       <span className={scrolled ? 'text-foreground' : 'text-primary-foreground'}>
         {PERSONAL_INFO.name}
       </span>
-    </div>
+    </Link>
   );
 };
 

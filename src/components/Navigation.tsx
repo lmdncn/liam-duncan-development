@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import NavigationLogo from "./Navigation/NavigationLogo";
 import NavigationItems from "./Navigation/NavigationItems";
 import MobileMenu from "./Navigation/MobileMenu";
@@ -8,7 +8,6 @@ import type { NavItem } from "@/types";
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const navigate = useNavigate();
   const location = useLocation();
   
   // Detect if we're on a blog page
@@ -33,15 +32,8 @@ const Navigation = () => {
   ];
 
   const handleNavigation = (href: string): void => {
-    if (isOnBlogPage) {
-      // If on blog page, navigate back to main page with section hash
-      if (href === '#home') {
-        navigate('/');
-      } else {
-        navigate(`/${href}`);
-      }
-    } else {
-      // If on main page, scroll to section
+    // Always scroll to section if we're on the main page
+    if (!isOnBlogPage) {
       const element = document.querySelector(href);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
