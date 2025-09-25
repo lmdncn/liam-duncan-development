@@ -5,70 +5,94 @@ import NavigationItems from "./Navigation/NavigationItems";
 import MobileMenu from "./Navigation/MobileMenu";
 import type { NavItem } from "@/types";
 
+const PRIMARY_NAV_ITEMS: NavItem[] = [
+  { label: "Home", href: "#home" },
+  { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
+  { label: "Education", href: "#education" },
+  { label: "Skills", href: "#skills" },
+  { label: "Contact", href: "#contact" }
+];
+
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  
-  // Detect if we're on a blog page
-  const isOnBlogPage = location.pathname.startsWith('/blog');
+  const isBlogRoute = location.pathname.startsWith('/blog');
+  const shouldRenderPrimaryNav = !isBlogRoute;
+  const isStickyNavigation = !isBlogRoute;
 
   useEffect(() => {
+    if (!isStickyNavigation) {
+      setScrolled(false);
+      return;
+    }
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
 
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isStickyNavigation]);
 
-  const navItems: NavItem[] = [
-    { label: "Home", href: "#home" },
-    { label: "Experience", href: "#experience" },
-    { label: "Projects", href: "#projects" },
-    { label: "Education", href: "#education" },
-    { label: "Skills", href: "#skills" },
-    { label: "Contact", href: "#contact" }
-  ];
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
+
+  const navItems = PRIMARY_NAV_ITEMS;
 
   const handleNavigation = (href: string): void => {
-    // Always scroll to section if we're on the main page
-    if (!isOnBlogPage) {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+    if (!shouldRenderPrimaryNav) {
+      return;
+    }
+
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
     setIsOpen(false);
   };
 
+  const isScrolledStyle = isStickyNavigation ? scrolled : false;
+
+  const navPositionClass = isStickyNavigation
+    ? 'fixed top-0 left-0 right-0 z-50'
+    : 'absolute top-0 left-0 right-0 z-50';
+
+  const scrolledSurfaceClass = 'bg-background/95 backdrop-blur-md shadow-card border-b border-border/50';
+  const navSurfaceClass = isStickyNavigation
+    ? isScrolledStyle
+      ? scrolledSurfaceClass
+      : 'bg-transparent'
+    : 'bg-transparent';
+
   return (
     <nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-background/95 backdrop-blur-md shadow-card border-b border-border/50' 
-          : 'bg-transparent'
-      }`}
+      className={`${navPositionClass} transition-all duration-300 ${navSurfaceClass}`}
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
-          <NavigationLogo scrolled={scrolled} />
-          
-          <NavigationItems 
-            navItems={navItems}
-            scrolled={scrolled}
-            isOnBlogPage={isOnBlogPage}
-            handleNavigation={handleNavigation}
-          />
+          <NavigationLogo scrolled={isScrolledStyle} />
 
-          <MobileMenu
-            isOpen={isOpen}
-            setIsOpen={setIsOpen}
-            navItems={navItems}
-            scrolled={scrolled}
-            isOnBlogPage={isOnBlogPage}
-            handleNavigation={handleNavigation}
-          />
+          {shouldRenderPrimaryNav && (
+            <NavigationItems 
+              navItems={navItems}
+              scrolled={isScrolledStyle}
+              handleNavigation={handleNavigation}
+            />
+          )}
+
+          {shouldRenderPrimaryNav && (
+            <MobileMenu
+              isOpen={isOpen}
+              setIsOpen={setIsOpen}
+              navItems={navItems}
+              scrolled={isScrolledStyle}
+              handleNavigation={handleNavigation}
+            />
+          )}
         </div>
       </div>
     </nav>

@@ -10,17 +10,15 @@ interface MobileMenuProps {
   setIsOpen: (isOpen: boolean) => void;
   navItems: NavItem[];
   scrolled: boolean;
-  isOnBlogPage: boolean;
   handleNavigation: (href: string) => void;
 }
 
-const MobileMenu = ({ 
-  isOpen, 
-  setIsOpen, 
-  navItems, 
-  scrolled, 
-  isOnBlogPage, 
-  handleNavigation 
+const MobileMenu = ({
+  isOpen,
+  setIsOpen,
+  navItems,
+  scrolled,
+  handleNavigation
 }: MobileMenuProps) => {
   const { downloadResume } = useDownloadResume();
   const blogPreloadProps = useHoverPreload('blog');
@@ -45,49 +43,28 @@ const MobileMenu = ({
       {isOpen && (
         <div className="md:hidden bg-background/95 backdrop-blur-md border-t border-border/50 animate-fade-in">
           <div className="px-2 pt-2 pb-3 space-y-1">
-            {!isOnBlogPage && (
-              <>
-                {navItems.map((item) => (
-                  <button
-                    key={item.label}
-                    onClick={() => handleNavigation(item.href)}
-                    className="block w-full text-left px-3 py-2 text-foreground hover:text-primary hover:bg-secondary/50 rounded-md transition-colors duration-300 font-medium"
-                  >
-                    {item.label}
-                  </button>
-                ))}
-                <div className="px-3 py-2">
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    asChild
-                    className="w-full bg-accent/10 text-accent border-accent/30 hover:bg-accent hover:text-accent-foreground transition-all duration-300 mb-2"
-                  >
-                    <Link to="/blog" {...blogPreloadProps}>
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Read My Blog!
-                    </Link>
-                  </Button>
-                </div>
-              </>
-            )}
-            {isOnBlogPage && (
-              <>
-                {navItems.map((item) => (
-                  <Button
-                    key={item.label}
-                    variant="ghost"
-                    size="sm"
-                    asChild
-                    className="block w-full text-left px-3 py-2 text-foreground hover:text-primary hover:bg-secondary/50 rounded-md transition-colors duration-300 font-medium"
-                  >
-                    <Link to={`/${item.href}`}>
-                      {item.label}
-                    </Link>
-                  </Button>
-                ))}
-              </>
-            )}
+            {navItems.map((item) => (
+              <button
+                key={item.label}
+                onClick={() => handleNavigation(item.href)}
+                className="block w-full text-left px-3 py-2 text-foreground hover:text-primary hover:bg-secondary/50 rounded-md transition-colors duration-300 font-medium"
+              >
+                {item.label}
+              </button>
+            ))}
+            <div className="px-3 py-2">
+              <Button
+                size="sm"
+                variant="outline"
+                asChild
+                className="w-full bg-accent/10 text-accent border-accent/30 hover:bg-accent hover:text-accent-foreground transition-all duration-300 mb-2"
+              >
+                <Link to="/blog" {...blogPreloadProps}>
+                  <BookOpen className="mr-2 h-4 w-4" />
+                  Read My Blog!
+                </Link>
+              </Button>
+            </div>
             <div className="px-3 py-2">
               <Button 
                 size="sm"
