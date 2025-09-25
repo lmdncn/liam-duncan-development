@@ -6,11 +6,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import ErrorBoundary from "@/components/ErrorBoundary";
 
-// Lazy load pages for better performance
-const Index = lazy(() => import("./pages/Index"));
-const Blog = lazy(() => import("./pages/Blog"));
-const BlogPost = lazy(() => import("./pages/BlogPost"));
-const NotFound = lazy(() => import("./pages/NotFound"));
+// Eager load critical pages for instant navigation
+import Index from "./pages/Index";
+
+// Lazy load non-critical pages with prefetch hints
+const Blog = lazy(() => import(/* webpackPrefetch: true */ "./pages/Blog"));
+const BlogPost = lazy(() => import(/* webpackPrefetch: true */ "./pages/BlogPost"));
+const NotFound = lazy(() => import(/* webpackPreload: true */ "./pages/NotFound"));
 
 // Loading fallback component
 const PageLoader = () => (
@@ -27,7 +29,7 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter basename="/liam-duncan-resume/">
+        <BrowserRouter basename="/liam-duncan-development/">
           <Suspense fallback={<PageLoader />}>
             <Routes>
               <Route path="/" element={<Index />} />

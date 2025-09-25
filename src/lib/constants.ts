@@ -25,10 +25,10 @@ export const EMAIL_TEMPLATES: Record<string, EmailTemplate> = {
 // Resume Configuration
 export const RESUME_CONFIG: ResumeConfig = {
   filename: "Liam_Duncan_Resume_2025.pdf",
-  path: "/liam-duncan-resume/Liam_Duncan_Resume_2025.pdf"
+  path: "/liam-duncan-development/Liam_Duncan_Resume_2025.pdf"
 };
 
 // Site Configuration
 export const SITE_CONFIG: SiteConfig = {
-  basePath: "/liam-duncan-resume"
+  basePath: "/liam-duncan-development"
 };

@@ -45,6 +45,6 @@ npm run deploy
 This will:
 1. Build the project using `npm run build`
 2. Deploy the `dist` folder to the `gh-pages` branch
-3. Make the site available at: `https://lmdncn.github.io/liam-duncan-resume/`
+3. Make the site available at: `https://lmdncn.github.io/liam-duncan-development/`
 
-The deployment is configured with the correct base path (`/liam-duncan-resume/`) in `vite.config.ts`.
+The deployment is configured with the correct base path (`/liam-duncan-development/`) in `vite.config.ts`.
