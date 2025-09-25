@@ -32,3 +32,19 @@ export const RESUME_CONFIG: ResumeConfig = {
 export const SITE_CONFIG: SiteConfig = {
   basePath: "/liam-duncan-development"
 };
+
+// SEO Configuration
+export const SEO_CONFIG = {
+  baseUrl: 'https://liamduncan.github.io/liam-duncan-development',
+  siteName: PERSONAL_INFO.name,
+  locale: 'en_US',
+  themeColor: '#000000',
+  twitterCard: 'summary_large_image',
+  robots: 'index, follow',
+} as const;
+
+// Social Sharing Images
+export const OG_IMAGES = {
+  resume: '/resume-screenshot.png',
+  blog: '/blog-screenshot.png',
+} as const;

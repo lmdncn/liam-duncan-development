@@ -5,12 +5,15 @@ import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { useParams, Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { getBlogPostBySlug } from "@/lib/blog";
+import SEO from "@/components/SEO";
+import { generateBlogPostSEO } from "@/lib/seo";
 
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   
   const post = slug ? getBlogPostBySlug(slug) : undefined;
+  const seoData = post ? generateBlogPostSEO(post) : null;
   
   if (!slug || !post) {
     return (
@@ -30,6 +33,16 @@ const BlogPost = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {seoData && (
+        <SEO 
+          title={seoData.title}
+          description={seoData.description}
+          image={seoData.image}
+          url={seoData.url}
+          type={seoData.type}
+          article={seoData.article}
+        />
+      )}
       <Navigation />
       
       {/* Header */}

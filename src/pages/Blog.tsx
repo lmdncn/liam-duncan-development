@@ -4,12 +4,20 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { getAllBlogPosts } from "@/lib/blog";
+import SEO from "@/components/SEO";
+import { OG_IMAGES } from "@/lib/constants";
 
 const Blog = () => {
   const blogPosts = getAllBlogPosts();
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="Blog"
+        description="Thoughts on software engineering, AI tools, career development, and lessons learned from building scalable applications."
+        image={OG_IMAGES.blog}
+        url="/blog"
+      />
       <Navigation />
       
       {/* Header */}
