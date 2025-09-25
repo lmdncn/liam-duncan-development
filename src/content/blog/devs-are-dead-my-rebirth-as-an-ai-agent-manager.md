@@ -2,7 +2,7 @@
 title: "Devs Are Dead: My Rebirth as an AI Agent Manager"
 date: "September 2025"
 excerpt: "After a decade of sharpening my coding skills, I realized the developer role is being redefined. My journey into AI-first programming tools shows why the future belongs to AI Agent Managers."
-category: "AI & Software Engineering"
+category: "AI & Engineering"
 readTime: "7 min"
 order: 2
 ---

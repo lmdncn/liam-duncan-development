@@ -41,6 +41,7 @@ export const parseBlogPost = (markdownContent: string, slug: string): BlogPost =
     excerpt: data.excerpt || '',
     category: data.category || 'Uncategorized',
     readTime: data.readTime,
+    order: data.order ? parseInt(data.order, 10) : undefined,
     content
   };
 };
