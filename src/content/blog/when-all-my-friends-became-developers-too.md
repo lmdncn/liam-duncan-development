@@ -4,6 +4,7 @@ date: "September 2025"
 excerpt: "AI has lowered the barrier to software, letting friends from completely different worlds build apps. But when they get lost in the sauce, that’s where engineering experience still matters."
 category: "AI and Engineering"
 readTime: "5 min"
+order: 3
 ---
 Over the past year, a wave of friends has reached out to me for help on their projects. Not friends from engineering school. Not people who spent years debugging APIs or designing systems. These are friends from business, design, and completely different worlds. And here’s the wild part: they’re building apps.  
 

@@ -23,7 +23,20 @@ const allBlogPosts: BlogPost[] = Object.entries(blogModules)
     return parsedPost;
   })
   .sort((a, b) => {
-    // Sort by date (newest first)
+    // Sort by order field first (descending: highest numbers first)
+    if (a.order !== undefined && b.order !== undefined) {
+      return b.order - a.order;
+    }
+    
+    // Posts with order come before posts without order
+    if (a.order !== undefined && b.order === undefined) {
+      return -1;
+    }
+    if (a.order === undefined && b.order !== undefined) {
+      return 1;
+    }
+    
+    // Both posts have no order, fall back to date sorting (newest first)
     // Parse dates in format "September 2025" or "September 24, 2025"
     const parseDate = (dateStr: string): Date => {
       // Handle formats like "September 2025" and "September 24, 2025"

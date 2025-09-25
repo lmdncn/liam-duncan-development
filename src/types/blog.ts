@@ -6,6 +6,7 @@ export interface BlogPostMetadata {
   excerpt: string;
   category: string;
   readTime?: string;
+  order?: number;
 }
 
 export interface BlogPost extends BlogPostMetadata {
