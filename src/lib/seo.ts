@@ -1,11 +1,15 @@
 import type { BlogPost } from '@/types/blog';
-import { OG_IMAGES, SEO_CONFIG } from '@/lib/constants';
+import { SEO_CONFIG } from '@/lib/constants';
+import { generateBlogPostSVG } from '@/lib/ogImageGenerator';
 
 export const generateBlogPostImage = (post: BlogPost): string => {
+  // If post has a custom image, use that
   if (post.image) {
     return post.image.startsWith('http') ? post.image : `/images/blog/${post.image}`;
   }
-  return OG_IMAGES.blog;
+  
+  // Generate dynamic SVG image based on post metadata
+  return generateBlogPostSVG(post);
 };
 
 export const generateBlogPostSEO = (post: BlogPost) => {
