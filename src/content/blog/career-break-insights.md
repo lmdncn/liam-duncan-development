@@ -1,57 +1,21 @@
 ---
-title: "What I Learned During My Year-Long Career Break"
-date: "November 2024"
-excerpt: "Taking time off to travel the world taught me more than just cultural insights. Here are the professional lessons I gained from stepping away from code."
+title: "How a Year Off Rewired My Perspective"
+date: "September 2025"
+excerpt: "After six years in tech, I stepped away for a year to travel across four continents. That break rewired how I think, reset my energy, and gave me fresh perspective on work and life."
 category: "Career"
-readTime: "6 min read"
+readTime: "5 min"
 ---
 
-# What I Learned During My Year-Long Career Break
+# How a Year Off Rewired My Perspective
 
-Taking a year off to travel the world was one of the best decisions I've made for my career. Here's what I learned.
+After six years of working as a software engineer and tech lead, I hit pause. Not because I was burned out. Not because I hated my work. I just wanted perspective. I’d always dreamed of traveling the world, and last year I finally took the leap. A year-long career break across four continents and more than 15 countries.
 
-## The Power of Perspective
+Here’s what I realized. Over years of work, you get wired a certain way. Routines, systems, and habits make you efficient, but they also make you rigid. Sometimes, to really grow, you have to cut those wires and allow yourself to be rewired.
 
-Stepping away from daily coding gave me a fresh perspective on:
-- Technology trends and their real-world impact
-- Different approaches to problem-solving across cultures
-- The importance of work-life balance
+Travel did that for me. It broke patterns I didn’t even know I was stuck in. I saw how differently people live and think, and learned you don’t need to understand everyone. You just need to listen.
 
-## Technical Skills Don't Rust
+Some moments hit harder than others. Standing beneath the Great Pyramids in Giza or wandering through Angkor Wat, I felt small. People have always achieved incredible things. We talk about technology moving faster than ever, but I’m sure they felt the same back then. It’s all perspective. The broader your horizons, the more you see how much is always in motion.
 
-I was worried about falling behind, but I discovered:
-- Core engineering principles remain constant
-- New frameworks are easier to pick up with strong fundamentals  
-- The industry moves slower than it seems day-to-day
+And when I came back, the timing could not have been crazier. Right in the middle of AI’s explosion. But instead of being overwhelmed, I felt clear. Like wiping a hard drive before a fresh install, I was ready to load new ideas without the clutter of old biases. Taking a break didn’t set me back. It rewired me to move forward faster.
 
-## Global Technology Landscape
-
-Traveling through different countries showed me:
-- How mobile-first development varies by region
-- Different approaches to digital payments and fintech
-- The global impact of major tech decisions
-
-## Personal Growth
-
-The break taught me:
-- **Patience** - Not everything needs to be optimized immediately
-- **Communication** - Working with people from different backgrounds
-- **Adaptability** - Handling unexpected situations with grace
-
-## Coming Back Stronger
-
-Returning to work, I found myself:
-- More focused on meaningful projects
-- Better at prioritizing what really matters
-- Excited about new challenges and technologies
-
-## Advice for Others
-
-If you're considering a career break:
-
-1. **Plan financially** - Save enough to be comfortable
-2. **Stay curious** - Use the time to explore new interests
-3. **Document the journey** - The insights are valuable later
-4. **Don't overthink it** - Sometimes the best career move is stepping away
-
-The tech industry will always need good engineers. Taking time to grow as a person makes you a better professional too.
+If you have ever thought about stepping away, I can’t recommend it enough. The world keeps moving whether you are in the race or not. Sometimes the best way to catch up is to stop running.
