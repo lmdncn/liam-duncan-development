@@ -2,11 +2,12 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router";
-import { lazy, Suspense } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router";
+import { lazy, Suspense, useEffect } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import ScrollToTop from "@/components/ScrollToTop";
+import { initGA, trackPageView } from "@/utils/analytics";
 
 // Eager load critical pages for instant navigation
 import Index from "./pages/Index";
@@ -29,6 +30,21 @@ const PageLoader = () => (
 
 const queryClient = new QueryClient();
 
+// Component to track page views
+const AnalyticsTracker = () => {
+  const location = useLocation();
+  
+  useEffect(() => {
+    initGA();
+  }, []);
+  
+  useEffect(() => {
+    trackPageView(location.pathname + location.search);
+  }, [location]);
+  
+  return null;
+};
+
 const App = () => (
   <ErrorBoundary>
     <HelmetProvider>
@@ -37,6 +53,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter basename="/liam-duncan-development">
+            <AnalyticsTracker />
             <ScrollToTop />
             <Suspense fallback={<PageLoader />}>
               <Routes>

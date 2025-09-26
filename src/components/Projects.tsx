@@ -12,6 +12,7 @@ import { Container } from "@/components/ui/container";
 import { AnimatedCard } from "@/components/ui/animated-card";
 import { Award, Users, ExternalLink, Calendar } from "lucide-react";
 import type { Project } from "@/types";
+import { trackEvent } from "@/utils/analytics";
 
 const projects: Project[] = [
   {
@@ -143,7 +144,10 @@ const Projects = () => {
                     <Button
                       variant="outline"
                       className="flex items-center gap-2 hover:bg-secondary transition-colors"
-                      onClick={() => window.open(project.demoUrl, "_blank")}
+                      onClick={() => {
+                        trackEvent('project_view', 'portfolio', project.title);
+                        window.open(project.demoUrl, "_blank");
+                      }}
                     >
                       <ExternalLink className="h-4 w-4" />
                       View Project

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Mail, Linkedin, MapPin, Download, Github } from "lucide-react";
 import { useDownloadResume } from "@/hooks/useDownloadResume";
 import { PERSONAL_INFO, EMAIL_TEMPLATES } from "@/lib/constants";
+import { trackEvent } from "@/utils/analytics";
 
 const Contact = () => {
   const { downloadResume } = useDownloadResume();
@@ -76,7 +77,10 @@ const Contact = () => {
                 <Button
                   size="lg"
                   className="w-full bg-primary hover:bg-primary/90 shadow-glow transition-all duration-300 hover:scale-[1.02]"
-                  onClick={downloadResume}
+                  onClick={() => {
+                    trackEvent('download_resume', 'engagement', 'pdf_download');
+                    downloadResume();
+                  }}
                 >
                   <Download className="mr-2 h-5 w-5" />
                   Download Resume
@@ -86,10 +90,10 @@ const Contact = () => {
                   size="lg"
                   variant="outline"
                   className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-[1.02]"
-                  onClick={() =>
-                    (window.location.href =
-                      EMAIL_TEMPLATES.contact.getMailtoUrl())
-                  }
+                  onClick={() => {
+                    trackEvent('contact_attempt', 'engagement', 'email');
+                    window.location.href = EMAIL_TEMPLATES.contact.getMailtoUrl();
+                  }}
                 >
                   <Mail className="mr-2 h-5 w-5" />
                   Send Email
@@ -99,9 +103,10 @@ const Contact = () => {
                   size="lg"
                   variant="outline"
                   className="w-full border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-[1.02]"
-                  onClick={() =>
-                    window.open(PERSONAL_INFO.linkedin.url, "_blank")
-                  }
+                  onClick={() => {
+                    trackEvent('external_link', 'social', 'linkedin');
+                    window.open(PERSONAL_INFO.linkedin.url, "_blank");
+                  }}
                 >
                   <Linkedin className="mr-2 h-5 w-5" />
                   View LinkedIn Profile
@@ -111,9 +116,10 @@ const Contact = () => {
                   size="lg"
                   variant="outline"
                   className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-[1.02]"
-                  onClick={() =>
-                    window.open("https://github.com/lmdncn", "_blank")
-                  }
+                  onClick={() => {
+                    trackEvent('external_link', 'social', 'github');
+                    window.open("https://github.com/lmdncn", "_blank");
+                  }}
                 >
                   <Github className="mr-2 h-5 w-5" />
                   View GitHub Profile
