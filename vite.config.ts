@@ -15,4 +15,12 @@ export default defineConfig(({ mode }) => ({
     },
   },
   base: '/liam-duncan-development/',
+  build: {
+    rollupOptions: {
+      output: {
+        // Disable modulepreload generation to avoid MIME type issues
+        experimentalMinChunkSize: 0,
+      },
+    },
+  },
 }));

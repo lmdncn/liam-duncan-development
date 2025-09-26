@@ -127,7 +127,7 @@ const buildHtml = (template: string, meta: RouteMeta): string => {
   let html = template;
 
   // Remove problematic modulepreload links with data URLs for static pages
-  html = html.replace(/<link rel="modulepreload" href="data:[^"]*"\s*\/?>[\r\n]?\s*/g, '');
+  html = html.replace(/<link rel="modulepreload" href="data:[^"]*"[^>]*>[\r\n]?\s*/g, '');
   
   // Remove any scripts that might be causing CSP issues
   html = html.replace(/<script[^>]*src="[^"]*commons\.bundle\.js[^"]*"[^>]*>[\s\S]*?<\/script>/gi, '');
