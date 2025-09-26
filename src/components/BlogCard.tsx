@@ -33,7 +33,7 @@ const BlogCard = ({ post }: BlogCardProps) => {
               )}
             </div>
           </div>
-          <Badge className="bg-accent/20 text-accent border-accent/30 flex items-center gap-1">
+          <Badge className="bg-accent/20 text-accent border-accent/30 flex items-center gap-1 w-fit">
             {post.category}
           </Badge>
         </div>

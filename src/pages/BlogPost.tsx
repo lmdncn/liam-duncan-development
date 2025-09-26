@@ -64,8 +64,8 @@ const BlogPost = () => {
             </div>
             
             <div className="text-primary-foreground">
-              <div className="flex items-center gap-4 mb-6">
-                <Badge className="bg-accent/20 text-accent border-accent/30">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
+                <Badge className="bg-accent/20 text-accent border-accent/30 w-fit">
                   {post.category}
                 </Badge>
                 <div className="flex items-center gap-4 text-sm opacity-90">
