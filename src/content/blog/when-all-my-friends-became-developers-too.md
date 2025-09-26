@@ -2,7 +2,7 @@
 title: "When All My Friends Became Developers Too"
 date: "September 2025"
 excerpt: "AI has lowered the barrier to software, letting friends from completely different worlds build apps. But when they get lost in the sauce, that’s where engineering experience still matters."
-category: "AI and Engineering"
+category: "AI & Engineering"
 readTime: "5 min"
 order: 3
 ---
