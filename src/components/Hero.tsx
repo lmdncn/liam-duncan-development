@@ -103,8 +103,8 @@ const Hero = () => {
           {/* Subheadline */}
           <div className="animate-fade-in" style={{ animationDelay: "0.6s" }}>
             <p className="text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed opacity-90 font-medium">
-              I build scalable systems that help teams accelerate, scale, and
-              harness AI.
+              I turn complex problems into scalable systems and AI-driven
+              solutions that drive real results.
             </p>
           </div>
 
