@@ -8,7 +8,20 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
-  plugins: [react()],
+  plugins: [
+    react(),
+    {
+      name: 'rewrite-middleware',
+      configureServer(server) {
+        server.middlewares.use((req, _res, next) => {
+          if (req.url === '/liam-duncan-development') {
+            req.url = '/liam-duncan-development/';
+          }
+          next();
+        });
+      }
+    }
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
