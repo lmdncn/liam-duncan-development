@@ -3,7 +3,7 @@ title: "How a Year Off Rewired My Perspective"
 date: "September 2025"
 excerpt: "After six years in tech, I stepped away for a year to travel across four continents. That break rewired how I think, reset my energy, and gave me fresh perspective on work and life."
 category: "Career"
-readTime: "5 min"
+readTime: "3 min"
 order: 1
 ---
 After six years of working as a software engineer and tech lead, I hit pause. Not because I was burned out. Not because I hated my work. I just wanted perspective. I’d always dreamed of traveling the world, and last year I finally took the leap. A year-long career break across four continents and more than 15 countries.
