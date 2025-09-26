@@ -18,7 +18,7 @@ const Contact = () => {
             Ready to discuss opportunities or collaborate on exciting projects
           </p>
         </div>
-        
+
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8">
             {/* Contact Information */}
@@ -35,29 +35,35 @@ const Contact = () => {
                     <Mail className="h-5 w-5 text-primary" />
                     <div>
                       <div className="font-medium text-foreground">Email</div>
-                      <div className="text-sm text-muted-foreground">{PERSONAL_INFO.email}</div>
+                      <div className="text-sm text-muted-foreground">
+                        {PERSONAL_INFO.email}
+                      </div>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50">
                     <Linkedin className="h-5 w-5 text-primary" />
                     <div>
-                      <div className="font-medium text-foreground">LinkedIn</div>
-                      <div className="text-sm text-muted-foreground">{PERSONAL_INFO.linkedin.displayUrl}</div>
+                      <div className="font-medium text-foreground">
+                        LinkedIn
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        {PERSONAL_INFO.linkedin.displayUrl}
+                      </div>
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="pt-4 border-t border-border/50">
                   <p className="text-muted-foreground text-sm leading-relaxed">
-                    I'm always interested in discussing new opportunities, 
-                    innovative projects, and ways to create impactful software solutions. 
-                    Feel free to reach out!
+                    I'm always interested in discussing new opportunities,
+                    innovative projects, and ways to create impactful software
+                    solutions. Feel free to reach out!
                   </p>
                 </div>
               </CardContent>
             </Card>
-            
+
             {/* Quick Actions */}
             <Card className="shadow-card bg-gradient-card border-border/50 animate-fade-in">
               <CardHeader>
@@ -67,45 +73,52 @@ const Contact = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <Button 
-                  size="lg" 
+                <Button
+                  size="lg"
                   className="w-full bg-primary hover:bg-primary/90 shadow-glow transition-all duration-300 hover:scale-[1.02]"
                   onClick={downloadResume}
                 >
                   <Download className="mr-2 h-5 w-5" />
                   Download Resume
                 </Button>
-                
-                <Button 
-                  size="lg" 
+
+                <Button
+                  size="lg"
                   variant="outline"
                   className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-[1.02]"
-                  onClick={() => window.location.href = EMAIL_TEMPLATES.contact.getMailtoUrl()}
+                  onClick={() =>
+                    (window.location.href =
+                      EMAIL_TEMPLATES.contact.getMailtoUrl())
+                  }
                 >
                   <Mail className="mr-2 h-5 w-5" />
                   Send Email
                 </Button>
-                
-                <Button 
-                  size="lg" 
+
+                <Button
+                  size="lg"
                   variant="outline"
                   className="w-full border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-[1.02]"
-                  onClick={() => window.open(PERSONAL_INFO.linkedin.url, '_blank')}
+                  onClick={() =>
+                    window.open(PERSONAL_INFO.linkedin.url, "_blank")
+                  }
                 >
                   <Linkedin className="mr-2 h-5 w-5" />
                   View LinkedIn Profile
                 </Button>
-                
-                <Button 
-                  size="lg" 
+
+                <Button
+                  size="lg"
                   variant="outline"
                   className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-[1.02]"
-                  onClick={() => window.open('https://github.com/lmdncn', '_blank')}
+                  onClick={() =>
+                    window.open("https://github.com/lmdncn", "_blank")
+                  }
                 >
                   <Github className="mr-2 h-5 w-5" />
                   View GitHub Profile
                 </Button>
-                
+
                 <div className="pt-4 border-t border-border/50">
                   <div className="bg-secondary/30 rounded-lg p-4">
                     <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">

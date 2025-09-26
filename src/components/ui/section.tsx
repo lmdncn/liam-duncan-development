@@ -1,25 +1,28 @@
-import React from 'react';
-import { cn } from '@/lib/utils';
+import React from "react";
+import { cn } from "@/lib/utils";
 
 interface SectionProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
-  variant?: 'default' | 'alternate';
-  size?: 'default' | 'compact' | 'spacious';
+  variant?: "default" | "alternate";
+  size?: "default" | "compact" | "spacious";
 }
 
 const Section = React.forwardRef<HTMLElement, SectionProps>(
-  ({ className, children, variant = 'default', size = 'default', ...props }, ref) => {
-    const baseClasses = 'w-full';
-    
+  (
+    { className, children, variant = "default", size = "default", ...props },
+    ref,
+  ) => {
+    const baseClasses = "w-full";
+
     const variantClasses = {
-      default: 'bg-background',
-      alternate: 'bg-secondary/30'
+      default: "bg-background",
+      alternate: "bg-secondary/30",
     };
-    
+
     const sizeClasses = {
-      compact: 'py-12',
-      default: 'py-20',
-      spacious: 'py-32'
+      compact: "py-12",
+      default: "py-20",
+      spacious: "py-32",
     };
 
     return (
@@ -29,16 +32,16 @@ const Section = React.forwardRef<HTMLElement, SectionProps>(
           baseClasses,
           variantClasses[variant],
           sizeClasses[size],
-          className
+          className,
         )}
         {...props}
       >
         {children}
       </section>
     );
-  }
+  },
 );
 
-Section.displayName = 'Section';
+Section.displayName = "Section";
 
 export { Section };

@@ -7,11 +7,13 @@ interface NavigationLogoProps {
 
 const NavigationLogo = ({ scrolled }: NavigationLogoProps) => {
   return (
-    <Link 
+    <Link
       to="/"
       className="font-bold text-xl cursor-pointer transition-colors duration-300 hover:text-primary"
     >
-      <span className={scrolled ? 'text-foreground' : 'text-primary-foreground'}>
+      <span
+        className={scrolled ? "text-foreground" : "text-primary-foreground"}
+      >
         {PERSONAL_INFO.name}
       </span>
     </Link>

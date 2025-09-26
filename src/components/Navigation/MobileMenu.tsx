@@ -18,10 +18,10 @@ const MobileMenu = ({
   setIsOpen,
   navItems,
   scrolled,
-  handleNavigation
+  handleNavigation,
 }: MobileMenuProps) => {
   const { downloadResume } = useDownloadResume();
-  const blogPreloadProps = useHoverPreload('blog');
+  const blogPreloadProps = useHoverPreload("blog");
 
   return (
     <>
@@ -33,9 +33,13 @@ const MobileMenu = ({
         onClick={() => setIsOpen(!isOpen)}
       >
         {isOpen ? (
-          <X className={`h-6 w-6 ${scrolled ? 'text-foreground' : 'text-primary-foreground'}`} />
+          <X
+            className={`h-6 w-6 ${scrolled ? "text-foreground" : "text-primary-foreground"}`}
+          />
         ) : (
-          <Menu className={`h-6 w-6 ${scrolled ? 'text-foreground' : 'text-primary-foreground'}`} />
+          <Menu
+            className={`h-6 w-6 ${scrolled ? "text-foreground" : "text-primary-foreground"}`}
+          />
         )}
       </Button>
 
@@ -66,7 +70,7 @@ const MobileMenu = ({
               </Button>
             </div>
             <div className="px-3 py-2">
-              <Button 
+              <Button
                 size="sm"
                 className="w-full bg-primary hover:bg-primary/90 shadow-glow transition-all duration-300"
                 onClick={downloadResume}

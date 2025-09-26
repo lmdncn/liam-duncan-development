@@ -12,7 +12,7 @@ const Blog = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <SEO 
+      <SEO
         title={BLOG_PAGE_SEO.title}
         description={BLOG_PAGE_SEO.description}
         image={BLOG_PAGE_SEO.image}
@@ -20,7 +20,7 @@ const Blog = () => {
         type={BLOG_PAGE_SEO.type}
       />
       <Navigation />
-      
+
       {/* Header */}
       <section className="pt-24 pb-16 bg-gradient-hero">
         <div className="container mx-auto px-6">
@@ -38,13 +38,12 @@ const Blog = () => {
                 </Link>
               </Button>
             </div>
-            
+
             <div className="text-center text-primary-foreground">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Blog
-              </h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">Blog</h1>
               <p className="text-lg md:text-xl opacity-90 max-w-2xl mx-auto">
-                Thoughts on software engineering, AI tools, career development, and lessons learned from building scalable applications.
+                Thoughts on software engineering, AI tools, career development,
+                and lessons learned from building scalable applications.
               </p>
             </div>
           </div>
@@ -56,7 +55,7 @@ const Blog = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto space-y-8">
             {blogPosts.map((post, index) => (
-              <div 
+              <div
                 key={post.slug}
                 className="animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}

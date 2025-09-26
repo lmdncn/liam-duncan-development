@@ -6,39 +6,80 @@ const skillCategories = [
   {
     title: "Frontend Development",
     icon: Laptop,
-    skills: ["JavaScript", "TypeScript", "React", "React Native", "Angular", "HTML/CSS", "Tailwind CSS"],
-    color: "bg-blue-500/10 text-blue-600 border-blue-500/20"
+    skills: [
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "React Native",
+      "Angular",
+      "HTML/CSS",
+      "Tailwind CSS",
+    ],
+    color: "bg-blue-500/10 text-blue-600 border-blue-500/20",
   },
   {
-    title: "Backend Development", 
+    title: "Backend Development",
     icon: Server,
-    skills: ["Node.js", "Python", "Django", "Express.js", "C#", ".NET", "GraphQL", "Microservices", "Event Streaming"],
-    color: "bg-green-500/10 text-green-600 border-green-500/20"
+    skills: [
+      "Node.js",
+      "Python",
+      "Django",
+      "Express.js",
+      "C#",
+      ".NET",
+      "GraphQL",
+      "Microservices",
+      "Event Streaming",
+    ],
+    color: "bg-green-500/10 text-green-600 border-green-500/20",
   },
   {
     title: "Databases",
     icon: Database,
-    skills: ["PostgreSQL", "MongoDB", "Redis", "MySQL", "Snowflake", "Query Optimization"],
-    color: "bg-purple-500/10 text-purple-600 border-purple-500/20"
+    skills: [
+      "PostgreSQL",
+      "MongoDB",
+      "Redis",
+      "MySQL",
+      "Snowflake",
+      "Query Optimization",
+    ],
+    color: "bg-purple-500/10 text-purple-600 border-purple-500/20",
   },
   {
     title: "Cloud & DevOps",
     icon: Cloud,
     skills: ["AWS", "Azure", "Docker", "Kubernetes", "GitLab CI/CD"],
-    color: "bg-orange-500/10 text-orange-600 border-orange-500/20"
+    color: "bg-orange-500/10 text-orange-600 border-orange-500/20",
   },
   {
     title: "Testing & Tools",
     icon: Wrench,
-    skills: ["Jest", "Mocha", "Puppeteer", "Git", "Jira", "Confluence", "Datadog", "Raygun"],
-    color: "bg-red-500/10 text-red-600 border-red-500/20"
+    skills: [
+      "Jest",
+      "Mocha",
+      "Puppeteer",
+      "Git",
+      "Jira",
+      "Confluence",
+      "Datadog",
+      "Raygun",
+    ],
+    color: "bg-red-500/10 text-red-600 border-red-500/20",
   },
   {
     title: "AI & Developer Tools",
     icon: Code,
-    skills: ["Claude Code", "GitHub Copilot", "OpenAI API", "Lovable", "Cursor", "Prompt Engineering"],
-    color: "bg-indigo-500/10 text-indigo-600 border-indigo-500/20"
-  }
+    skills: [
+      "Claude Code",
+      "GitHub Copilot",
+      "OpenAI API",
+      "Lovable",
+      "Cursor",
+      "Prompt Engineering",
+    ],
+    color: "bg-indigo-500/10 text-indigo-600 border-indigo-500/20",
+  },
 ];
 
 const Skills = () => {
@@ -50,10 +91,10 @@ const Skills = () => {
             Technical Skills
           </h2>
         </div>
-        
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {skillCategories.map((category, index) => (
-            <Card 
+            <Card
               key={index}
               className="shadow-card bg-gradient-card border-border/50 animate-scale-in"
               style={{ animationDelay: `${index * 0.1}s` }}
@@ -71,7 +112,7 @@ const Skills = () => {
               <CardContent>
                 <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill, skillIndex) => (
-                    <Badge 
+                    <Badge
                       key={skillIndex}
                       variant="secondary"
                       className="bg-secondary/80 text-secondary-foreground text-xs"

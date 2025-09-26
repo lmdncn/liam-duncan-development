@@ -1,4 +1,4 @@
-import type { BlogPost } from '@/types/blog';
+import type { BlogPost } from "@/types/blog";
 
 /**
  * Generates a branded SVG image for blog post social sharing
@@ -6,18 +6,20 @@ import type { BlogPost } from '@/types/blog';
  */
 export const generateBlogPostSVG = (post: BlogPost): string => {
   const { title, category, date, author = "Liam Duncan" } = post;
-  
+
   // Truncate title if too long
   const maxTitleLength = 85;
-  const displayTitle = title.length > maxTitleLength ? 
-    `${title.substring(0, maxTitleLength)}...` : title;
-  
+  const displayTitle =
+    title.length > maxTitleLength
+      ? `${title.substring(0, maxTitleLength)}...`
+      : title;
+
   // Split long titles into multiple lines
-  const words = displayTitle.split(' ');
+  const words = displayTitle.split(" ");
   const lines: string[] = [];
-  let currentLine = '';
-  
-  words.forEach(word => {
+  let currentLine = "";
+
+  words.forEach((word) => {
     const testLine = currentLine ? `${currentLine} ${word}` : word;
     if (testLine.length > 45 && currentLine) {
       lines.push(currentLine);
@@ -27,7 +29,7 @@ export const generateBlogPostSVG = (post: BlogPost): string => {
     }
   });
   if (currentLine) lines.push(currentLine);
-  
+
   // Generate SVG
   const svg = `
     <svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
@@ -55,10 +57,13 @@ export const generateBlogPostSVG = (post: BlogPost): string => {
             font-size="18" font-weight="600" fill="#60a5fa">${category}</text>
       
       <!-- Title -->
-      ${lines.map((line, index) => 
-        `<text x="80" y="${220 + index * 65}" font-family="system-ui, -apple-system, sans-serif" 
-               font-size="54" font-weight="700" fill="#ffffff">${line}</text>`
-      ).join('')}
+      ${lines
+        .map(
+          (line, index) =>
+            `<text x="80" y="${220 + index * 65}" font-family="system-ui, -apple-system, sans-serif" 
+               font-size="54" font-weight="700" fill="#ffffff">${line}</text>`,
+        )
+        .join("")}
       
       <!-- Date -->
       <text x="80" y="${lines.length > 2 ? 450 : 390}" font-family="system-ui, -apple-system, sans-serif" 
@@ -78,6 +83,6 @@ export const generateBlogPostSVG = (post: BlogPost): string => {
       <circle cx="1050" cy="150" r="15" fill="#3b82f6"/>
     </svg>
   `.trim();
-  
+
   return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
 };

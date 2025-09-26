@@ -1,4 +1,10 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { GraduationCap, Award, Calendar } from "lucide-react";
 
@@ -14,7 +20,7 @@ const Education = () => {
             Strong foundation in software engineering and computer science
           </p>
         </div>
-        
+
         <div className="max-w-3xl mx-auto">
           <Card className="shadow-card bg-gradient-card border-border/50 animate-fade-in">
             <CardHeader>
@@ -46,10 +52,11 @@ const Education = () => {
             </CardHeader>
             <CardContent>
               <p className="text-foreground leading-relaxed">
-                Comprehensive 4-year engineering program focusing on software development, 
-                system design, and engineering principles. Recognized for academic excellence 
-                with Dean's List honors, demonstrating consistent high performance and 
-                dedication to learning.
+                Comprehensive 4-year engineering program focusing on software
+                development, system design, and engineering principles.
+                Recognized for academic excellence with Dean's List honors,
+                demonstrating consistent high performance and dedication to
+                learning.
               </p>
             </CardContent>
           </Card>

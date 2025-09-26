@@ -14,10 +14,10 @@ interface NavigationItemsProps {
 const NavigationItems = ({
   navItems,
   scrolled,
-  handleNavigation
+  handleNavigation,
 }: NavigationItemsProps) => {
   const { downloadResume } = useDownloadResume();
-  const blogPreloadProps = useHoverPreload('blog');
+  const blogPreloadProps = useHoverPreload("blog");
 
   if (!navItems.length) {
     return null;
@@ -30,7 +30,7 @@ const NavigationItems = ({
           key={item.label}
           onClick={() => handleNavigation(item.href)}
           className={`transition-colors duration-300 hover:text-primary font-medium ${
-            scrolled ? 'text-foreground' : 'text-primary-foreground'
+            scrolled ? "text-foreground" : "text-primary-foreground"
           }`}
         >
           {item.label}
@@ -42,8 +42,8 @@ const NavigationItems = ({
         asChild
         className={`transition-all duration-300 hover:bg-accent hover:text-accent-foreground ${
           scrolled
-            ? 'bg-accent/10 text-accent border-accent/30'
-            : 'bg-primary-foreground/10 text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground hover:text-primary'
+            ? "bg-accent/10 text-accent border-accent/30"
+            : "bg-primary-foreground/10 text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground hover:text-primary"
         }`}
       >
         <Link to="/blog" {...blogPreloadProps}>

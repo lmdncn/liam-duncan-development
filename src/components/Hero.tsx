@@ -155,7 +155,7 @@ const Hero = () => {
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                 </Button>
               </div>
-              
+
               {/* Mobile: Custom stacking - Blog top, Resume/Connect middle, Main CTA bottom */}
               <div className="flex flex-col gap-3 items-center sm:hidden">
                 {/* First row: Blog */}
@@ -170,7 +170,7 @@ const Hero = () => {
                     Blog
                   </Link>
                 </Button>
-                
+
                 {/* Second row: Resume and Connect */}
                 <div className="flex gap-3">
                   <Button
@@ -194,7 +194,7 @@ const Hero = () => {
                     Connect
                   </Button>
                 </div>
-                
+
                 {/* Third row: Main CTA */}
                 <Button
                   size="lg"

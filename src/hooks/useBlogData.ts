@@ -1,10 +1,14 @@
-import { useQuery } from '@tanstack/react-query';
-import { getAllBlogPosts, getBlogPostBySlug, getAllBlogSlugs } from '@/lib/blog';
-import type { BlogPost } from '@/types';
+import { useQuery, QueryClient } from "@tanstack/react-query";
+import {
+  getAllBlogPosts,
+  getBlogPostBySlug,
+  getAllBlogSlugs,
+} from "@/lib/blog";
+import type { BlogPost } from "@/types";
 
 export const useBlogPosts = () => {
   return useQuery({
-    queryKey: ['blogPosts'],
+    queryKey: ["blogPosts"],
     queryFn: getAllBlogPosts,
     staleTime: Infinity, // Blog posts don't change frequently
     gcTime: Infinity, // Keep in cache indefinitely
@@ -13,7 +17,7 @@ export const useBlogPosts = () => {
 
 export const useBlogPost = (slug: string) => {
   return useQuery({
-    queryKey: ['blogPost', slug],
+    queryKey: ["blogPost", slug],
     queryFn: () => getBlogPostBySlug(slug),
     staleTime: Infinity,
     gcTime: Infinity,
@@ -23,7 +27,7 @@ export const useBlogPost = (slug: string) => {
 
 export const useBlogSlugs = () => {
   return useQuery({
-    queryKey: ['blogSlugs'],
+    queryKey: ["blogSlugs"],
     queryFn: getAllBlogSlugs,
     staleTime: Infinity,
     gcTime: Infinity,
@@ -31,18 +35,18 @@ export const useBlogSlugs = () => {
 };
 
 // Prefetch functions for preloading
-export const prefetchBlogPosts = (queryClient: any) => {
+export const prefetchBlogPosts = (queryClient: QueryClient) => {
   return queryClient.prefetchQuery({
-    queryKey: ['blogPosts'],
+    queryKey: ["blogPosts"],
     queryFn: getAllBlogPosts,
     staleTime: Infinity,
     gcTime: Infinity,
   });
 };
 
-export const prefetchBlogPost = (queryClient: any, slug: string) => {
+export const prefetchBlogPost = (queryClient: QueryClient, slug: string) => {
   return queryClient.prefetchQuery({
-    queryKey: ['blogPost', slug],
+    queryKey: ["blogPost", slug],
     queryFn: () => getBlogPostBySlug(slug),
     staleTime: Infinity,
     gcTime: Infinity,

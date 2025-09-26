@@ -1,27 +1,30 @@
-import type { BlogPost, BlogPostMetadata, ParsedFrontmatter } from '@/types';
+import type { BlogPost, BlogPostMetadata, ParsedFrontmatter } from "@/types";
 
 // Simple frontmatter parser
 const parseFrontmatter = (markdownContent: string): ParsedFrontmatter => {
   const frontmatterRegex = /^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/;
   const match = markdownContent.match(frontmatterRegex);
-  
+
   if (!match) {
     return { data: {}, content: markdownContent };
   }
-  
+
   const [, frontmatterText, content] = match;
   const data: Record<string, string> = {};
-  
+
   // Parse YAML-like frontmatter
-  frontmatterText.split('\n').forEach(line => {
-    const colonIndex = line.indexOf(':');
+  frontmatterText.split("\n").forEach((line) => {
+    const colonIndex = line.indexOf(":");
     if (colonIndex > 0) {
       const key = line.substring(0, colonIndex).trim();
-      const value = line.substring(colonIndex + 1).trim().replace(/^["']|["']$/g, ''); // Remove quotes
+      const value = line
+        .substring(colonIndex + 1)
+        .trim()
+        .replace(/^["']|["']$/g, ""); // Remove quotes
       data[key] = value;
     }
   });
-  
+
   return { data, content };
 };
 
@@ -31,18 +34,21 @@ const parseFrontmatter = (markdownContent: string): ParsedFrontmatter => {
  * @param slug - Unique identifier for the blog post
  * @returns Structured blog post object with metadata and content
  */
-export const parseBlogPost = (markdownContent: string, slug: string): BlogPost => {
+export const parseBlogPost = (
+  markdownContent: string,
+  slug: string,
+): BlogPost => {
   const { data, content } = parseFrontmatter(markdownContent);
-  
+
   return {
     slug,
-    title: data.title || 'Untitled',
-    date: data.date || 'No date',
-    excerpt: data.excerpt || '',
-    category: data.category || 'Uncategorized',
+    title: data.title || "Untitled",
+    date: data.date || "No date",
+    excerpt: data.excerpt || "",
+    category: data.category || "Uncategorized",
     readTime: data.readTime,
     order: data.order ? parseInt(data.order, 10) : undefined,
-    content
+    content,
   };
 };
 
@@ -56,5 +62,5 @@ export const estimateReadingTime = (content: string): string => {
 
 // Function to generate slug from filename
 export const generateSlug = (filename: string): string => {
-  return filename.replace(/\.md$/, '');
+  return filename.replace(/\.md$/, "");
 };

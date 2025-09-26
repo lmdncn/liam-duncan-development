@@ -1,5 +1,5 @@
-import React from 'react';
-import { cn } from '@/lib/utils';
+import React from "react";
+import { cn } from "@/lib/utils";
 
 interface SectionHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
@@ -12,11 +12,7 @@ const SectionHeader = React.forwardRef<HTMLDivElement, SectionHeaderProps>(
     return (
       <div
         ref={ref}
-        className={cn(
-          'mb-16',
-          centered && 'text-center',
-          className
-        )}
+        className={cn("mb-16", centered && "text-center", className)}
         {...props}
       >
         <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
@@ -29,9 +25,9 @@ const SectionHeader = React.forwardRef<HTMLDivElement, SectionHeaderProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
-SectionHeader.displayName = 'SectionHeader';
+SectionHeader.displayName = "SectionHeader";
 
 export { SectionHeader };

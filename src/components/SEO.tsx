@@ -1,12 +1,12 @@
-import { Helmet } from 'react-helmet-async';
-import { SEO_CONFIG, OG_IMAGES } from '@/lib/constants';
+import { Helmet } from "react-helmet-async";
+import { SEO_CONFIG, OG_IMAGES } from "@/lib/constants";
 
 interface SEOProps {
   title: string;
   description: string;
   image?: string;
   url?: string;
-  type?: 'website' | 'article';
+  type?: "website" | "article";
   article?: {
     author?: string;
     publishedTime?: string;
@@ -16,17 +16,20 @@ interface SEOProps {
   };
 }
 
-const SEO = ({ 
-  title, 
-  description, 
+const SEO = ({
+  title,
+  description,
   image = OG_IMAGES.resume,
   url,
-  type = 'website',
-  article 
+  type = "website",
+  article,
 }: SEOProps) => {
   const fullUrl = url ? `${SEO_CONFIG.baseUrl}${url}` : SEO_CONFIG.baseUrl;
-  const fullImageUrl = image.startsWith('http') ? image : `${SEO_CONFIG.baseUrl}${image}`;
-  const fullTitle = title === SEO_CONFIG.siteName ? title : `${title} | ${SEO_CONFIG.siteName}`;
+  const fullImageUrl = image.startsWith("http")
+    ? image
+    : `${SEO_CONFIG.baseUrl}${image}`;
+  const fullTitle =
+    title === SEO_CONFIG.siteName ? title : `${title} | ${SEO_CONFIG.siteName}`;
 
   return (
     <Helmet>
@@ -48,15 +51,30 @@ const SEO = ({
       <meta property="og:locale" content={SEO_CONFIG.locale} />
 
       {/* Article specific tags */}
-      {type === 'article' && article && (
+      {type === "article" && article && (
         <>
-          {article.author && <meta property="article:author" content={article.author} />}
-          {article.publishedTime && <meta property="article:published_time" content={article.publishedTime} />}
-          {article.modifiedTime && <meta property="article:modified_time" content={article.modifiedTime} />}
-          {article.section && <meta property="article:section" content={article.section} />}
-          {article.tag && article.tag.map((tag, index) => (
-            <meta key={index} property="article:tag" content={tag} />
-          ))}
+          {article.author && (
+            <meta property="article:author" content={article.author} />
+          )}
+          {article.publishedTime && (
+            <meta
+              property="article:published_time"
+              content={article.publishedTime}
+            />
+          )}
+          {article.modifiedTime && (
+            <meta
+              property="article:modified_time"
+              content={article.modifiedTime}
+            />
+          )}
+          {article.section && (
+            <meta property="article:section" content={article.section} />
+          )}
+          {article.tag &&
+            article.tag.map((tag, index) => (
+              <meta key={index} property="article:tag" content={tag} />
+            ))}
         </>
       )}
 

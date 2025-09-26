@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router";
 import { lazy, Suspense } from "react";
-import { HelmetProvider } from 'react-helmet-async';
+import { HelmetProvider } from "react-helmet-async";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import ScrollToTop from "@/components/ScrollToTop";
 
@@ -13,8 +13,12 @@ import Index from "./pages/Index";
 
 // Lazy load non-critical pages with prefetch hints
 const Blog = lazy(() => import(/* webpackPrefetch: true */ "./pages/Blog"));
-const BlogPost = lazy(() => import(/* webpackPrefetch: true */ "./pages/BlogPost"));
-const NotFound = lazy(() => import(/* webpackPreload: true */ "./pages/NotFound"));
+const BlogPost = lazy(
+  () => import(/* webpackPrefetch: true */ "./pages/BlogPost"),
+);
+const NotFound = lazy(
+  () => import(/* webpackPreload: true */ "./pages/NotFound"),
+);
 
 // Loading fallback component
 const PageLoader = () => (

@@ -11,14 +11,14 @@ const PRIMARY_NAV_ITEMS: NavItem[] = [
   { label: "Projects", href: "#projects" },
   { label: "Education", href: "#education" },
   { label: "Skills", href: "#skills" },
-  { label: "Contact", href: "#contact" }
+  { label: "Contact", href: "#contact" },
 ];
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const isBlogRoute = location.pathname.startsWith('/blog');
+  const isBlogRoute = location.pathname.startsWith("/blog");
   const shouldRenderPrimaryNav = !isBlogRoute;
   const isStickyNavigation = !isBlogRoute;
 
@@ -33,8 +33,8 @@ const Navigation = () => {
     };
 
     handleScroll();
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [isStickyNavigation]);
 
   useEffect(() => {
@@ -50,7 +50,7 @@ const Navigation = () => {
 
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
     setIsOpen(false);
   };
@@ -58,18 +58,19 @@ const Navigation = () => {
   const isScrolledStyle = isStickyNavigation ? scrolled : false;
 
   const navPositionClass = isStickyNavigation
-    ? 'fixed top-0 left-0 right-0 z-50'
-    : 'absolute top-0 left-0 right-0 z-50';
+    ? "fixed top-0 left-0 right-0 z-50"
+    : "absolute top-0 left-0 right-0 z-50";
 
-  const scrolledSurfaceClass = 'bg-background/95 backdrop-blur-md shadow-card border-b border-border/50';
+  const scrolledSurfaceClass =
+    "bg-background/95 backdrop-blur-md shadow-card border-b border-border/50";
   const navSurfaceClass = isStickyNavigation
     ? isScrolledStyle
       ? scrolledSurfaceClass
-      : 'bg-transparent'
-    : 'bg-transparent';
+      : "bg-transparent"
+    : "bg-transparent";
 
   return (
-    <nav 
+    <nav
       className={`${navPositionClass} transition-all duration-300 ${navSurfaceClass}`}
     >
       <div className="container mx-auto px-6">
@@ -77,7 +78,7 @@ const Navigation = () => {
           <NavigationLogo scrolled={isScrolledStyle} />
 
           {shouldRenderPrimaryNav && (
-            <NavigationItems 
+            <NavigationItems
               navItems={navItems}
               scrolled={isScrolledStyle}
               handleNavigation={handleNavigation}
