@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Download, BookOpen } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { useDownloadResume } from "@/hooks/useDownloadResume";
 import { useHoverPreload } from "@/hooks/useHoverPreload";
 import type { NavItem } from "@/types";

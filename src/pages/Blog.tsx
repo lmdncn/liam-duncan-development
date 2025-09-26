@@ -2,7 +2,7 @@ import Navigation from "@/components/Navigation";
 import BlogCard from "@/components/BlogCard";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { getAllBlogPosts } from "@/lib/blog";
 import SEO from "@/components/SEO";
 import { BLOG_PAGE_SEO } from "@/lib/pageMeta";

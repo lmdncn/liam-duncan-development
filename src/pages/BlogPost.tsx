@@ -2,7 +2,7 @@ import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link } from "react-router";
 import ReactMarkdown from "react-markdown";
 import { getBlogPostBySlug } from "@/lib/blog";
 import SEO from "@/components/SEO";

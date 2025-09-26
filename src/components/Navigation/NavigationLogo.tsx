@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { PERSONAL_INFO } from "@/lib/constants";
 
 interface NavigationLogoProps {
