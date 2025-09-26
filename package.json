@@ -9,6 +9,7 @@
     "postbuild": "tsx scripts/prerender.ts",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
+    "format": "prettier --write \"**/*.{ts,tsx}\"",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
@@ -81,6 +82,7 @@
     "gh-pages": "^6.3.0",
     "globals": "^15.9.0",
     "postcss": "^8.4.47",
+    "prettier": "^3.3.3",
     "tailwindcss": "^3.4.11",
     "tsx": "^4.20.5",
     "typescript": "^5.5.3",

@@ -11,23 +11,23 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     {
-      name: 'rewrite-middleware',
+      name: "rewrite-middleware",
       configureServer(server) {
         server.middlewares.use((req, _res, next) => {
-          if (req.url === '/liam-duncan-development') {
-            req.url = '/liam-duncan-development/';
+          if (req.url === "/liam-duncan-development") {
+            req.url = "/liam-duncan-development/";
           }
           next();
         });
-      }
-    }
+      },
+    },
   ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: '/liam-duncan-development/',
+  base: "/liam-duncan-development/",
   build: {
     rollupOptions: {
       output: {

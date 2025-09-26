@@ -8,15 +8,12 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock } from "lucide-react";
 import { Link } from "react-router";
-import { useHoverPreload } from "@/hooks/useHoverPreload";
 import type { BlogCardProps } from "@/types";
 
 const BlogCard = ({ post }: BlogCardProps) => {
-  const blogPostPreloadProps = useHoverPreload("blogPost", post.slug);
-
   return (
     <Card className="shadow-card bg-gradient-card border-border/50 animate-fade-in cursor-pointer transition-all duration-300 hover:shadow-hover hover:scale-[1.02]">
-      <Link to={`/blog/${post.slug}`} {...blogPostPreloadProps}>
+      <Link to={`/blog/${post.slug}`}>
         <CardHeader>
           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
             <div className="space-y-2">

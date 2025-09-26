@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Download, MapPin, ArrowRight, Linkedin, BookOpen } from "lucide-react";
 import { Link } from "react-router";
 import { useDownloadResume } from "@/hooks/useDownloadResume";
-import { useHoverPreload } from "@/hooks/useHoverPreload";
 import { PERSONAL_INFO } from "@/lib/constants";
 
 // Rotating text options
@@ -17,7 +16,6 @@ const ROTATING_ROLES = [
 
 const Hero = () => {
   const { downloadResume } = useDownloadResume();
-  const blogPreloadProps = useHoverPreload("blog");
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
 
@@ -121,7 +119,7 @@ const Hero = () => {
                   asChild
                   className="bg-primary-foreground/10 text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground/20 shadow-glow transition-all duration-300 hover:scale-105 backdrop-blur-sm"
                 >
-                  <Link to="/blog" {...blogPreloadProps}>
+                  <Link to="/blog">
                     <BookOpen className="mr-2 h-4 w-4" />
                     Blog
                   </Link>
@@ -165,7 +163,7 @@ const Hero = () => {
                   asChild
                   className="bg-primary-foreground/10 text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground/20 shadow-glow transition-all duration-300 hover:scale-105 backdrop-blur-sm"
                 >
-                  <Link to="/blog" {...blogPreloadProps}>
+                  <Link to="/blog">
                     <BookOpen className="mr-2 h-4 w-4" />
                     Blog
                   </Link>

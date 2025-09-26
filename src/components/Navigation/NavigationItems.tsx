@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Download, BookOpen } from "lucide-react";
 import { Link } from "react-router";
 import { useDownloadResume } from "@/hooks/useDownloadResume";
-import { useHoverPreload } from "@/hooks/useHoverPreload";
 import type { NavItem } from "@/types";
 
 interface NavigationItemsProps {
@@ -17,7 +16,6 @@ const NavigationItems = ({
   handleNavigation,
 }: NavigationItemsProps) => {
   const { downloadResume } = useDownloadResume();
-  const blogPreloadProps = useHoverPreload("blog");
 
   if (!navItems.length) {
     return null;
@@ -46,7 +44,7 @@ const NavigationItems = ({
             : "bg-primary-foreground/10 text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground hover:text-primary"
         }`}
       >
-        <Link to="/blog" {...blogPreloadProps}>
+        <Link to="/blog">
           <BookOpen className="mr-2 h-4 w-4" />
           Read My Blog!
         </Link>

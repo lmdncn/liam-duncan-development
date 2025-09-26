@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Download, BookOpen, X, Menu } from "lucide-react";
 import { Link } from "react-router";
 import { useDownloadResume } from "@/hooks/useDownloadResume";
-import { useHoverPreload } from "@/hooks/useHoverPreload";
 import type { NavItem } from "@/types";
 
 interface MobileMenuProps {
@@ -21,7 +20,6 @@ const MobileMenu = ({
   handleNavigation,
 }: MobileMenuProps) => {
   const { downloadResume } = useDownloadResume();
-  const blogPreloadProps = useHoverPreload("blog");
 
   return (
     <>
@@ -34,11 +32,15 @@ const MobileMenu = ({
       >
         {isOpen ? (
           <X
-            className={`h-6 w-6 ${scrolled ? "text-foreground" : "text-primary-foreground"}`}
+            className={`h-6 w-6 ${
+              scrolled ? "text-foreground" : "text-primary-foreground"
+            }`}
           />
         ) : (
           <Menu
-            className={`h-6 w-6 ${scrolled ? "text-foreground" : "text-primary-foreground"}`}
+            className={`h-6 w-6 ${
+              scrolled ? "text-foreground" : "text-primary-foreground"
+            }`}
           />
         )}
       </Button>
@@ -63,7 +65,7 @@ const MobileMenu = ({
                 asChild
                 className="w-full bg-accent/10 text-accent border-accent/30 hover:bg-accent hover:text-accent-foreground transition-all duration-300 mb-2"
               >
-                <Link to="/blog" {...blogPreloadProps}>
+                <Link to="/blog">
                   <BookOpen className="mr-2 h-4 w-4" />
                   Read My Blog!
                 </Link>
