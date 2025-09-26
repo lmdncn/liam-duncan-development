@@ -31,8 +31,8 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const scrollToProjects = () => {
-    const element = document.querySelector('#projects');
+  const scrollToExperience = () => {
+    const element = document.querySelector('#experience');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
@@ -106,9 +106,9 @@ const Hero = () => {
               <Button 
                 size="lg" 
                 className="group bg-accent text-accent-foreground hover:bg-accent/90 shadow-glow transition-all duration-300 hover:scale-105 hover:shadow-xl font-semibold px-8 py-4 text-lg"
-                onClick={scrollToProjects}
+                onClick={scrollToExperience}
               >
-                View My Work
+                View More
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
               </Button>
               
