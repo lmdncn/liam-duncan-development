@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
 import { Download, MapPin, ArrowRight, Linkedin, BookOpen } from "lucide-react";
 import { Link } from "react-router";
 import { useDownloadResume } from "@/hooks/useDownloadResume";
 import { PERSONAL_INFO } from "@/lib/constants";
+import { RotatingText } from "@/components/ui/rotating-text";
+import { ActionButtonGroup, type ActionButton } from "@/components/ui/action-button-group";
 
 // Rotating text options
 const ROTATING_ROLES = [
@@ -16,27 +16,37 @@ const ROTATING_ROLES = [
 
 const Hero = () => {
   const { downloadResume } = useDownloadResume();
-  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
-  const [isTyping, setIsTyping] = useState(true);
-
-  // Rotating text effect
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsTyping(false);
-      setTimeout(() => {
-        setCurrentRoleIndex((prev) => (prev + 1) % ROTATING_ROLES.length);
-        setIsTyping(true);
-      }, 300);
-    }, 2500);
-
-    return () => clearInterval(interval);
-  }, []);
 
   const scrollToExperience = () => {
     const element = document.querySelector("#experience");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const actionButtons: ActionButton[] = [
+    {
+      label: "Blog",
+      icon: <BookOpen className="mr-2 h-4 w-4" />,
+      to: "/blog",
+    },
+    {
+      label: "Resume",
+      icon: <Download className="mr-2 h-4 w-4" />,
+      onClick: downloadResume,
+    },
+    {
+      label: "Connect",
+      icon: <Linkedin className="mr-2 h-4 w-4" />,
+      onClick: () => window.open(PERSONAL_INFO.linkedin.url, "_blank"),
+    },
+  ];
+
+  const mainButton: ActionButton = {
+    label: "More About Me",
+    icon: <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />,
+    onClick: scrollToExperience,
+    variant: "default",
   };
 
   return (
@@ -75,22 +85,11 @@ const Hero = () => {
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 tracking-tight">
               {PERSONAL_INFO.name}
             </h1>
-            {/* Rotating role with typewriter effect */}
-            <div className="text-2xl md:text-3xl mb-8 flex items-center justify-center gap-3 min-h-[3rem]">
-              <span className="opacity-90 font-medium">Software</span>
-              <span
-                className={`font-bold text-accent transition-all duration-300 ${
-                  isTyping ? "opacity-100 scale-100" : "opacity-0 scale-95"
-                }`}
-              >
-                {ROTATING_ROLES[currentRoleIndex]}
-              </span>
-              <span
-                className={`w-1 h-8 bg-accent animate-pulse ${
-                  isTyping ? "opacity-100" : "opacity-0"
-                }`}
-              ></span>
-            </div>
+            <RotatingText
+              prefix="Software"
+              options={ROTATING_ROLES}
+              className="text-2xl md:text-3xl mb-8"
+            />
           </div>
 
           {/* Main headline */}
@@ -111,98 +110,11 @@ const Hero = () => {
           {/* Enhanced CTA buttons */}
           <div className="animate-fade-in" style={{ animationDelay: "0.9s" }}>
             <div className="flex flex-col gap-4 justify-center items-center mb-12">
-              {/* Desktop & Tablet: All buttons in one row, then main CTA wraps */}
-              <div className="hidden sm:flex flex-wrap gap-3 justify-center lg:max-w-none max-w-lg">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  asChild
-                  className="bg-primary-foreground/10 text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground/20 shadow-glow transition-all duration-300 hover:scale-105 backdrop-blur-sm"
-                >
-                  <Link to="/blog">
-                    <BookOpen className="mr-2 h-4 w-4" />
-                    Blog
-                  </Link>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="bg-primary-foreground/10 text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground/20 shadow-glow transition-all duration-300 hover:scale-105 backdrop-blur-sm"
-                  onClick={downloadResume}
-                >
-                  <Download className="mr-2 h-4 w-4" />
-                  Resume
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="bg-primary-foreground/10 text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground/20 shadow-glow transition-all duration-300 hover:scale-105 backdrop-blur-sm"
-                  onClick={() =>
-                    window.open(PERSONAL_INFO.linkedin.url, "_blank")
-                  }
-                >
-                  <Linkedin className="mr-2 h-4 w-4" />
-                  Connect
-                </Button>
-                <Button
-                  size="lg"
-                  className="group bg-accent text-accent-foreground hover:bg-accent/90 shadow-glow transition-all duration-300 hover:scale-105 hover:shadow-xl font-semibold px-8 py-4 text-lg"
-                  onClick={scrollToExperience}
-                >
-                  More About Me
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-                </Button>
-              </div>
-
-              {/* Mobile: Custom stacking - Blog top, Resume/Connect middle, Main CTA bottom */}
-              <div className="flex flex-col gap-3 items-center sm:hidden">
-                {/* First row: Blog */}
-                <Button
-                  size="lg"
-                  variant="outline"
-                  asChild
-                  className="bg-primary-foreground/10 text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground/20 shadow-glow transition-all duration-300 hover:scale-105 backdrop-blur-sm"
-                >
-                  <Link to="/blog">
-                    <BookOpen className="mr-2 h-4 w-4" />
-                    Blog
-                  </Link>
-                </Button>
-
-                {/* Second row: Resume and Connect */}
-                <div className="flex gap-3">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="bg-primary-foreground/10 text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground/20 shadow-glow transition-all duration-300 hover:scale-105 backdrop-blur-sm"
-                    onClick={downloadResume}
-                  >
-                    <Download className="mr-2 h-4 w-4" />
-                    Resume
-                  </Button>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="bg-primary-foreground/10 text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground/20 shadow-glow transition-all duration-300 hover:scale-105 backdrop-blur-sm"
-                    onClick={() =>
-                      window.open(PERSONAL_INFO.linkedin.url, "_blank")
-                    }
-                  >
-                    <Linkedin className="mr-2 h-4 w-4" />
-                    Connect
-                  </Button>
-                </div>
-
-                {/* Third row: Main CTA */}
-                <Button
-                  size="lg"
-                  className="group bg-accent text-accent-foreground hover:bg-accent/90 shadow-glow transition-all duration-300 hover:scale-105 hover:shadow-xl font-semibold px-8 py-4 text-lg"
-                  onClick={scrollToExperience}
-                >
-                  More About Me
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-                </Button>
-              </div>
+              <ActionButtonGroup
+                buttons={actionButtons}
+                mainButton={mainButton}
+                layout="responsive"
+              />
             </div>
           </div>
 

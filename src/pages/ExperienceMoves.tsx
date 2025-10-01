@@ -1,10 +1,8 @@
-import Navigation from "@/components/Navigation";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, FileText, Building, CreditCard } from "lucide-react";
-import { Link } from "react-router";
+import { FileText, Building, CreditCard } from "lucide-react";
 import SEO from "@/components/SEO";
 import { OG_IMAGES } from "@/lib/constants";
+import { ArticleLayout } from "@/components/ui/article-layout";
 
 // Import Moves images
 import bcaFlowImage from "@/assets/images/moves/bca-flow.jpg";
@@ -16,50 +14,25 @@ import movesItunesImage from "@/assets/images/moves/moves-itunes.jpg";
 
 const ExperienceMoves = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <>
       <SEO
         title="Moves Memoir - Liam Duncan"
         description="My three year journey leading the team that built Moves Financial's core banking platform and transformed cash advances for gig workers."
         image={OG_IMAGES.resume}
         url="/experience/moves"
       />
-      <Navigation minimalNav />
-
-      {/* Header */}
-      <section className="pt-24 pb-16 bg-gradient-hero">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex items-center gap-4 mb-8">
-              <Button
-                variant="ghost"
-                size="sm"
-                asChild
-                className="text-primary-foreground hover:bg-primary-foreground/10"
-              >
-                <Link to="/">
-                  <ArrowLeft className="mr-2 h-4 w-4" />
-                  Back to Portfolio
-                </Link>
-              </Button>
-            </div>
-
-            <div className="text-primary-foreground">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Moves Memoir
-              </h1>
-              <p className="text-xl opacity-90 max-w-3xl leading-relaxed">
-                My three year journey leading the team that built Moves Financial's core banking platform and transformed cash advances for gig workers.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Content */}
-      <section className="py-16 bg-background">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <article className="prose prose-xl max-w-none">
+      <ArticleLayout
+        title="Moves Memoir"
+        subtitle="My three year journey leading the team that built Moves Financial's core banking platform and transformed cash advances for gig workers."
+        backButton={{
+          to: "/",
+          label: "Back to Portfolio"
+        }}
+        footer={{
+          backTo: "/",
+          backLabel: "Back to Portfolio"
+        }}
+      >
 
             <section>
               <h2 className="text-3xl font-bold mt-0 mb-6 text-foreground leading-tight">A Better Option Than Payday Loans</h2>
@@ -305,95 +278,67 @@ const ExperienceMoves = () => {
               </div>
             </section>
 
-            </article>
-          </div>
-        </div>
-      </section>
-
-      {/* Technical Deep Dives Footer Section */}
-      <section className="py-12 bg-muted/30 border-t border-border/20">
-        <div className="container mx-auto px-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-semibold text-foreground mb-2">The full story isn't over</h3>
-              <p className="text-muted-foreground">Explore the technical architecture and pivotal decisions that shaped Moves:</p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Card className="hover:shadow-md transition-shadow bg-background/50 border-border/50">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-3 mb-3">
-                    <FileText className="h-4 w-4 text-muted-foreground" />
-                    <CardTitle className="text-lg font-medium">Onboarding</CardTitle>
-                  </div>
-                  <CardDescription className="text-sm leading-relaxed">
-                    How we reduced signup time from weeks to same-day with automated KYC and instant account creation
-                  </CardDescription>
-                  <div className="mt-4">
-                    <span className="text-xs text-muted-foreground">Coming Soon</span>
-                  </div>
-                </CardContent>
-              </Card>
-              
-              <Card className="hover:shadow-md transition-shadow bg-background/50 border-border/50">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-3 mb-3">
-                    <Building className="h-4 w-4 text-muted-foreground" />
-                    <CardTitle className="text-lg font-medium">Primary Bank</CardTitle>
-                  </div>
-                  <CardDescription className="text-sm leading-relaxed">
-                    Building comprehensive banking features that transformed customer behavior and improved retention
-                  </CardDescription>
-                  <div className="mt-4">
-                    <span className="text-xs text-muted-foreground">Coming Soon</span>
-                  </div>
-                </CardContent>
-              </Card>
-              
-              <Card className="hover:shadow-md transition-shadow bg-background/50 border-border/50">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-3 mb-3">
-                    <CreditCard className="h-4 w-4 text-muted-foreground" />
-                    <CardTitle className="text-lg font-medium">Cash Advances</CardTitle>
-                  </div>
-                  <CardDescription className="text-sm leading-relaxed">
-                    How we architected and built proprietary cash advance systems tailored to gig workers' irregular income patterns
-                  </CardDescription>
-                  <div className="mt-4">
-                    <span className="text-xs text-muted-foreground">Coming Soon</span>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Article Footer */}
-      <section className="py-8 bg-background">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <footer className="pt-8 border-t border-border/20">
-              <div className="flex items-center justify-between">
-                <div className="text-muted-foreground italic">
-                  Thanks for reading
-                </div>
-                <Button
-                  variant="ghost"
-                  asChild
-                  className="text-primary hover:bg-primary/10 transition-colors"
-                >
-                  <Link to="/">
-                    <ArrowLeft className="mr-2 h-4 w-4" />
-                    Back to Portfolio
-                  </Link>
-                </Button>
+        
+        {/* Technical Deep Dives Footer Section */}
+        <section className="py-12 bg-muted/30 border-t border-border/20 -mx-6">
+          <div className="container mx-auto px-6">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-semibold text-foreground mb-2">The full story isn't over</h3>
+                <p className="text-muted-foreground">Explore the technical architecture and pivotal decisions that shaped Moves:</p>
               </div>
-            </footer>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <Card className="hover:shadow-md transition-shadow bg-background/50 border-border/50">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-3 mb-3">
+                      <FileText className="h-4 w-4 text-muted-foreground" />
+                      <CardTitle className="text-lg font-medium">Onboarding</CardTitle>
+                    </div>
+                    <CardDescription className="text-sm leading-relaxed">
+                      How we reduced signup time from weeks to same-day with automated KYC and instant account creation
+                    </CardDescription>
+                    <div className="mt-4">
+                      <span className="text-xs text-muted-foreground">Coming Soon</span>
+                    </div>
+                  </CardContent>
+                </Card>
+                
+                <Card className="hover:shadow-md transition-shadow bg-background/50 border-border/50">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-3 mb-3">
+                      <Building className="h-4 w-4 text-muted-foreground" />
+                      <CardTitle className="text-lg font-medium">Primary Bank</CardTitle>
+                    </div>
+                    <CardDescription className="text-sm leading-relaxed">
+                      Building comprehensive banking features that transformed customer behavior and improved retention
+                    </CardDescription>
+                    <div className="mt-4">
+                      <span className="text-xs text-muted-foreground">Coming Soon</span>
+                    </div>
+                  </CardContent>
+                </Card>
+                
+                <Card className="hover:shadow-md transition-shadow bg-background/50 border-border/50">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-3 mb-3">
+                      <CreditCard className="h-4 w-4 text-muted-foreground" />
+                      <CardTitle className="text-lg font-medium">Cash Advances</CardTitle>
+                    </div>
+                    <CardDescription className="text-sm leading-relaxed">
+                      How we architected and built proprietary cash advance systems tailored to gig workers' irregular income patterns
+                    </CardDescription>
+                    <div className="mt-4">
+                      <span className="text-xs text-muted-foreground">Coming Soon</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </ArticleLayout>
+    </>
   );
 };
 

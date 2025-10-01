@@ -1,5 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Section } from "@/components/ui/section";
+import { SectionHeader } from "@/components/ui/section-header";
+import { Container } from "@/components/ui/container";
 import { Mail, Linkedin, MapPin, Download, Github } from "lucide-react";
 import { useDownloadResume } from "@/hooks/useDownloadResume";
 import { PERSONAL_INFO, EMAIL_TEMPLATES } from "@/lib/constants";
@@ -9,18 +12,14 @@ const Contact = () => {
   const { downloadResume } = useDownloadResume();
 
   return (
-    <section id="contact" className="py-20 bg-background">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-            Let's Connect
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Ready to discuss opportunities or collaborate on exciting projects
-          </p>
-        </div>
+    <Section id="contact">
+      <Container>
+        <SectionHeader
+          title="Let's Connect"
+          subtitle="Ready to discuss opportunities or collaborate on exciting projects"
+        />
 
-        <div className="max-w-4xl mx-auto">
+        <div>
           <div className="grid md:grid-cols-2 gap-8">
             {/* Contact Information */}
             <Card className="shadow-card bg-gradient-card border-border/50 animate-fade-in">
@@ -140,8 +139,8 @@ const Contact = () => {
             </Card>
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 };
 

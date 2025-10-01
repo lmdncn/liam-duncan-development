@@ -1,12 +1,7 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Calendar, MapPin, ExternalLink } from "lucide-react";
+import { Section } from "@/components/ui/section";
+import { SectionHeader } from "@/components/ui/section-header";
+import { Container } from "@/components/ui/container";
+import { Timeline } from "@/components/ui/timeline";
 
 const experiences = [
   {
@@ -132,106 +127,15 @@ const experiences = [
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-20 bg-background">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-            Professional Experience
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A journey through innovative companies, leading teams, and building
-            scalable solutions
-          </p>
-        </div>
-
-        <div className="max-w-4xl mx-auto">
-          {experiences.map((exp, index) => (
-            <div
-              key={index}
-              className="relative mb-12 animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              {/* Timeline line */}
-              {index < experiences.length - 1 && (
-                <div className="absolute left-6 top-16 w-0.5 h-full bg-border hidden md:block"></div>
-              )}
-
-              {/* Timeline dot */}
-              <div className="absolute left-4 top-8 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-card hidden md:block"></div>
-
-              <Card className="md:ml-16 shadow-card bg-gradient-card border-border/50">
-                <CardHeader>
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                    <div>
-                      <CardTitle className="text-2xl font-bold text-foreground">
-                        {exp.company}
-                      </CardTitle>
-                      <CardDescription className="text-lg font-medium text-primary mt-1">
-                        {exp.position}
-                      </CardDescription>
-                      {exp.prevPosition && (
-                        <div className="space-y-1">
-                          {Array.isArray(exp.prevPosition) ? (
-                            exp.prevPosition.map((pos, index) => (
-                              <CardDescription
-                                key={index}
-                                className="text-sm text-muted-foreground"
-                              >
-                                Previously: {pos}
-                              </CardDescription>
-                            ))
-                          ) : (
-                            <CardDescription className="text-sm text-muted-foreground">
-                              Previously: {exp.prevPosition}
-                            </CardDescription>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                    <div className="flex flex-col sm:items-end gap-2">
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <Calendar className="h-4 w-4" />
-                        {exp.duration}
-                      </div>
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <MapPin className="h-4 w-4" />
-                        {exp.location}
-                      </div>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <ul className="space-y-2">
-                    {exp.description.map((desc, descIndex) => (
-                      <li
-                        key={descIndex}
-                        className="text-foreground leading-relaxed flex items-start gap-2"
-                      >
-                        <span className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></span>
-                        {desc}
-                      </li>
-                    ))}
-                  </ul>
-                  {exp.skills.length > 0 && (
-                    <div className="flex flex-wrap gap-2 pt-4 border-t border-border/50">
-                      {exp.skills.map((skill, skillIndex) => (
-                        <Badge
-                          key={skillIndex}
-                          variant="secondary"
-                          className="bg-secondary/80 text-secondary-foreground"
-                        >
-                          {skill}
-                        </Badge>
-                      ))}
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <Section id="experience">
+      <Container>
+        <SectionHeader
+          title="Professional Experience"
+          subtitle="A journey through innovative companies, leading teams, and building scalable solutions"
+        />
+        <Timeline items={experiences} />
+      </Container>
+    </Section>
   );
 };
 
