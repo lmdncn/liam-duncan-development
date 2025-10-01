@@ -6,14 +6,14 @@ const ExperienceMovesOnboarding = () => {
   return (
     <>
       <SEO
-        title="Moves Onboarding Deep Dive - Liam Duncan"
-        description="How we reduced signup time from weeks to same-day with automated KYC and instant account creation at Moves Financial."
+        title="The Onboarding Gauntlet: Making Finance Work for Gig Workers - Liam Duncan"
+        description="Overcoming identity verification, compliance hurdles, and system integration challenges to reduce signup time from weeks to same-day."
         image={OG_IMAGES.resume}
         url="/experience/moves/onboarding"
       />
       <ArticleLayout
-        title="Onboarding Deep Dive"
-        subtitle="How we reduced signup time from weeks to same-day with automated KYC and instant account creation"
+        title="The Onboarding Gauntlet: Making Finance Work for Gig Workers"
+        subtitle="Overcoming identity verification, compliance hurdles, and system integration challenges"
         backButton={{
           to: "/experience/moves",
           label: "Back to My Memoir Of Moves"

@@ -6,14 +6,14 @@ const ExperienceMovesPrimaryBank = () => {
   return (
     <>
       <SEO
-        title="Moves Primary Bank Deep Dive - Liam Duncan"
-        description="Building comprehensive banking features that transformed customer behavior and improved retention at Moves Financial."
+        title="Beyond the Advance: Building a Bank Gig Workers Actually Use - Liam Duncan"
+        description="How we transformed transaction behavior and became their financial home base with comprehensive banking features."
         image={OG_IMAGES.resume}
         url="/experience/moves/primary-bank"
       />
       <ArticleLayout
-        title="Primary Bank Deep Dive"
-        subtitle="Building comprehensive banking features that transformed customer behavior and improved retention"
+        title="Beyond the Advance: Building a Bank Gig Workers Actually Use"
+        subtitle="How we transformed transaction behavior and became their financial home base"
         backButton={{
           to: "/experience/moves",
           label: "Back to My Memoir Of Moves"

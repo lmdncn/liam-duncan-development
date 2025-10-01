@@ -126,7 +126,7 @@ const ExperienceMoves = () => {
                       <p className="mb-6 text-foreground leading-relaxed text-lg font-light">The result: onboarding time shrank from a week or more to the same day, with many users hitting their "aha" moment the first time they opened the app.</p>
                       <p className="mb-6 text-foreground leading-relaxed text-lg font-light">
                         <Link to="/experience/moves/onboarding" className="text-primary hover:text-primary/80 transition-colors underline decoration-1 underline-offset-2">
-                          Dive into the onboarding transformation →
+                          Navigate the onboarding gauntlet →
                         </Link>
                       </p>
                       
@@ -158,7 +158,7 @@ const ExperienceMoves = () => {
                       <p className="mb-6 text-foreground leading-relaxed text-lg font-light">Over time, Moves became the primary spending account for many workers. This anchored customers, improved retention, and gave us richer data for smarter decisions.</p>
                       <p className="mb-6 text-foreground leading-relaxed text-lg font-light">
                         <Link to="/experience/moves/primary-bank" className="text-primary hover:text-primary/80 transition-colors underline decoration-1 underline-offset-2">
-                          Explore more about the banking platform features →
+                          See how we went beyond the advance →
                         </Link>
                       </p>
                       
@@ -188,7 +188,7 @@ const ExperienceMoves = () => {
                       <p className="mb-6 text-foreground leading-relaxed text-lg font-light">This architecture allowed rapid iteration while maintaining consistency and compliance. By 2023, collection rates climbed from 73 percent to 91 percent, gross margins reached 50 percent, and cash advances became a sustainable product instead of a loss leader.</p>
                       <p className="mb-6 text-foreground leading-relaxed text-lg font-light">
                         <Link to="/experience/moves/cash-advances" className="text-primary hover:text-primary/80 transition-colors underline decoration-1 underline-offset-2">
-                          See how we built the cash advance engine →
+                          Discover the anti-payday loan solution →
                         </Link>
                       </p>
                       
@@ -310,10 +310,10 @@ const ExperienceMoves = () => {
                     <CardContent className="p-6">
                       <div className="flex items-center gap-3 mb-3">
                         <FileText className="h-4 w-4 text-muted-foreground" />
-                        <CardTitle className="text-lg font-medium">Onboarding</CardTitle>
+                        <CardTitle className="text-lg font-medium">The Onboarding Gauntlet</CardTitle>
                       </div>
                       <CardDescription className="text-sm leading-relaxed">
-                        How we reduced signup time from weeks to same-day with automated KYC and instant account creation
+                        Overcoming identity verification, compliance hurdles, and system integration challenges
                       </CardDescription>
                     </CardContent>
                   </Card>
@@ -324,10 +324,10 @@ const ExperienceMoves = () => {
                     <CardContent className="p-6">
                       <div className="flex items-center gap-3 mb-3">
                         <Building className="h-4 w-4 text-muted-foreground" />
-                        <CardTitle className="text-lg font-medium">Primary Bank</CardTitle>
+                        <CardTitle className="text-lg font-medium">Beyond the Advance</CardTitle>
                       </div>
                       <CardDescription className="text-sm leading-relaxed">
-                        Building comprehensive banking features that transformed customer behavior and improved retention
+                        How we transformed transaction behavior and became their financial home base
                       </CardDescription>
                     </CardContent>
                   </Card>
@@ -338,10 +338,10 @@ const ExperienceMoves = () => {
                     <CardContent className="p-6">
                       <div className="flex items-center gap-3 mb-3">
                         <CreditCard className="h-4 w-4 text-muted-foreground" />
-                        <CardTitle className="text-lg font-medium">Cash Advances</CardTitle>
+                        <CardTitle className="text-lg font-medium">The Anti-Payday Loan</CardTitle>
                       </div>
                       <CardDescription className="text-sm leading-relaxed">
-                        How we architected and built proprietary cash advance systems tailored to gig workers' irregular income patterns
+                        How we built systems that understand gig income and eliminate predatory lending
                       </CardDescription>
                     </CardContent>
                   </Card>

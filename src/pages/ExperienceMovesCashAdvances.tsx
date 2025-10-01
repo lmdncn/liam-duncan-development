@@ -6,14 +6,14 @@ const ExperienceMovesCashAdvances = () => {
   return (
     <>
       <SEO
-        title="Moves Cash Advances Deep Dive - Liam Duncan"
-        description="How we architected and built proprietary cash advance systems tailored to gig workers' irregular income patterns at Moves Financial."
+        title="The Anti-Payday Loan: Engineering Cash Advances That Actually Work - Liam Duncan"
+        description="How we built systems that understand gig income and eliminate predatory lending with proprietary adjudication and repayment engines."
         image={OG_IMAGES.resume}
         url="/experience/moves/cash-advances"
       />
       <ArticleLayout
-        title="Cash Advances Deep Dive"
-        subtitle="How we architected and built proprietary cash advance systems tailored to gig workers' irregular income patterns"
+        title="The Anti-Payday Loan: Engineering Cash Advances That Actually Work"
+        subtitle="How we built systems that understand gig income and eliminate predatory lending"
         backButton={{
           to: "/experience/moves",
           label: "Back to My Memoir Of Moves"
