@@ -51,7 +51,7 @@ const BlogPost = () => {
           article={seoData.article}
         />
       )}
-      <Navigation />
+      <Navigation minimalNav />
 
       {/* Header */}
       <section className="pt-24 pb-16 bg-gradient-hero">

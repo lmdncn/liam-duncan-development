@@ -1,3 +1,4 @@
+import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, FileText, Building, CreditCard } from "lucide-react";
@@ -22,6 +23,7 @@ const ExperienceMoves = () => {
         image={OG_IMAGES.resume}
         url="/experience/moves"
       />
+      <Navigation minimalNav />
 
       {/* Header */}
       <section className="pt-24 pb-16 bg-gradient-hero">
@@ -43,7 +45,7 @@ const ExperienceMoves = () => {
 
             <div className="text-primary-foreground">
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                My Memoir Of Moves
+                Moves Memoir
               </h1>
               <p className="text-xl opacity-90 max-w-3xl leading-relaxed">
                 My three year journey leading the team that built Moves Financial's core banking platform and transformed cash advances for gig workers.

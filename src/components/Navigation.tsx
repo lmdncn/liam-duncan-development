@@ -5,6 +5,10 @@ import NavigationItems from "./Navigation/NavigationItems";
 import MobileMenu from "./Navigation/MobileMenu";
 import type { NavItem } from "@/types";
 
+interface NavigationProps {
+  minimalNav?: boolean;
+}
+
 const PRIMARY_NAV_ITEMS: NavItem[] = [
   { label: "Home", href: "#home" },
   { label: "Experience", href: "#experience" },
@@ -14,13 +18,12 @@ const PRIMARY_NAV_ITEMS: NavItem[] = [
   { label: "Contact", href: "#contact" },
 ];
 
-const Navigation = () => {
+const Navigation = ({ minimalNav = false }: NavigationProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const isBlogRoute = location.pathname.startsWith("/blog");
-  const shouldRenderPrimaryNav = !isBlogRoute;
-  const isStickyNavigation = !isBlogRoute;
+  const shouldRenderPrimaryNav = !minimalNav;
+  const isStickyNavigation = !minimalNav;
 
   useEffect(() => {
     if (!isStickyNavigation) {
