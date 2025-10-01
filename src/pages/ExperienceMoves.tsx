@@ -43,7 +43,7 @@ const ExperienceMoves = () => {
 
             <div className="text-primary-foreground">
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Moves Memoir
+                My Memoir Of Moves
               </h1>
               <p className="text-xl opacity-90 max-w-3xl leading-relaxed">
                 My three year journey leading the team that built Moves Financial's core banking platform and transformed cash advances for gig workers.
@@ -355,7 +355,7 @@ const ExperienceMoves = () => {
                     <CardTitle className="text-lg font-medium">Cash Advances</CardTitle>
                   </div>
                   <CardDescription className="text-sm leading-relaxed">
-                    The proprietary system that improved collection rates from 73% to 91% with flexible repayment strategies
+                    How we architected and built proprietary cash advance systems tailored to gig workers' irregular income patterns
                   </CardDescription>
                   <div className="mt-4">
                     <span className="text-xs text-muted-foreground">Coming Soon</span>
