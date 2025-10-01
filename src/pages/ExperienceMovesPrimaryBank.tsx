@@ -16,11 +16,11 @@ const ExperienceMovesPrimaryBank = () => {
         subtitle="Building comprehensive banking features that transformed customer behavior and improved retention"
         backButton={{
           to: "/experience/moves",
-          label: "Back to Moves Memoir"
+          label: "Back to My Memoir Of Moves"
         }}
         footer={{
           backTo: "/experience/moves",
-          backLabel: "Back to Moves Memoir"
+          backLabel: "Back to My Memoir Of Moves"
         }}
       >
         <section>

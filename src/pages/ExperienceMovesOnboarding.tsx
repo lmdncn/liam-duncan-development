@@ -16,11 +16,11 @@ const ExperienceMovesOnboarding = () => {
         subtitle="How we reduced signup time from weeks to same-day with automated KYC and instant account creation"
         backButton={{
           to: "/experience/moves",
-          label: "Back to Moves Memoir"
+          label: "Back to My Memoir Of Moves"
         }}
         footer={{
           backTo: "/experience/moves",
-          backLabel: "Back to Moves Memoir"
+          backLabel: "Back to My Memoir Of Moves"
         }}
       >
         <section>

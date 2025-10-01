@@ -16,11 +16,11 @@ const ExperienceMovesCashAdvances = () => {
         subtitle="How we architected and built proprietary cash advance systems tailored to gig workers' irregular income patterns"
         backButton={{
           to: "/experience/moves",
-          label: "Back to Moves Memoir"
+          label: "Back to My Memoir Of Moves"
         }}
         footer={{
           backTo: "/experience/moves",
-          backLabel: "Back to Moves Memoir"
+          backLabel: "Back to My Memoir Of Moves"
         }}
       >
         <section>
