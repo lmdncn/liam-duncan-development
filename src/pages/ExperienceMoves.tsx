@@ -124,6 +124,11 @@ const ExperienceMoves = () => {
                         <li className="text-foreground leading-relaxed text-lg font-light relative pl-6 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-normal">Gig deposits redirected to Moves</li>
                       </ul>
                       <p className="mb-6 text-foreground leading-relaxed text-lg font-light">The result: onboarding time shrank from a week or more to the same day, with many users hitting their "aha" moment the first time they opened the app.</p>
+                      <p className="mb-6 text-foreground leading-relaxed text-lg font-light">
+                        <Link to="/experience/moves/onboarding" className="text-primary hover:text-primary/80 transition-colors underline decoration-1 underline-offset-2">
+                          Dive into the onboarding transformation →
+                        </Link>
+                      </p>
                       
                       <figure className="my-8">
                         <img 
@@ -151,6 +156,11 @@ const ExperienceMoves = () => {
                         <li className="text-foreground leading-relaxed text-lg font-light relative pl-6 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-normal">Push-to-debit transfers via Astra</li>
                       </ul>
                       <p className="mb-6 text-foreground leading-relaxed text-lg font-light">Over time, Moves became the primary spending account for many workers. This anchored customers, improved retention, and gave us richer data for smarter decisions.</p>
+                      <p className="mb-6 text-foreground leading-relaxed text-lg font-light">
+                        <Link to="/experience/moves/primary-bank" className="text-primary hover:text-primary/80 transition-colors underline decoration-1 underline-offset-2">
+                          Explore more about the banking platform features →
+                        </Link>
+                      </p>
                       
                       <figure className="my-8">
                         <img 
@@ -176,6 +186,11 @@ const ExperienceMoves = () => {
                         <li className="text-foreground leading-relaxed text-lg font-light relative pl-6 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-normal">Repayment engine with flexible strategies: deposit-based, scheduled, instant, collections</li>
                       </ul>
                       <p className="mb-6 text-foreground leading-relaxed text-lg font-light">This architecture allowed rapid iteration while maintaining consistency and compliance. By 2023, collection rates climbed from 73 percent to 91 percent, gross margins reached 50 percent, and cash advances became a sustainable product instead of a loss leader.</p>
+                      <p className="mb-6 text-foreground leading-relaxed text-lg font-light">
+                        <Link to="/experience/moves/cash-advances" className="text-primary hover:text-primary/80 transition-colors underline decoration-1 underline-offset-2">
+                          See how we built the cash advance engine →
+                        </Link>
+                      </p>
                       
                       <figure className="my-8">
                         <img 
