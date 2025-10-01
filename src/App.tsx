@@ -20,6 +20,15 @@ const BlogPost = lazy(
 const ExperienceMoves = lazy(
   () => import(/* webpackPrefetch: true */ "./pages/ExperienceMoves"),
 );
+const ExperienceMovesOnboarding = lazy(
+  () => import(/* webpackPrefetch: true */ "./pages/ExperienceMovesOnboarding"),
+);
+const ExperienceMovesPrimaryBank = lazy(
+  () => import(/* webpackPrefetch: true */ "./pages/ExperienceMovesPrimaryBank"),
+);
+const ExperienceMovesCashAdvances = lazy(
+  () => import(/* webpackPrefetch: true */ "./pages/ExperienceMovesCashAdvances"),
+);
 const NotFound = lazy(
   () => import(/* webpackPreload: true */ "./pages/NotFound"),
 );
@@ -64,6 +73,9 @@ const App = () => (
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:slug" element={<BlogPost />} />
                 <Route path="/experience/moves" element={<ExperienceMoves />} />
+                <Route path="/experience/moves/onboarding" element={<ExperienceMovesOnboarding />} />
+                <Route path="/experience/moves/primary-bank" element={<ExperienceMovesPrimaryBank />} />
+                <Route path="/experience/moves/cash-advances" element={<ExperienceMovesCashAdvances />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
