@@ -17,7 +17,7 @@ const Blog = () => {
         url={BLOG_PAGE_SEO.url}
         type={BLOG_PAGE_SEO.type}
       />
-      <Navigation />
+      <Navigation minimalNav />
 
       <PageHeader
         title="Blog"
