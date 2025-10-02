@@ -1,5 +1,15 @@
 // Blog-related type definitions
 
+export interface BlogImages {
+  [key: string]: string;
+}
+
+export interface RelatedPost {
+  slug: string;
+  title: string;
+  excerpt: string;
+}
+
 export interface BlogPostMetadata {
   title: string;
   date: string;
@@ -10,6 +20,10 @@ export interface BlogPostMetadata {
   author?: string;
   image?: string;
   tags?: string[];
+  images?: BlogImages; // Additional images that can be referenced in content
+  relatedPosts?: RelatedPost[]; // Related blog posts to show at the end
+  seoTitle?: string;
+  seoDescription?: string;
 }
 
 export interface BlogPost extends BlogPostMetadata {

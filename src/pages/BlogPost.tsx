@@ -7,6 +7,7 @@ import SEO from "@/components/SEO";
 import { generateBlogPostSEO } from "@/lib/seo";
 import { ArticleLayout } from "@/components/ui/article-layout";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardTitle } from "@/components/ui/card";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -51,6 +52,17 @@ const BlogPost = () => {
       </div>
     </div>
   );
+
+  // Process content to replace image placeholders if images are defined
+  const processedContent = post.images
+    ? post.content.replace(
+        /\{\{images\.\w+\}\}/g,
+        (match) => {
+          const imageKey = match.replace(/\{\{images\.|\}\}/g, "");
+          return post.images?.[imageKey] || match;
+        }
+      )
+    : post.content;
 
   return (
     <>
@@ -141,10 +153,69 @@ const BlogPost = () => {
                       {...props}
                     />
                   ),
+                  img: ({ src, alt }) => (
+                    <figure className="my-8">
+                      <img
+                        src={src}
+                        alt={alt || ""}
+                        className="w-full max-w-3xl mx-auto rounded-lg shadow-lg"
+                      />
+                      {alt && (
+                        <figcaption className="text-center text-sm text-muted-foreground mt-4">
+                          {alt}
+                        </figcaption>
+                      )}
+                    </figure>
+                  ),
+                  a: ({ href, children }) => {
+                    // Handle internal links
+                    if (href?.startsWith('/')) {
+                      return (
+                        <Link
+                          to={href}
+                          className="text-primary hover:text-primary/80 transition-colors underline decoration-1 underline-offset-2"
+                        >
+                          {children}
+                        </Link>
+                      );
+                    }
+                    // Handle external links
+                    return (
+                      <a
+                        href={href}
+                        className="text-primary hover:text-primary/80 transition-colors underline decoration-1 underline-offset-2"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {children}
+                      </a>
+                    );
+                  },
                 }}
               >
-                {post.content}
+                {processedContent}
               </ReactMarkdown>
+
+              {/* Related Posts Section - only show if relatedPosts exist */}
+              {post.relatedPosts && post.relatedPosts.length > 0 && (
+                <section className="mt-16 pt-8 border-t border-border/20">
+                  <h3 className="text-2xl font-semibold text-foreground mb-6">Related Articles</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {post.relatedPosts.map((relatedPost) => (
+                      <Link key={relatedPost.slug} to={`/blog/${relatedPost.slug}`}>
+                        <Card className="hover:shadow-md transition-shadow bg-background/50 border-border/50 h-full">
+                          <CardContent className="p-6">
+                            <CardTitle className="text-lg font-medium mb-2">{relatedPost.title}</CardTitle>
+                            <CardDescription className="text-sm leading-relaxed">
+                              {relatedPost.excerpt}
+                            </CardDescription>
+                          </CardContent>
+                        </Card>
+                      </Link>
+                    ))}
+                  </div>
+                </section>
+              )}
       </ArticleLayout>
     </>
   );

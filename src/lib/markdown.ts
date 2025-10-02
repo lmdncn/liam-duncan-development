@@ -1,4 +1,5 @@
 import type { BlogPost, BlogPostMetadata, ParsedFrontmatter } from "@/types";
+import type { ExperienceArticle, ExperienceMetadata } from "@/types/experience";
 
 // Simple frontmatter parser
 const parseFrontmatter = (markdownContent: string): ParsedFrontmatter => {
@@ -40,6 +41,15 @@ export const parseBlogPost = (
 ): BlogPost => {
   const { data, content } = parseFrontmatter(markdownContent);
 
+  // Parse complex objects from frontmatter
+  const parseObject = (key: string) => {
+    try {
+      return data[key] ? JSON.parse(data[key]) : undefined;
+    } catch {
+      return undefined;
+    }
+  };
+
   return {
     slug,
     title: data.title || "Untitled",
@@ -48,6 +58,13 @@ export const parseBlogPost = (
     category: data.category || "Uncategorized",
     readTime: data.readTime,
     order: data.order ? parseInt(data.order, 10) : undefined,
+    author: data.author,
+    image: data.image,
+    tags: data.tags ? data.tags.split(",").map((tag: string) => tag.trim()) : undefined,
+    images: parseObject("images"),
+    relatedPosts: parseObject("relatedPosts"),
+    seoTitle: data.seoTitle || data.title,
+    seoDescription: data.seoDescription || data.excerpt,
     content,
   };
 };
@@ -58,6 +75,46 @@ export const estimateReadingTime = (content: string): string => {
   const wordCount = content.trim().split(/\s+/).length;
   const readingTime = Math.ceil(wordCount / wordsPerMinute);
   return `${readingTime} min read`;
+};
+
+/**
+ * Parses a markdown experience article with frontmatter and returns structured data
+ * @param markdownContent - Raw markdown content with frontmatter
+ * @param slug - Unique identifier for the experience article
+ * @returns Structured experience article object with metadata and content
+ */
+export const parseExperienceArticle = (
+  markdownContent: string,
+  slug: string,
+): ExperienceArticle => {
+  const { data, content } = parseFrontmatter(markdownContent);
+
+  // Parse complex objects from frontmatter
+  const parseObject = (key: string) => {
+    try {
+      return data[key] ? JSON.parse(data[key]) : undefined;
+    } catch {
+      return undefined;
+    }
+  };
+
+  return {
+    slug,
+    title: data.title || "Untitled",
+    subtitle: data.subtitle,
+    type: data.type || "experience",
+    category: data.category || "Uncategorized",
+    date: data.date || "No date",
+    readTime: data.readTime || "5 min read",
+    seoTitle: data.seoTitle || data.title || "Untitled",
+    seoDescription: data.seoDescription || "",
+    url: data.url || `/experience/${slug}`,
+    backButton: parseObject("backButton"),
+    footer: parseObject("footer"),
+    relatedArticles: parseObject("relatedArticles"),
+    images: parseObject("images"),
+    content,
+  };
 };
 
 // Function to generate slug from filename
