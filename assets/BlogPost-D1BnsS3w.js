@@ -1,4 +1,4 @@
-import{f as u,u as h,j as e,g as p,L as x,c as b,S as y,C as j,d as N,b as w,e as v}from"./index-CipjodAk.js";import{a as $,C as k}from"./blog-t_AAQtYG.js";import{A as C,M as B}from"./article-layout-DUxHNh5A.js";import"./markdown-DHdnzh3h.js";const D=r=>{const{title:a,category:o,date:l,author:d="Liam Duncan"}=r,t=85,g=(a.length>t?`${a.substring(0,t)}...`:a).split(" "),i=[];let n="";g.forEach(c=>{const m=n?`${n} ${c}`:c;m.length>45&&n?(i.push(n),n=c):n=m}),n&&i.push(n);const f=`
+import{f as u,u as h,j as e,g as p,L as x,c as b,S as y,C as j,d as N,b as w,e as v}from"./index-Ao54gWXh.js";import{a as $,C as k}from"./blog-BnAgjmZA.js";import{A as C,M as B}from"./article-layout-DdpX5WlI.js";import"./markdown-Bl-hfGLp.js";const D=r=>{const{title:a,category:o,date:l,author:d="Liam Duncan"}=r,t=85,g=(a.length>t?`${a.substring(0,t)}...`:a).split(" "),i=[];let n="";g.forEach(c=>{const m=n?`${n} ${c}`:c;m.length>45&&n?(i.push(n),n=c):n=m}),n&&i.push(n);const f=`
     <svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">

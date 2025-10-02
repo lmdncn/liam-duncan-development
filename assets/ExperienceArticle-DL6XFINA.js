@@ -1,19 +1,19 @@
-import{h as l,u as p,j as e,i as u,S as v,L as m,C as y,d as b,b as f,e as w}from"./index-CipjodAk.js";import{g as k,a as x}from"./markdown-DHdnzh3h.js";import{A as M,M as T}from"./article-layout-DUxHNh5A.js";/**
+import{h as c,u as m,j as e,i as g,S as p,L as l,C as u,d as y,b,e as f}from"./index-Ao54gWXh.js";import{g as v,a as w}from"./markdown-Bl-hfGLp.js";import{A as k,M as x}from"./article-layout-DdpX5WlI.js";/**
  * @license lucide-react v0.462.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
- */const j=l("Building",[["rect",{width:"16",height:"20",x:"4",y:"2",rx:"2",ry:"2",key:"76otgf"}],["path",{d:"M9 22v-4h6v4",key:"r93iot"}],["path",{d:"M8 6h.01",key:"1dz90k"}],["path",{d:"M16 6h.01",key:"1x0f13"}],["path",{d:"M12 6h.01",key:"1vi96p"}],["path",{d:"M12 10h.01",key:"1nrarc"}],["path",{d:"M12 14h.01",key:"1etili"}],["path",{d:"M16 10h.01",key:"1m94wz"}],["path",{d:"M16 14h.01",key:"1gbofw"}],["path",{d:"M8 10h.01",key:"19clt8"}],["path",{d:"M8 14h.01",key:"6423bh"}]]);/**
+ */const M=c("Building",[["rect",{width:"16",height:"20",x:"4",y:"2",rx:"2",ry:"2",key:"76otgf"}],["path",{d:"M9 22v-4h6v4",key:"r93iot"}],["path",{d:"M8 6h.01",key:"1dz90k"}],["path",{d:"M16 6h.01",key:"1x0f13"}],["path",{d:"M12 6h.01",key:"1vi96p"}],["path",{d:"M12 10h.01",key:"1nrarc"}],["path",{d:"M12 14h.01",key:"1etili"}],["path",{d:"M16 10h.01",key:"1m94wz"}],["path",{d:"M16 14h.01",key:"1gbofw"}],["path",{d:"M8 10h.01",key:"19clt8"}],["path",{d:"M8 14h.01",key:"6423bh"}]]);/**
  * @license lucide-react v0.462.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
- */const B=l("CreditCard",[["rect",{width:"20",height:"14",x:"2",y:"5",rx:"2",key:"ynyp8z"}],["line",{x1:"2",x2:"22",y1:"10",y2:"10",key:"1b3vmo"}]]);/**
+ */const T=c("CreditCard",[["rect",{width:"20",height:"14",x:"2",y:"5",rx:"2",key:"ynyp8z"}],["line",{x1:"2",x2:"22",y1:"10",y2:"10",key:"1b3vmo"}]]);/**
  * @license lucide-react v0.462.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
- */const h=l("FileText",[["path",{d:"M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z",key:"1rqfz7"}],["path",{d:"M14 2v4a2 2 0 0 0 2 2h4",key:"tnqrlb"}],["path",{d:"M10 9H8",key:"b1mrlr"}],["path",{d:"M16 13H8",key:"t4e002"}],["path",{d:"M16 17H8",key:"z1uh3a"}]]),A=`---
+ */const h=c("FileText",[["path",{d:"M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z",key:"1rqfz7"}],["path",{d:"M14 2v4a2 2 0 0 0 2 2h4",key:"tnqrlb"}],["path",{d:"M10 9H8",key:"b1mrlr"}],["path",{d:"M16 13H8",key:"t4e002"}],["path",{d:"M16 17H8",key:"z1uh3a"}]]),j=`---
 title: "The Anti-Payday Loan: Engineering Cash Advances That Actually Work"
 subtitle: "How we built systems that understand gig income and eliminate predatory lending"
 type: "experience"
@@ -31,7 +31,7 @@ footer: '{"backTo": "/experience/moves", "backLabel": "Back to My Memoir Of Move
 
 This deep dive into Moves' cash advance architecture is currently being written. It will cover the technical details of how we built proprietary systems for adjudication, disbursement, and repayment that transformed cash advances from a loss leader into a profitable product.
 
-Check back soon for the complete technical breakdown.`,C=`---
+Check back soon for the complete technical breakdown.`,B=`---
 title: "My Memoir Of Moves"
 subtitle: "My three year journey leading the team that built Moves Financial's core banking platform and transformed cash advances for gig workers."
 type: "experience"
@@ -44,7 +44,6 @@ url: "/experience/moves"
 backButton: '{"to": "/", "label": "Back to Portfolio"}'
 footer: '{"backTo": "/", "backLabel": "Back to Portfolio"}'
 relatedArticles: '[{"slug": "onboarding", "title": "The Onboarding Gauntlet", "description": "Overcoming identity verification, compliance hurdles, and system integration challenges", "icon": "FileText"}, {"slug": "primary-bank", "title": "Beyond the Advance", "description": "How we transformed transaction behavior and became their financial home base", "icon": "Building"}, {"slug": "cash-advances", "title": "The Anti-Payday Loan", "description": "How we built systems that understand gig income and eliminate predatory lending", "icon": "CreditCard"}]'
-images: '{"whatIsMoves": "/src/assets/images/moves/what-is-moves-financial.jpg", "whyChooseMoves": "/src/assets/images/moves/why-choose-moves.jpg", "bcaFlow": "/src/assets/images/moves/bca-flow.jpg", "gigFlow": "/src/assets/images/moves/gig-flow.jpg", "movesReview": "/src/assets/images/moves/moves-review-1.jpg", "movesItunes": "/src/assets/images/moves/moves-itunes.jpg"}'
 ---
 
 ## A Better Option Than Payday Loans
@@ -59,7 +58,7 @@ Moves set out to build financial services around how gig workers actually earn a
 
 But for cash advances to work long-term, they couldn't just be a transaction. They had to be the beginning of an ongoing financial relationship, one built on trust, visibility, and fairness.
 
-![Platform designed for gig workers' unique income patterns]({{images.whatIsMoves}})
+![Platform designed for gig workers' unique income patterns](/what-is-moves-financial.jpg)
 
 ## Where Things Stood When I Joined
 
@@ -102,7 +101,7 @@ The result: onboarding time shrank from a week or more to the same day, with man
 
 [Navigate the onboarding gauntlet →](/experience/moves/onboarding)
 
-![Streamlined onboarding flow from signup to first gig deposit]({{images.whyChooseMoves}})
+![Streamlined onboarding flow from signup to first gig deposit](/why-choose-moves.jpg)
 
 ### 2. Becoming the Primary Bank
 
@@ -118,7 +117,7 @@ Over time, Moves became the primary spending account for many workers. This anch
 
 [See how we went beyond the advance →](/experience/moves/primary-bank)
 
-![Integrated platform combining banking, earnings tracking, and rewards]({{images.gigFlow}})
+![Integrated platform combining banking, earnings tracking, and rewards](/gig-flow.jpg)
 
 ### 3. Cash Advance Optimization
 
@@ -134,7 +133,7 @@ This architecture allowed rapid iteration while maintaining consistency and comp
 
 [Discover the anti-payday loan solution →](/experience/moves/cash-advances)
 
-![Cash advance eligibility based on gig deposit history]({{images.bcaFlow}})
+![Cash advance eligibility based on gig deposit history](/bca-flow.jpg)
 
 ## The Systems Behind It All
 
@@ -165,7 +164,7 @@ Moves was not just another fintech app. It gave gig workers:
 
 And it gave the company a path to sustainability. By Q4 2023, originations had tripled compared to the previous year, revenue from cash advances was up 900 percent, and the product had shifted from experimental to profitable.
 
-![Customer review highlighting free transfers and primary banking potential]({{images.movesReview}})
+![Customer review highlighting free transfers and primary banking potential](/moves-review-1.jpg)
 
 ## Lessons Learned
 
@@ -184,8 +183,8 @@ Moves ultimately did not survive as a company, but the experience changed me. I 
 
 I am proud of what we built and grateful for the lessons I carry forward.
 
-![App Store presence with strong user ratings]({{images.movesItunes}})
-`,I=`---
+![App Store presence with strong user ratings](/moves-itunes.jpg)
+`,A=`---
 title: "The Onboarding Gauntlet: Making Finance Work for Gig Workers"
 subtitle: "Overcoming identity verification, compliance hurdles, and system integration challenges"
 type: "experience"
@@ -209,7 +208,7 @@ This deep dive into Moves' onboarding transformation is currently being written.
 - Integrated gig account linking through Argyle
 - Automated gig deposit redirection
 
-Check back soon for the complete technical breakdown.`,N=`---
+Check back soon for the complete technical breakdown.`,C=`---
 title: "Beyond the Advance: Building a Bank Gig Workers Actually Use"
 subtitle: "How we transformed transaction behavior and became their financial home base"
 type: "experience"
@@ -227,4 +226,4 @@ footer: '{"backTo": "/experience/moves", "backLabel": "Back to My Memoir Of Move
 
 This deep dive into how Moves became customers' primary bank is currently being written. It will cover the technical details of how we built comprehensive banking features that transformed customer behavior and engagement.
 
-Check back soon for the complete technical breakdown.`,L=(i,o)=>0,F=Object.assign({"../content/experience/moves/cash-advances.md":A,"../content/experience/moves/index.md":C,"../content/experience/moves/onboarding.md":I,"../content/experience/moves/primary-bank.md":N}),S=Object.entries(F).map(([i,o])=>{const s=i.split("/"),t=s.pop()||"",r=s[s.length-1]||"",c=t==="index.md"?r:k(t),d=t==="index.md"?c:`${r}/${c}`;return x(o,d)}).sort(L),D=i=>S.find(o=>o.slug===i),O="/liam-duncan-development/assets/bca-flow-CvZeqfNL.jpg",_="/liam-duncan-development/assets/gig-flow-Dp9HQ-h2.jpg",E="/liam-duncan-development/assets/what-is-moves-financial-DxvwYDca.jpg",P="/liam-duncan-development/assets/why-choose-moves-FTqHVGRd.jpg",W="/liam-duncan-development/assets/moves-review-1-CzNs9NuN.jpg",G="/liam-duncan-development/assets/moves-itunes-UMmAwE6V.jpg",z=()=>{const{slug:i,subSlug:o}=p(),s=o?`${i}/${o}`:i,t=D(s||"");if(!t)return e.jsx(u,{to:"/404",replace:!0});const r={"{{images.whatIsMoves}}":E,"{{images.whyChooseMoves}}":P,"{{images.bcaFlow}}":O,"{{images.gigFlow}}":_,"{{images.movesReview}}":W,"{{images.movesItunes}}":G},c=t.content.replace(/\{\{images\.\w+\}\}/g,n=>r[n]||n),d={FileText:h,Building:j,CreditCard:B};return e.jsxs(e.Fragment,{children:[e.jsx(v,{title:t.seoTitle,description:t.seoDescription,image:"/og-image.jpg",url:t.url}),e.jsxs(M,{title:t.title,subtitle:t.subtitle,backButton:t.backButton,footer:t.footer,children:[e.jsx("div",{className:"prose prose-lg max-w-none",children:e.jsx(T,{components:{img:({src:n,alt:a})=>e.jsxs("figure",{className:"my-8",children:[e.jsx("img",{src:n,alt:a||"",className:"w-full max-w-2xl mx-auto rounded-lg shadow-lg"}),a&&e.jsx("figcaption",{className:"text-center text-sm text-muted-foreground mt-4",children:a})]}),h2:({children:n})=>e.jsx("h2",{className:"text-3xl font-bold mt-12 mb-6 text-foreground leading-tight",children:n}),h3:({children:n})=>e.jsx("h3",{className:"text-2xl font-semibold mt-12 mb-5 text-foreground leading-tight",children:n}),p:({children:n})=>e.jsx("p",{className:"mb-6 text-foreground leading-relaxed text-lg font-light",children:n}),ul:({children:n})=>e.jsx("ul",{className:"mb-8 space-y-3 list-none",children:n}),li:({children:n})=>e.jsx("li",{className:"text-foreground leading-relaxed text-lg font-light relative pl-6 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-normal",children:n}),strong:({children:n})=>e.jsx("strong",{className:"font-bold text-foreground",children:n}),a:({href:n,children:a})=>n?.startsWith("/")?e.jsx(m,{to:n,className:"text-primary hover:text-primary/80 transition-colors underline decoration-1 underline-offset-2",children:a}):e.jsx("a",{href:n,className:"text-primary hover:text-primary/80 transition-colors underline decoration-1 underline-offset-2",target:"_blank",rel:"noopener noreferrer",children:a})},children:c})}),t.relatedArticles&&t.relatedArticles.length>0&&e.jsx("section",{className:"py-16 mt-16 bg-muted/30 border-t border-border/20 relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen",children:e.jsx("div",{className:"container mx-auto px-6",children:e.jsxs("div",{className:"max-w-6xl mx-auto",children:[e.jsxs("div",{className:"text-center mb-8",children:[e.jsx("h3",{className:"text-2xl font-semibold text-foreground mb-2",children:"The story isn't over"}),e.jsx("p",{className:"text-muted-foreground",children:"Explore the technical architecture and pivotal decisions that shaped Moves:"})]}),e.jsx("div",{className:"grid grid-cols-1 md:grid-cols-3 gap-6",children:t.relatedArticles.map(n=>{const a=d[n.icon]||h,g=t.slug==="moves"?`/experience/moves/${n.slug}`:`/experience/${n.slug}`;return e.jsx(m,{to:g,children:e.jsx(y,{className:"hover:shadow-md transition-shadow bg-background/50 border-border/50 h-full",children:e.jsxs(b,{className:"p-6",children:[e.jsxs("div",{className:"flex items-center gap-3 mb-3",children:[e.jsx(a,{className:"h-4 w-4 text-muted-foreground"}),e.jsx(f,{className:"text-lg font-medium",children:n.title})]}),e.jsx(w,{className:"text-sm leading-relaxed",children:n.description})]})})},n.slug)})})]})})})]})]})};export{z as default};
+Check back soon for the complete technical breakdown.`,N=(i,o)=>0,I=Object.assign({"../content/experience/moves/cash-advances.md":j,"../content/experience/moves/index.md":B,"../content/experience/moves/onboarding.md":A,"../content/experience/moves/primary-bank.md":C}),L=Object.entries(I).map(([i,o])=>{const r=i.split("/"),t=r.pop()||"",s=r[r.length-1]||"",n=t==="index.md"?s:v(t),a=t==="index.md"?n:`${s}/${n}`;return w(o,a)}).sort(N),S=i=>L.find(o=>o.slug===i),W=()=>{const{slug:i,subSlug:o}=m(),r=o?`${i}/${o}`:i,t=S(r||"");if(!t)return e.jsx(g,{to:"/404",replace:!0});const s={FileText:h,Building:M,CreditCard:T};return e.jsxs(e.Fragment,{children:[e.jsx(p,{title:t.seoTitle,description:t.seoDescription,image:"/og-image.jpg",url:t.url}),e.jsxs(k,{title:t.title,subtitle:t.subtitle,backButton:t.backButton,footer:t.footer,children:[e.jsx("div",{className:"prose prose-lg max-w-none",children:e.jsx(x,{components:{img:({src:n,alt:a})=>{const d=n?.startsWith("/")&&!n.startsWith("/liam-duncan-development/")?`/liam-duncan-development/${n.substring(1)}`:n;return e.jsxs("figure",{className:"my-8",children:[e.jsx("img",{src:d,alt:a||"",className:"w-full max-w-2xl mx-auto rounded-lg shadow-lg"}),a&&e.jsx("figcaption",{className:"text-center text-sm text-muted-foreground mt-4",children:a})]})},h2:({children:n})=>e.jsx("h2",{className:"text-3xl font-bold mt-12 mb-6 text-foreground leading-tight",children:n}),h3:({children:n})=>e.jsx("h3",{className:"text-2xl font-semibold mt-12 mb-5 text-foreground leading-tight",children:n}),p:({children:n})=>e.jsx("p",{className:"mb-6 text-foreground leading-relaxed text-lg font-light",children:n}),ul:({children:n})=>e.jsx("ul",{className:"mb-8 space-y-3 list-none",children:n}),li:({children:n})=>e.jsx("li",{className:"text-foreground leading-relaxed text-lg font-light relative pl-6 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-normal",children:n}),strong:({children:n})=>e.jsx("strong",{className:"font-bold text-foreground",children:n}),a:({href:n,children:a})=>n?.startsWith("/")?e.jsx(l,{to:n,className:"text-primary hover:text-primary/80 transition-colors underline decoration-1 underline-offset-2",children:a}):e.jsx("a",{href:n,className:"text-primary hover:text-primary/80 transition-colors underline decoration-1 underline-offset-2",target:"_blank",rel:"noopener noreferrer",children:a})},children:t.content})}),t.relatedArticles&&t.relatedArticles.length>0&&e.jsx("section",{className:"py-16 mt-16 bg-muted/30 border-t border-border/20 relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen",children:e.jsx("div",{className:"container mx-auto px-6",children:e.jsxs("div",{className:"max-w-6xl mx-auto",children:[e.jsxs("div",{className:"text-center mb-8",children:[e.jsx("h3",{className:"text-2xl font-semibold text-foreground mb-2",children:"The story isn't over"}),e.jsx("p",{className:"text-muted-foreground",children:"Explore the technical architecture and pivotal decisions that shaped Moves:"})]}),e.jsx("div",{className:"grid grid-cols-1 md:grid-cols-3 gap-6",children:t.relatedArticles.map(n=>{const a=s[n.icon]||h,d=t.slug==="moves"?`/experience/moves/${n.slug}`:`/experience/${n.slug}`;return e.jsx(l,{to:d,children:e.jsx(u,{className:"hover:shadow-md transition-shadow bg-background/50 border-border/50 h-full",children:e.jsxs(y,{className:"p-6",children:[e.jsxs("div",{className:"flex items-center gap-3 mb-3",children:[e.jsx(a,{className:"h-4 w-4 text-muted-foreground"}),e.jsx(b,{className:"text-lg font-medium",children:n.title})]}),e.jsx(f,{className:"text-sm leading-relaxed",children:n.description})]})})},n.slug)})})]})})})]})]})};export{W as default};
