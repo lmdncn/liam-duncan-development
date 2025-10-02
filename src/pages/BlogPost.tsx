@@ -153,20 +153,27 @@ const BlogPost = () => {
                       {...props}
                     />
                   ),
-                  img: ({ src, alt }) => (
-                    <figure className="my-8">
-                      <img
-                        src={src}
-                        alt={alt || ""}
-                        className="w-full max-w-3xl mx-auto rounded-lg shadow-lg"
-                      />
-                      {alt && (
-                        <figcaption className="text-center text-sm text-muted-foreground mt-4">
-                          {alt}
-                        </figcaption>
-                      )}
-                    </figure>
-                  ),
+                  img: ({ src, alt }) => {
+                    // Handle relative paths that need base URL prepended
+                    const imageSrc = src?.startsWith('/') && !src.startsWith(import.meta.env.BASE_URL)
+                      ? `${import.meta.env.BASE_URL}${src.substring(1)}`
+                      : src;
+
+                    return (
+                      <figure className="my-8">
+                        <img
+                          src={imageSrc}
+                          alt={alt || ""}
+                          className="w-full max-w-3xl mx-auto rounded-lg shadow-lg"
+                        />
+                        {alt && (
+                          <figcaption className="text-center text-sm text-muted-foreground mt-4">
+                            {alt}
+                          </figcaption>
+                        )}
+                      </figure>
+                    );
+                  },
                   a: ({ href, children }) => {
                     // Handle internal links
                     if (href?.startsWith('/')) {
