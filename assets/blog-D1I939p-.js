@@ -1,4 +1,4 @@
-import{h as i}from"./index-D1rIzvsH.js";import{g as r,p as l,e as d}from"./markdown-BuJEmHer.js";/**
+import{h as i}from"./index-BgF83QV5.js";import{g as r,p as l,e as d}from"./markdown-A3_TLJVb.js";/**
  * @license lucide-react v0.462.0 - ISC
  *
  * This source code is licensed under the ISC license.
@@ -47,7 +47,7 @@ After a while, I realized that wasn’t Claude’s fault. It was mine. I was bar
 
 Since then, I’ve spent months in the trenches with Claude Code. Testing, breaking, fixing, teaching, and refining. Along the way I’ve built a playbook of tactics that actually work. Not theory, not hype, just the practices I lean on every day to get consistent, high quality output.  
 
-![Claude Code Welcome Screen](/liam-duncan-development/src/assets/images/claude-code-welcome.jpeg)
+![Claude Code Welcome Screen](/liam-duncan-development/claude-code-welcome.jpeg)
 
 Here’s what I’ve learned.  
 
