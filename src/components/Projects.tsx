@@ -67,6 +67,7 @@ const Projects = () => {
               key={project.title}
               index={index}
               animationDelay={0.2}
+              enableHover={!!project.demoUrl}
             >
               <CardHeader>
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
