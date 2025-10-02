@@ -7,13 +7,15 @@ readTime: "7 min"
 order: 4
 ---
 
-# Getting Claude Code Right: Best Practices from the Trenches  
+# Getting Claude Code Right: Best Practices from the Trenches
 
-When I first started using Claude Code, I made the same mistake most people do. I treated it like a vending machine: “Hey Claude, build me X.” Sometimes it worked. Sometimes it spat out garbage. Mostly, it felt random.  
+When I first started using Claude Code, I made the same mistake most people do. I treated it like a vending machine: "Hey Claude, build me X." Sometimes it worked. Sometimes it spat out garbage. Mostly, it felt random.  
 
 After a while, I realized that wasn’t Claude’s fault. It was mine. I was barking orders instead of giving it the same environment I’d give a real engineer: context, structure, rules, and guidance.  
 
 Since then, I’ve spent months in the trenches with Claude Code. Testing, breaking, fixing, teaching, and refining. Along the way I’ve built a playbook of tactics that actually work. Not theory, not hype, just the practices I lean on every day to get consistent, high quality output.  
+
+![Claude Code Welcome Screen](/liam-duncan-development/src/assets/images/claude-code-welcome.jpeg)
 
 Here’s what I’ve learned.  
 
@@ -52,27 +54,30 @@ The point is to stop babysitting Claude and start codifying the way you like to 
 
 ---
 
-## 3. Use the Built In Commands  
+## 3. Use the Built In Commands
 
-The defaults matter more than people think:  
-- `/init` to bootstrap a CLAUDE.md  
-- `/clear` when changing direction  
-- `/compact` when things get noisy  
-- `/review` for quick audits  
+The defaults matter more than people think. Knowing these makes your workflow smoother:
 
-I use them constantly. They’re small resets that keep Claude aligned.  
+- `/init` — Bootstraps a CLAUDE.md from your existing project, seeding memory automatically
+- `/clear` — Clears the current session's conversational context. Use when switching tasks or domains
+- `/compact` — Prune or summarize context to free tokens while preserving what matters. Tell Claude what to focus on (e.g. "Focus on authentication logic and schema decisions") so it keeps critical context
+- `/review` — Ask Claude to audit a file or changes for style, quality, and logic
+- `/model` — Switch Claude's internal model (e.g. Sonnet vs Opus) depending on whether you want speed or depth
+- `/help` — Show the list of available slash commands and what they do (handy cheat sheet)
+
+I use them constantly. They're small resets that keep Claude aligned.  
 
 ---
 
-## 4. Modes Matter  
+## 4. Planning Mode
 
-Claude has different “modes” of working. I use this intentionally.  
+This is the most underused feature, and it's a game changer.
 
-- **Plan mode**: I’ll say “Propose a plan first. Wait for me to review. Then we’ll code.” This forces it to slow down and align before touching files.  
-- **Execution mode**: Once we’ve agreed on a plan, I let it loose to write code.  
-- **Review mode**: After code is generated, I challenge it like I would in a PR. “Can you make this cleaner given our coding practices? Is this too tightly coupled? How could this be more extensible?”  
+Plan Mode stops Claude from touching your file system until you approve its proposal. You trigger it with `Shift + Tab` twice or by saying "Propose a plan first. Wait for me to review."
 
-Claude responds well to being challenged. Just like a developer in a code review, it will almost always take your feedback and improve the work.  
+What you get is a design: alternative approaches, tradeoffs, steps, and module breakdowns. You can inspect, critique, and adjust before anything changes. This catches architectural flaws early and aligns expectations before code gets written.
+
+The plan isn't gospel. I treat it like a draft and challenge it the same way I would in code review: "Is that module too coupled? Did you miss edge cases? Is this the right abstraction?" Once refined, the plan becomes the prompt that guides execution.
 
 For bigger picture architecture, I often plan in other tools, then dump the plan into Claude Code as context. It does well executing detailed plans, but less well inventing huge system designs from scratch.  
 
@@ -91,14 +96,19 @@ The way you frame the prompt is everything.
 
 ---
 
-## 6. Manage Context Aggressively  
+## 6. Manage Context Aggressively
 
-Claude has a huge context window, but drift is real. My habits:  
+Claude has a huge context window, but drift is real. My habits:
 
-- `/clear` when I switch features  
-- `/compact` to keep only what matters  
-- Subagents for tests or docs so the main context stays lean  
-- Frequent commits so I can roll back if Claude drifts too far  
+- **Use `/clear` when I switch features or domains.** It wipes the conversational memory so you start fresh. This prevents bleeding context from authentication work into payment logic, for example.
+
+- **Use `/compact` when the conversation grows heavy.** Tell it what matters (e.g. "Focus on authentication logic and schema decisions") so it prunes fluff but keeps critical context.
+
+- **Use subagents for docs, tests, or refactors** so the main thread stays lean. Let specialized agents handle orthogonal work without polluting your primary context.
+
+- **Make frequent git commits before big prompts.** Claude sometimes "gets carried away," so commits let me roll back cleanly.
+
+- **Avoid very long, sprawling sessions without refresh** — drift can creep in even with a massive context window.
 
 This is the difference between sharp outputs and spaghetti.  
 
