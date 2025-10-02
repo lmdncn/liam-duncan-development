@@ -15,7 +15,7 @@ After a while, I realized that wasn’t Claude’s fault. It was mine. I was bar
 
 Since then, I’ve spent months in the trenches with Claude Code. Testing, breaking, fixing, teaching, and refining. Along the way I’ve built a playbook of tactics that actually work. Not theory, not hype, just the practices I lean on every day to get consistent, high quality output.  
 
-![Claude Code Welcome Screen](/liam-duncan-development/src/assets/images/claude-code-welcome.jpeg)
+![Claude Code Welcome Screen](/liam-duncan-development/claude-code-welcome.jpeg)
 
 Here’s what I’ve learned.  
 
