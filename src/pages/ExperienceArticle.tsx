@@ -7,14 +7,6 @@ import { Card, CardContent, CardDescription, CardTitle } from "@/components/ui/c
 import { FileText, Building, CreditCard } from "lucide-react";
 import { Link } from "react-router";
 
-// Import Moves images (these will need to be handled differently in markdown)
-import bcaFlowImage from "@/assets/images/moves/bca-flow.jpg";
-import gigFlowImage from "@/assets/images/moves/gig-flow.jpg";
-import whatIsMovesImage from "@/assets/images/moves/what-is-moves-financial.jpg";
-import whyChooseMovesImage from "@/assets/images/moves/why-choose-moves.jpg";
-import movesReviewImage from "@/assets/images/moves/moves-review-1.jpg";
-import movesItunesImage from "@/assets/images/moves/moves-itunes.jpg";
-
 const ExperienceArticle = () => {
   const { slug, subSlug } = useParams();
   
@@ -26,22 +18,6 @@ const ExperienceArticle = () => {
   if (!article) {
     return <Navigate to="/404" replace />;
   }
-
-  // Image mapping for markdown content
-  const imageMap: Record<string, string> = {
-    "{{images.whatIsMoves}}": whatIsMovesImage,
-    "{{images.whyChooseMoves}}": whyChooseMovesImage,
-    "{{images.bcaFlow}}": bcaFlowImage,
-    "{{images.gigFlow}}": gigFlowImage,
-    "{{images.movesReview}}": movesReviewImage,
-    "{{images.movesItunes}}": movesItunesImage,
-  };
-
-  // Process content to replace image placeholders
-  const processedContent = article.content.replace(
-    /\{\{images\.\w+\}\}/g,
-    (match) => imageMap[match] || match
-  );
 
   // Icon mapping for related articles
   const iconMap: Record<string, React.ComponentType<any>> = {
@@ -67,20 +43,27 @@ const ExperienceArticle = () => {
         <div className="prose prose-lg max-w-none">
           <ReactMarkdown
             components={{
-              img: ({ src, alt }) => (
-                <figure className="my-8">
-                  <img 
-                    src={src} 
-                    alt={alt || ""} 
-                    className="w-full max-w-2xl mx-auto rounded-lg shadow-lg"
-                  />
-                  {alt && (
-                    <figcaption className="text-center text-sm text-muted-foreground mt-4">
-                      {alt}
-                    </figcaption>
-                  )}
-                </figure>
-              ),
+              img: ({ src, alt }) => {
+                // Handle relative paths that need base URL prepended
+                const imageSrc = src?.startsWith('/') && !src.startsWith(import.meta.env.BASE_URL)
+                  ? `${import.meta.env.BASE_URL}${src.substring(1)}`
+                  : src;
+
+                return (
+                  <figure className="my-8">
+                    <img
+                      src={imageSrc}
+                      alt={alt || ""}
+                      className="w-full max-w-2xl mx-auto rounded-lg shadow-lg"
+                    />
+                    {alt && (
+                      <figcaption className="text-center text-sm text-muted-foreground mt-4">
+                        {alt}
+                      </figcaption>
+                    )}
+                  </figure>
+                );
+              },
               h2: ({ children }) => (
                 <h2 className="text-3xl font-bold mt-12 mb-6 text-foreground leading-tight">
                   {children}
@@ -137,7 +120,7 @@ const ExperienceArticle = () => {
               },
             }}
           >
-            {processedContent}
+            {article.content}
           </ReactMarkdown>
         </div>
 

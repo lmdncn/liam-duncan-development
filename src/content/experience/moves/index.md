@@ -11,7 +11,6 @@ url: "/experience/moves"
 backButton: '{"to": "/", "label": "Back to Portfolio"}'
 footer: '{"backTo": "/", "backLabel": "Back to Portfolio"}'
 relatedArticles: '[{"slug": "onboarding", "title": "The Onboarding Gauntlet", "description": "Overcoming identity verification, compliance hurdles, and system integration challenges", "icon": "FileText"}, {"slug": "primary-bank", "title": "Beyond the Advance", "description": "How we transformed transaction behavior and became their financial home base", "icon": "Building"}, {"slug": "cash-advances", "title": "The Anti-Payday Loan", "description": "How we built systems that understand gig income and eliminate predatory lending", "icon": "CreditCard"}]'
-images: '{"whatIsMoves": "/src/assets/images/moves/what-is-moves-financial.jpg", "whyChooseMoves": "/src/assets/images/moves/why-choose-moves.jpg", "bcaFlow": "/src/assets/images/moves/bca-flow.jpg", "gigFlow": "/src/assets/images/moves/gig-flow.jpg", "movesReview": "/src/assets/images/moves/moves-review-1.jpg", "movesItunes": "/src/assets/images/moves/moves-itunes.jpg"}'
 ---
 
 ## A Better Option Than Payday Loans
@@ -26,7 +25,7 @@ Moves set out to build financial services around how gig workers actually earn a
 
 But for cash advances to work long-term, they couldn't just be a transaction. They had to be the beginning of an ongoing financial relationship, one built on trust, visibility, and fairness.
 
-![Platform designed for gig workers' unique income patterns]({{images.whatIsMoves}})
+![Platform designed for gig workers' unique income patterns](/what-is-moves-financial.jpg)
 
 ## Where Things Stood When I Joined
 
@@ -69,7 +68,7 @@ The result: onboarding time shrank from a week or more to the same day, with man
 
 [Navigate the onboarding gauntlet →](/experience/moves/onboarding)
 
-![Streamlined onboarding flow from signup to first gig deposit]({{images.whyChooseMoves}})
+![Streamlined onboarding flow from signup to first gig deposit](/why-choose-moves.jpg)
 
 ### 2. Becoming the Primary Bank
 
@@ -85,7 +84,7 @@ Over time, Moves became the primary spending account for many workers. This anch
 
 [See how we went beyond the advance →](/experience/moves/primary-bank)
 
-![Integrated platform combining banking, earnings tracking, and rewards]({{images.gigFlow}})
+![Integrated platform combining banking, earnings tracking, and rewards](/gig-flow.jpg)
 
 ### 3. Cash Advance Optimization
 
@@ -101,7 +100,7 @@ This architecture allowed rapid iteration while maintaining consistency and comp
 
 [Discover the anti-payday loan solution →](/experience/moves/cash-advances)
 
-![Cash advance eligibility based on gig deposit history]({{images.bcaFlow}})
+![Cash advance eligibility based on gig deposit history](/bca-flow.jpg)
 
 ## The Systems Behind It All
 
@@ -132,7 +131,7 @@ Moves was not just another fintech app. It gave gig workers:
 
 And it gave the company a path to sustainability. By Q4 2023, originations had tripled compared to the previous year, revenue from cash advances was up 900 percent, and the product had shifted from experimental to profitable.
 
-![Customer review highlighting free transfers and primary banking potential]({{images.movesReview}})
+![Customer review highlighting free transfers and primary banking potential](/moves-review-1.jpg)
 
 ## Lessons Learned
 
@@ -151,4 +150,4 @@ Moves ultimately did not survive as a company, but the experience changed me. I 
 
 I am proud of what we built and grateful for the lessons I carry forward.
 
-![App Store presence with strong user ratings]({{images.movesItunes}})
+![App Store presence with strong user ratings](/moves-itunes.jpg)
