@@ -104,7 +104,6 @@ src/content/
 | `author` | No | string | Author name | `"Liam Duncan"` |
 | `tags` | No | string | Comma-separated tags | `"ai, react, typescript"` |
 | `image` | No | string | OG/preview image path | `"/og-image.jpg"` |
-| `images` | No | JSON object | Named images for content | `'{"hero": "/path.jpg"}'` |
 | `relatedPosts` | No | JSON array | Related blog posts | `'[{"slug": "...", "title": "...", "excerpt": "..."}]'` |
 | `seoTitle` | No | string | SEO title (defaults to `title`) | `"SEO Optimized Title"` |
 | `seoDescription` | No | string | SEO description (defaults to `excerpt`) | `"Detailed SEO description"` |
@@ -124,7 +123,6 @@ src/content/
 | `url` | **Yes** | string | Article URL path | `"/experience/company"` |
 | `backButton` | No | JSON object | Back navigation config | `'{"to": "/", "label": "Back"}'` |
 | `footer` | No | JSON object | Footer navigation config | `'{"backTo": "/", "backLabel": "..."}'` |
-| `images` | No | JSON object | Named images for content | `'{"diagram": "/path.jpg"}'` |
 | `relatedArticles` | No | JSON array | Related experience articles | `'[{"slug": "...", "title": "...", "description": "...", "icon": "FileText"}]'` |
 
 ---
@@ -166,19 +164,8 @@ Both blog posts and experience articles support rich markdown formatting:
 
 ### Images
 
-**Standard markdown:**
 ```markdown
 ![Alt text for accessibility](/path/to/image.jpg)
-```
-
-**Using frontmatter images:**
-```markdown
----
-images: '{"hero": "/assets/hero.jpg", "diagram": "/assets/diagram.png"}'
----
-
-![Hero image description]({{images.hero}})
-![System diagram]({{images.diagram}})
 ```
 
 Images automatically include:
@@ -213,33 +200,6 @@ function hello() {
 ---
 
 ## Advanced Features
-
-### Image Management via Frontmatter
-
-Define images once, reference anywhere:
-
-```markdown
----
-title: "My Post"
-images: '{"hero": "/src/assets/images/hero.jpg", "chart": "/src/assets/images/chart.png", "screenshot": "/src/assets/images/screenshot.jpg"}'
----
-
-![Hero image]({{images.hero}})
-
-## Section 1
-
-![Data visualization]({{images.chart}})
-
-## Results
-
-![Application screenshot]({{images.screenshot}})
-```
-
-**Benefits:**
-- Centralized image management
-- Easy to update paths
-- Clear image inventory
-- Type-safe references
 
 ### Related Content
 
@@ -305,19 +265,18 @@ author: "Liam Duncan"
 tags: "ai, web-development, react, typescript"
 seoTitle: "Building Modern Web Apps with AI: A Complete Guide"
 seoDescription: "Learn how AI tools are revolutionizing web development, from code generation to testing and deployment."
-images: '{"hero": "/src/assets/images/ai-coding.jpg", "workflow": "/src/assets/images/ai-workflow.png"}'
 relatedPosts: '[{"slug": "devs-are-dead-my-rebirth-as-an-ai-agent-manager", "title": "Devs Are Dead", "excerpt": "My journey into AI-first programming"}]'
 ---
 
 # Building Modern Web Apps with AI
 
-![AI Coding Interface]({{images.hero}})
+![AI Coding Interface](/ai-coding.jpg)
 
 The landscape of web development is changing rapidly. AI-powered tools are transforming how we build, test, and deploy applications.
 
 ## The New Workflow
 
-![AI Development Workflow]({{images.workflow}})
+![AI Development Workflow](/ai-workflow.png)
 
 With AI-powered tools, developers can:
 
@@ -353,13 +312,12 @@ seoDescription: "My three-year journey leading the team that built Company's cor
 url: "/experience/company"
 backButton: '{"to": "/", "label": "Back to Portfolio"}'
 footer: '{"backTo": "/", "backLabel": "Back to Portfolio"}'
-images: '{"platform": "/src/assets/images/platform.jpg", "architecture": "/src/assets/images/arch.png"}'
 relatedArticles: '[{"slug": "technical-deep-dive", "title": "Technical Deep Dive", "description": "Architecture and implementation details", "icon": "FileText"}, {"slug": "lessons-learned", "title": "Lessons Learned", "description": "Key takeaways from the journey", "icon": "Building"}]'
 ---
 
 ## The Challenge
 
-![Platform Overview]({{images.platform}})
+![Platform Overview](/platform.jpg)
 
 When I joined Company in 2020, they had proven market fit but the platform couldn't scale...
 
@@ -369,7 +327,7 @@ I led the team responsible for rebuilding the core platform from the ground up.
 
 ## The Solution
 
-![System Architecture]({{images.architecture}})
+![System Architecture](/architecture.png)
 
 We designed a microservices architecture that could handle 100x the load...
 
@@ -396,18 +354,17 @@ seoTitle: "Technical Deep Dive - Company Platform Architecture"
 seoDescription: "Detailed technical analysis of the architecture, technology choices, and implementation patterns."
 url: "/experience/company/technical-deep-dive"
 backButton: '{"to": "/experience/company", "label": "Back to Main Article"}'
-images: '{"microservices": "/src/assets/images/microservices.png", "database": "/src/assets/images/db-schema.png"}'
 ---
 
 ## Architecture Overview
 
-![Microservices Architecture]({{images.microservices}})
+![Microservices Architecture](/microservices.png)
 
 The system consists of 12 microservices...
 
 ## Database Design
 
-![Database Schema]({{images.database}})
+![Database Schema](/database-schema.png)
 
 We used PostgreSQL with...
 ```
@@ -417,11 +374,6 @@ We used PostgreSQL with...
 ## JSON Formatting Guide
 
 Frontmatter uses YAML-like syntax, but complex objects must be valid JSON strings.
-
-### Images
-```markdown
-images: '{"key1": "/path/to/image1.jpg", "key2": "/path/to/image2.png"}'
-```
 
 **Rules:**
 - Wrap entire JSON in single quotes
@@ -458,10 +410,9 @@ footer: '{"backTo": "/destination", "backLabel": "Footer Link Text"}'
 
 ### Images
 
-1. **Use relative paths** from project root: `/src/assets/images/...`
+1. **Use direct paths** in markdown (e.g., `/image.jpg`)
 2. **Optimize images** before adding (compress, resize appropriately)
 3. **Always include alt text** for accessibility
-4. **Use descriptive names** in the `images` object for clarity
 
 ### SEO
 
@@ -550,15 +501,13 @@ images: '{"hero": '/path.jpg'}'
 images: '{"hero": "/path.jpg"}'
 ```
 
-### Image Placeholders Not Working
+### Images Not Loading
 
-**Problem:** `{{images.hero}}` shows literally
-**Solution:** Ensure `images` field is valid JSON and key matches
+**Problem:** Images don't appear in content
+**Solution:** Verify image path is correct and accessible
 
 ```markdown
-images: '{"hero": "/path.jpg"}'
-
-![Alt text]({{images.hero}})
+![Alt text](/path/to/image.jpg)
 ```
 
 ### Build Errors
@@ -602,12 +551,11 @@ readTime: "5 min read"
 seoTitle: "My Article"
 seoDescription: "Description"
 url: "/experience/my-article"
-images: '{"main": "/path.jpg"}'
 ---
 
 # My Article
 
-![Alt]({{images.main}})
+![Alt](/path.jpg)
 
 Content here...
 ```

@@ -26,11 +26,10 @@ Your content here...
 title: "Post with Images"
 excerpt: "..."
 category: "..."
-images: '{"photo1": "/src/assets/images/photo.jpg", "chart": "/src/assets/images/chart.png"}'
 ---
 
-![My Photo]({{images.photo1}})
-![Data Chart]({{images.chart}})
+![My Photo](/path/to/photo.jpg)
+![Data Chart](/path/to/chart.png)
 ```
 
 ### With Related Posts
@@ -106,7 +105,6 @@ Details here...
 | author | No | string | "Your Name" |
 | tags | No | string (comma-sep) | "js, react, ai" |
 | image | No | string | "/path/to/og-image.jpg" |
-| images | No | JSON string | '{"key": "/path.jpg"}' |
 | relatedPosts | No | JSON array | '[{"slug": "...", "title": "...", "excerpt": "..."}]' |
 | seoTitle | No | string | "SEO Title" |
 | seoDescription | No | string | "SEO Description" |
@@ -126,15 +124,9 @@ Details here...
 | url | Yes | string | "/experience/..." |
 | backButton | No | JSON object | '{"to": "/", "label": "Back"}' |
 | footer | No | JSON object | '{"backTo": "/", "backLabel": "..."}' |
-| images | No | JSON object | '{"key": "/path.jpg"}' |
 | relatedArticles | No | JSON array | '[{"slug": "...", "title": "...", "description": "...", "icon": "FileText"}]' |
 
 ## JSON Format Guide
-
-### Images
-```markdown
-images: '{"photo": "/src/assets/images/photo.jpg", "diagram": "/path/to/diagram.png"}'
-```
 
 ### Related Posts (Blog)
 ```markdown
@@ -158,7 +150,7 @@ footer: '{"backTo": "/destination", "backLabel": "Footer Label"}'
 
 1. **JSON Strings**: Wrap JSON in single quotes in frontmatter
 2. **Escape Quotes**: Use double quotes inside JSON
-3. **Image Paths**: Use `/src/assets/...` for local images
+3. **Image Paths**: Use direct paths in markdown (e.g., `/image.jpg`)
 4. **Slugs**: Auto-generated from filename (no need to specify)
 5. **Ordering**: Use `order` field in blog posts for custom sorting
 6. **Icons**: Must match Lucide icon names exactly
@@ -183,14 +175,9 @@ Visit:
 
 ## Common Patterns
 
-### Hero Image
+### Images
 ```markdown
-![Hero image description]({{images.hero}})
-```
-
-### Image with Caption
-```markdown
-![Detailed caption that appears below image]({{images.screenshot}})
+![Image description](/path/to/image.jpg)
 ```
 
 ### Internal Link
