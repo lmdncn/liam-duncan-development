@@ -16,6 +16,30 @@ import { trackEvent } from "@/utils/analytics";
 
 const projects: Project[] = [
   {
+    title: "TripTribe",
+    year: "2025",
+    event: "Personal Project",
+    awards: [],
+    description:
+      "Architected and built a full-stack social travel platform using a microservices architecture, event-driven design, and domain-driven principles.",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Node.js",
+      "PostgreSQL",
+      "MongoDB",
+      "Prisma ORM",
+      "Redis PubSub",
+      "OpenAI API",
+      "Git worktree",
+    ],
+    highlights: [
+      "Improved development velocity and practices by leveraging AI coding tools, running multiple parallel agents on separate worktrees to supercharge iteration and delivery.",
+      "Integrated with AI to extract structured travel data and engineered a matching microservice that delivered real-time suggestions, connecting travellers with similar plans.",
+    ],
+  },
+  {
     title: "LifeLine",
     year: "2017",
     event: "Delta Hacks 3",
