@@ -10,10 +10,9 @@ seoDescription: "My three year journey leading the team that built Moves Financi
 url: "/experience/moves"
 backButton: '{"to": "/", "label": "Back to Portfolio"}'
 footer: '{"backTo": "/", "backLabel": "Back to Portfolio"}'
-relatedArticles: '[{"slug": "onboarding", "title": "The Onboarding Gauntlet", "description": "Overcoming identity verification, compliance hurdles, and system integration challenges", "icon": "FileText"}, {"slug": "primary-bank", "title": "Beyond the Advance", "description": "How we transformed transaction behavior and became their financial home base", "icon": "Building"}, {"slug": "cash-advances", "title": "The Anti-Payday Loan", "description": "How we built systems that understand gig income and eliminate predatory lending", "icon": "CreditCard"}]'
 ---
 
-## A Better Option Than Payday Loans
+### A Better Option Than Payday Loans
 
 When a gig worker's car broke down, their only option was often a payday loan. That meant sky-high interest, rigid repayment terms, and a cycle of debt that punished the very people keeping the modern economy moving.
 
@@ -25,129 +24,144 @@ Moves set out to build financial services around how gig workers actually earn a
 
 But for cash advances to work long-term, they couldn't just be a transaction. They had to be the beginning of an ongoing financial relationship, one built on trust, visibility, and fairness.
 
-![Platform designed for gig workers' unique income patterns](/what-is-moves-financial.jpg)
+![Platform designed for gig workers' unique income patterns (2022)](/what-is-moves-financial.jpg)
 
-## Where Things Stood When I Joined
+### Where Things Stood When I Joined
 
-By the time I arrived in late 2021, Moves had already proven there was demand. The first product let customers request advances through simple forms, with underwriting done manually by scraping gig data. Disbursements went straight to external bank accounts, and repayments were tracked in spreadsheets until those collapsed under the weight of transactions. The company eventually migrated to LoanPro, but servicing was still clunky and defaults were high.
+By the time I arrived in late 2021, Moves had already proven there was demand. The first product let customers request advances through simple forms, with underwriting done more manually by reviewing gig work data. Disbursements went straight to external bank accounts, and repayments were tracked in spreadsheets. The company eventually built a mobile app and migrated to a lending platform: LoanPro, but servicing was still clunky and defaults were high.
 
 Customers often took the money and disappeared. Without an ecosystem to anchor them, retention was poor and margins unsustainable.
 
-That was when Moves made a critical decision: bring business cash advances (BCAs) in-house and stop relying on LoanPro. This pivot opened the door to integrate advances directly into a broader banking platform. It was also the moment I joined, just as the company was transforming from a scrappy loan provider into a full financial services platform.
+That was when Moves made a critical decision: bring business cash advances in-house and stop relying on LoanPro. This pivot opened the door to integrate advances directly into a broader banking platform. It was also the moment I joined, just as the company was transforming from a scrappy loan provider into a full financial services platform.
 
-## My Role and Growth
+### My Contributions
 
 I came on board as a Senior Software Engineer just as the Moves Spending Account was launching. Within a few months, I stepped into the role of Technical Lead and Manager of "The Bank Job", the team responsible for banking and financial services.
 
 For the next three years, I led the design and delivery of systems that powered Moves' pivot into a full-service banking platform. My team owned:
 
-- KYC and identity flows
-- Banking and payments
-- Gig deposits
-- Cash advance adjudication
-- Disbursement
-- Repayment and servicing
+- **KYC and Identity Flows**: Full onboarding and verification lifecycle, integrating Unit’s KYC API, handling document upload, resubmissions, and retry logic.
+- **Banking and Payments**: Creation and management of Moves Spending Accounts, transaction handling, card issuance, and transfers.
+- **Gig Deposits**: Linking gig platforms, classifying deposits, and routing funds into Moves accounts.
+- **Cash Advances**: Proprietary system for adjudication, disbursement, servicing, and repayment.
 
 It was the most formative chapter of my career. A mix of architecture, leadership, and product strategy tied directly to the financial lives of real people.
 
-## The Three Bets That Defined Moves
+## Three Bets That Defined Moves
 
-### 1. Onboarding and Time to Aha
+### 1. Onboarding: Single Session Aha
 
-Signing up originally took weeks. KYC could stall, gig accounts were hard to link, and customers often dropped off before seeing value.
+Originally, signing up took days. KYC could stall, gig accounts were tricky to link, and most people dropped off before ever feeling any value.
 
-We redefined the "aha moment" as the first gig deposit into a Moves account. Everything in onboarding was redesigned to drive toward that milestone:
+We realized time to “aha” was everything. The longer it took for someone to experience their first win, the less likely they were to come back. In fintech, trust doesn’t come from branding or copy. It comes from the first time money moves.
+
+For us, that “aha” moment was the first gig deposit into a Moves account. That’s when a member saw their income land instantly, labeled as gig earnings, reflected in their stats and tools, and tied directly to progress toward cash advance eligibility. It was the first real sign that Moves worked for them.
+
+We rebuilt onboarding to make that happen as fast as possible:
 
 - Automated KYC with Unit
 - Progress tracking in-app
-- Instant account creation with a virtual card
-- Gig account linking through Argyle
-- Gig deposits redirected to Moves
+- Instant spending account creation with a virtual card
+- Easy gig account linking through Argyle
+- One click gig deposit redirection to Moves
 
-The result: onboarding time shrank from a week or more to the same day, with many users hitting their "aha" moment the first time they opened the app.
+Onboarding time dropped from a week to the same day. Most members now hit their “aha” moment the first time they open the app.
 
-[Navigate the onboarding gauntlet →](/experience/moves/onboarding)
+![Streamlined onboarding from signup to first gig deposit (2022)](/why-choose-moves.jpg)
 
-![Streamlined onboarding flow from signup to first gig deposit](/why-choose-moves.jpg)
+### 2. Primary Banking: The Everyday Account
 
-### 2. Becoming the Primary Bank
+Early on, customers saw Moves as a place to grab an advance, not a daily bank. That mindset hurt retention, left gaps in their financial needs, and kept us from building the kind of relationship we wanted.
 
-Early on, customers treated Moves as a place to grab an advance, not a daily bank. To change that, we built features that turned Moves into their financial hub:
+To change that, we focused on building habits and reasons to use Moves every day. Data from customer usage guided our next steps. We saw what members actually did with their money and used that to build features that turned Moves into their financial home base:
 
+- Transfers in and out
+- Bill pay and peer-to-peer payments
+- Virtual and physical debit cards
+- Card management tools
+- Apple Pay and Google Pay support
 - Enriched and labeled transactions
-- Apple and Google Pay support
-- Bill pay and peer transfers
+- Spend categorization for taxes and insights
 - Real-time gig earnings insights
-- Push-to-debit transfers via Astra
+- Early deposit access
 
-Over time, Moves became the primary spending account for many workers. This anchored customers, improved retention, and gave us richer data for smarter decisions.
+Over time, Moves became the primary spending account for many gig workers. It anchored relationships, improved retention, and turned a transactional product into a trusted relationship.
 
-[See how we went beyond the advance →](/experience/moves/primary-bank)
+![Integrated platform combining banking, earnings tracking, and rewards (2023)](/gig-flow.jpg)
 
-![Integrated platform combining banking, earnings tracking, and rewards](/gig-flow.jpg)
+### 3. Cash Advances: Our Core Product
 
-### 3. Cash Advance Optimization
+Cash advances were our gateway product, but the early model wasn’t built to last. Defaults were high, margins were thin, and repayment was inconsistent. It worked for short-term growth, not long-term trust.
 
-Advances were the gateway product, but the early model was unsustainable. Defaults were high, margins were thin, and repayment was unreliable.
+We rebuilt the system from the ground up to make it sustainable for us and fair for members. It had to work with the reality of gig income, with irregular deposits, shifting schedules, and unpredictable earnings, so that repayments actually happened.
 
-We built a proprietary system for cash advances:
+Our proprietary cash advance platform handled every step:
 
-- Adjudication based on gig deposits and work history, not credit scores
+- Adjudication based on gig income and financial behavior
 - Disbursement directly into Moves Spending Accounts
-- Repayment engine with flexible strategies: deposit-based, scheduled, instant, collections
+- Flexible repayment engine with deposit-based, scheduled, instant, and collection strategies
+- End-to-end servicing for repayments, delinquency management, collections, and compliance
 
-This architecture allowed rapid iteration while maintaining consistency and compliance. By 2023, collection rates climbed from 73 percent to 91 percent, gross margins reached 50 percent, and cash advances became a sustainable product instead of a loss leader.
+Cash advances became something members could rely on, and something we could sustain. Repayments improved, margins grew, and trust finally worked both ways.
 
-[Discover the anti-payday loan solution →](/experience/moves/cash-advances)
+![Cash advance eligibility based on gig deposit history (2022)](/bca-flow.jpg)
 
-![Cash advance eligibility based on gig deposit history](/bca-flow.jpg)
+## Building the Engine Behind Moves
 
-## The Systems Behind It All
+At the front, a React Native mobile app delivered the full banking experience. Behind it, many event-driven backend services powered banking and cash advances, handling millions in daily transactions.
 
-Under the hood, we built an event-driven microservices architecture that powered millions of dollars in daily transactions:
+Our stack included:
 
-- Redis Streams for event processing
+- Redis Streams for event processing and pub/sub communication between services
 - MongoDB for operational data
+- CDC change stream listeners for real-time synchronization and state updates across services
+- Node.js and Express for RESTful APIs powering the backend
+- React Native for the cross-platform mobile app
 - gRPC for interservice communication
-- Kubernetes for deployment
+- Webhook integrations with third-party partners like Unit, Argyle, and Astra
+- Scheduled jobs and background processes for recurring tasks and system maintenance
+- Kubernetes for deployment and scalability
 
-Key patterns:
+And our core design patterns:
 
 - Domain-driven design for clear service boundaries
-- Saga pattern for multi-step workflows like disbursements
-- Idempotency keys to prevent duplicate transactions
-- Strategy and factory patterns for repayment flexibility
+- Saga pattern for multi-step workflows such as disbursements and repayments
+- Repository pattern for clean data access and separation of concerns
+- Adapter pattern for integrating external APIs and partners
+- Strategy and factory patterns for dynamic repayment logic
+- Circuit breaker pattern for handling partner API failures gracefully
+- Event sourcing and idempotency for reliable transaction recovery and audit trails
 
-This infrastructure kept eligibility and repayments updated in real time and gave customers full transparency into their cash advance progress.
+Together, these systems formed the backbone of Moves. They kept everything running in sync and gave every member a sense that their money was always moving exactly as it should.
 
-## The Impact
+## What We Achieved
 
-Moves was not just another fintech app. It gave gig workers:
+Moves proved that financial inclusion and sustainability could coexist. It gave gig workers real access to liquidity, a banking home that fit how they worked, and the insights to manage money on their terms. It also gave the company a foundation that could scale responsibly.
 
-- Access to liquidity when they needed it
-- A primary bank account that reflected their work patterns
-- Real-time insights into earnings and spending
-- An alternative to predatory lenders
+By Q4 2023, originations had tripled year over year, revenue from cash advances was up 900 percent, and the product had evolved from an experiment into a stable, profitable business. More importantly, it showed that fair design and strong systems could turn a simple advance into a lasting financial relationship.
 
-And it gave the company a path to sustainability. By Q4 2023, originations had tripled compared to the previous year, revenue from cash advances was up 900 percent, and the product had shifted from experimental to profitable.
+![Customer review highlighting transfers and primary banking (2023)](/moves-review-1.jpg)
 
-![Customer review highlighting free transfers and primary banking potential](/moves-review-1.jpg)
+### Lessons Learned
 
-## Lessons Learned
+- **Design for change.** Products evolve fast, and systems need to flex without constant rewrites.
+- **Events are powerful but delicate.** Processing is easy; reliability lives in recovery, replay, and ordering.
+- **Trust is a product feature.** Transparency in deposits, advances, and repayments built confidence and loyalty.
+- **People power the system.** Strong architecture mattered, but a strong team mattered more. Even under pressure, ours stayed collaborative and consistently rated 4.8 out of 5 in feedback.
 
-- **Flexibility first.** Products evolve quickly, so systems must adapt without being rewritten.
-- **Events are powerful but fragile.** Recovery and replay are just as important as pub and sub.
-- **Trust is a feature.** Clear visibility into deposits, advances, and repayments drove engagement.
-- **Leadership is about people.** Building resilient systems mattered, but building a resilient team mattered more. Our group consistently rated 4.8 out of 5 in feedback even under pressure.
-
-## Looking Back
+### Looking Back
 
 Moves ultimately did not survive as a company, but the experience changed me. I got to:
 
-- Lead a team through a company-defining pivot
-- Build financial systems that served people overlooked by banks
-- Learn how to balance technical depth with business impact
+- Lead a team through a company-defining pivot from cash advances to full-service banking
+- Design and scale financial systems that moved millions every day
+- Build products that served people overlooked by traditional banks
+- Balance technical depth with business impact, and learn when to make bets that pushed us forward
+- Navigate tradeoffs between moving fast in a startup environment and building systems built to last
+- Balance technical depth with business impact
+- Work across partnerships, compliance, and infrastructure in a complex fintech stack
+- Grow from writing code to building teams, systems, and culture
 
-I am proud of what we built and grateful for the lessons I carry forward.
+I’m proud of what we built and grateful for the lessons I carry forward. It reminded me that the best systems do not just move money, they move people.
 
-![App Store presence with strong user ratings](/moves-itunes.jpg)
+![App Store presence with screenshots (2023)](/moves-itunes.jpg)

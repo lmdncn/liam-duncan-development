@@ -1,0 +1,11 @@
+relatedArticles: '[{"slug": "onboarding", "title": "The Onboarding Gauntlet", "description": "Overcoming identity verification, compliance hurdles, and system integration challenges", "icon": "FileText"}, {"slug": "primary-bank", "title": "Beyond the Advance", "description": "How we transformed transaction behavior and became their financial home base", "icon": "Building"}, {"slug": "cash-advances", "title": "The Anti-Payday Loan", "description": "How we built systems that understand gig income and eliminate predatory lending", "icon": "CreditCard"}]'
+
+
+
+[Beyond the Advance: Becoming the Primary Bank for Gig Workers →](/experience/moves/primary-bank)
+
+
+[Moves Cash Advances: Building Cash Flow That Worked for Gig Workers →](/experience/moves/cash-advances)
+
+
+[Building Trust at First Touch: Inside Our Single-Session KYC Journey →](/experience/moves/onboarding)
