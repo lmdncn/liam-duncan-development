@@ -13,12 +13,14 @@ import { SEO_CONFIG, OG_IMAGES } from "../src/lib/constants";
 import { BLOG_PAGE_SEO } from "../src/lib/pageMeta";
 import { generateBlogPostSEO } from "../src/lib/seo";
 import type { BlogPost } from "../src/types/blog";
+import type { ExperienceArticle } from "../src/types/experience";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, "..");
 const distDir = path.join(projectRoot, "dist");
 const blogContentDir = path.join(projectRoot, "src", "content", "blog");
+const experienceContentDir = path.join(projectRoot, "src", "content", "experience");
 const templatePath = path.join(distDir, "index.html");
 
 if (!existsSync(distDir)) {
@@ -127,6 +129,53 @@ const parseBlogPosts = (): BlogPost[] => {
   });
 
   return posts;
+};
+
+const parseExperienceArticles = (): ExperienceArticle[] => {
+  if (!existsSync(experienceContentDir)) {
+    return [];
+  }
+
+  const articles: ExperienceArticle[] = [];
+
+  // Recursively find all .md files in the experience directory
+  const findMarkdownFiles = (dir: string, basePath: string = ""): void => {
+    const entries = readdirSync(dir, { withFileTypes: true });
+
+    for (const entry of entries) {
+      const fullPath = path.join(dir, entry.name);
+      const relativePath = path.join(basePath, entry.name);
+
+      if (entry.isDirectory()) {
+        findMarkdownFiles(fullPath, relativePath);
+      } else if (entry.isFile() && entry.name.endsWith(".md")) {
+        const raw = readFileSync(fullPath, "utf8");
+        const { data, content } = matter(raw);
+
+        // Generate slug based on file structure
+        let slug: string;
+        if (entry.name === "index.md") {
+          // For index.md files, use the parent directory name
+          slug = basePath;
+        } else {
+          // For other files, combine directory and filename (without .md)
+          const filename = entry.name.replace(/\.md$/, "");
+          slug = basePath ? `${basePath}/${filename}` : filename;
+        }
+
+        articles.push({
+          slug,
+          title: (data.seoTitle as string) || (data.title as string) || "Untitled",
+          description: (data.seoDescription as string) || (data.subtitle as string) || "",
+          url: (data.url as string) || `/experience/${slug}`,
+          content,
+        });
+      }
+    }
+  };
+
+  findMarkdownFiles(experienceContentDir);
+  return articles;
 };
 
 const buildHtml = (template: string, meta: RouteMeta): string => {
@@ -300,6 +349,18 @@ blogPosts.forEach((post) => {
     url: seo.url,
     type: seo.type,
     article: seo.article,
+  });
+});
+
+const experienceArticles = parseExperienceArticles();
+experienceArticles.forEach((article) => {
+  routes.push({
+    path: path.join("experience", article.slug),
+    title: article.title,
+    description: article.description,
+    image: OG_IMAGES.resume,
+    url: article.url,
+    type: "article",
   });
 });
 
