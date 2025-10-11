@@ -74,6 +74,11 @@ const ExperienceArticle = () => {
                   {children}
                 </h3>
               ),
+              h4: ({ children }) => (
+                <h4 className="text-xl font-semibold mt-8 mb-4 text-foreground leading-tight">
+                  {children}
+                </h4>
+              ),
               p: ({ children }) => (
                 <p className="mb-6 text-foreground leading-relaxed text-lg font-light">
                   {children}
