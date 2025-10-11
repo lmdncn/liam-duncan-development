@@ -1,13 +1,12 @@
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock } from "lucide-react";
 import { useParams, Link } from "react-router";
-import ReactMarkdown from "react-markdown";
 import { getBlogPostBySlug } from "@/lib/blog";
 import SEO from "@/components/SEO";
 import { generateBlogPostSEO } from "@/lib/seo";
-import { ArticleLayout } from "@/components/ui/article-layout";
+import { MarkdownArticle } from "@/components/ui/markdown-article";
+import { blogMarkdownComponents } from "@/lib/markdown-components";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardTitle } from "@/components/ui/card";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -53,19 +52,46 @@ const BlogPost = () => {
     </div>
   );
 
-  // Process content to replace image placeholders if images are defined
-  const processedContent = post.images
-    ? post.content.replace(
-        /\{\{images\.\w+\}\}/g,
-        (match) => {
-          const imageKey = match.replace(/\{\{images\.|\}\}/g, "");
-          return post.images?.[imageKey] || match;
-        }
-      )
-    : post.content;
+  // Content processor for image placeholders
+  const processContent = (content: string): string => {
+    if (!post.images) return content;
+
+    return content.replace(
+      /\{\{images\.\w+\}\}/g,
+      (match) => {
+        const imageKey = match.replace(/\{\{images\.|\}\}/g, "");
+        return post.images?.[imageKey] || match;
+      }
+    );
+  };
 
   return (
-    <>
+    <MarkdownArticle
+      title={post.title}
+      backButton={{
+        to: "/blog",
+        label: "Back to Blog"
+      }}
+      badge={{
+        text: post.category
+      }}
+      meta={metaContent}
+      footer={{
+        backTo: "/blog",
+        backLabel: "More Articles"
+      }}
+      content={post.content}
+      contentProcessor={processContent}
+      markdownComponents={blogMarkdownComponents}
+      relatedItems={post.relatedPosts}
+      relatedConfig={post.relatedPosts ? {
+        title: "Related Articles",
+        columns: 2,
+        basePath: "/blog",
+        showIcons: false,
+        fullWidthSection: false,
+      } : undefined}
+    >
       {seoData && (
         <SEO
           title={seoData.title}
@@ -76,155 +102,7 @@ const BlogPost = () => {
           article={seoData.article}
         />
       )}
-      <ArticleLayout
-        title={post.title}
-        backButton={{
-          to: "/blog",
-          label: "Back to Blog"
-        }}
-        badge={{
-          text: post.category
-        }}
-        meta={metaContent}
-        footer={{
-          backTo: "/blog",
-          backLabel: "More Articles"
-        }}
-      >
-              <ReactMarkdown
-                components={{
-                  h1: ({ node, ...props }) => (
-                    <h1
-                      className="text-4xl font-bold mt-12 mb-8 text-foreground leading-tight first:mt-0 border-b border-border/20 pb-4"
-                      {...props}
-                    />
-                  ),
-                  h2: ({ node, ...props }) => (
-                    <h2
-                      className="text-3xl font-bold mt-12 mb-6 text-foreground leading-tight"
-                      {...props}
-                    />
-                  ),
-                  h3: ({ node, ...props }) => (
-                    <h3
-                      className="text-2xl font-semibold mt-10 mb-5 text-foreground leading-tight"
-                      {...props}
-                    />
-                  ),
-                  p: ({ node, ...props }) => (
-                    <p
-                      className="mb-6 text-foreground leading-relaxed text-lg font-light"
-                      {...props}
-                    />
-                  ),
-                  ul: ({ node, ...props }) => (
-                    <ul className="mb-8 space-y-3 list-none" {...props} />
-                  ),
-                  ol: ({ node, ...props }) => (
-                    <ol
-                      className="mb-8 ml-6 space-y-3 list-decimal"
-                      {...props}
-                    />
-                  ),
-                  li: ({ node, ...props }) => (
-                    <li
-                      className="text-foreground leading-relaxed text-lg font-light relative pl-6 before:content-['—'] before:absolute before:left-0 before:text-primary before:font-normal"
-                      {...props}
-                    />
-                  ),
-                  strong: ({ node, ...props }) => (
-                    <strong className="font-bold text-foreground" {...props} />
-                  ),
-                  code: ({ node, ...props }) => (
-                    <code
-                      className="bg-secondary/60 text-secondary-foreground px-2 py-1 rounded text-base font-mono"
-                      {...props}
-                    />
-                  ),
-                  pre: ({ node, ...props }) => (
-                    <pre
-                      className="bg-secondary/30 p-6 rounded-lg overflow-x-auto mb-8 text-sm border-l-4 border-primary/30"
-                      {...props}
-                    />
-                  ),
-                  blockquote: ({ node, ...props }) => (
-                    <blockquote
-                      className="border-l-4 border-primary/30 pl-8 py-4 italic text-foreground/80 my-8 text-xl font-light"
-                      {...props}
-                    />
-                  ),
-                  img: ({ src, alt }) => {
-                    // Handle relative paths that need base URL prepended
-                    const imageSrc = src?.startsWith('/') && !src.startsWith(import.meta.env.BASE_URL)
-                      ? `${import.meta.env.BASE_URL}${src.substring(1)}`
-                      : src;
-
-                    return (
-                      <figure className="my-8">
-                        <img
-                          src={imageSrc}
-                          alt={alt || ""}
-                          className="w-full max-w-3xl mx-auto rounded-lg shadow-lg"
-                        />
-                        {alt && (
-                          <figcaption className="text-center text-sm text-muted-foreground mt-4">
-                            {alt}
-                          </figcaption>
-                        )}
-                      </figure>
-                    );
-                  },
-                  a: ({ href, children }) => {
-                    // Handle internal links
-                    if (href?.startsWith('/')) {
-                      return (
-                        <Link
-                          to={href}
-                          className="text-primary hover:text-primary/80 transition-colors underline decoration-1 underline-offset-2"
-                        >
-                          {children}
-                        </Link>
-                      );
-                    }
-                    // Handle external links
-                    return (
-                      <a
-                        href={href}
-                        className="text-primary hover:text-primary/80 transition-colors underline decoration-1 underline-offset-2"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {children}
-                      </a>
-                    );
-                  },
-                }}
-              >
-                {processedContent}
-              </ReactMarkdown>
-
-              {/* Related Posts Section - only show if relatedPosts exist */}
-              {post.relatedPosts && post.relatedPosts.length > 0 && (
-                <section className="mt-16 pt-8 border-t border-border/20">
-                  <h3 className="text-2xl font-semibold text-foreground mb-6">Related Articles</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {post.relatedPosts.map((relatedPost) => (
-                      <Link key={relatedPost.slug} to={`/blog/${relatedPost.slug}`}>
-                        <Card className="hover:shadow-md transition-shadow bg-background/50 border-border/50 h-full">
-                          <CardContent className="p-6">
-                            <CardTitle className="text-lg font-medium mb-2">{relatedPost.title}</CardTitle>
-                            <CardDescription className="text-sm leading-relaxed">
-                              {relatedPost.excerpt}
-                            </CardDescription>
-                          </CardContent>
-                        </Card>
-                      </Link>
-                    ))}
-                  </div>
-                </section>
-              )}
-      </ArticleLayout>
-    </>
+    </MarkdownArticle>
   );
 };
 
