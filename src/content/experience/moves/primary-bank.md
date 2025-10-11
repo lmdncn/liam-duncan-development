@@ -8,8 +8,8 @@ readTime: "10 min read"
 seoTitle: "Beyond the Advance: Building a Bank Gig Workers Actually Use - Liam Duncan"
 seoDescription: "How we transformed transaction behavior and became their financial home base with comprehensive banking features."
 url: "/experience/moves/primary-bank"
-backButton: '{"to": "/experience/moves", "label": "Back to My Memoir Of Moves"}'
-footer: '{"backTo": "/experience/moves", "backLabel": "Back to My Memoir Of Moves"}'
+backButton: '{"to": "/experience/moves", "label": "Back to My Memoir of Moves"}'
+footer: '{"backTo": "/experience/moves", "backLabel": "Back to My Memoir of Moves"}'
 ---
 
 ## Coming Soon

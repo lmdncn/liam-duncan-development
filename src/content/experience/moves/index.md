@@ -1,11 +1,11 @@
 ---
-title: "My Memoir Of Moves"
+title: "My Memoir of Moves"
 subtitle: "My three year journey leading the team that built Moves Financial's core banking platform and transformed cash advances for gig workers."
 type: "experience"
 category: "Financial Technology"
 date: "2021-2024"
 readTime: "12 min read"
-seoTitle: "My Memoir Of Moves - Liam Duncan"
+seoTitle: "My Memoir of Moves - Liam Duncan"
 seoDescription: "My three year journey leading the team that built Moves Financial's core banking platform and transformed cash advances for gig workers."
 url: "/experience/moves"
 backButton: '{"to": "/", "label": "Back to Portfolio"}'

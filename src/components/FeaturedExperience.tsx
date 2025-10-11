@@ -4,24 +4,26 @@ import { SectionHeader } from "@/components/ui/section-header";
 import { Container } from "@/components/ui/container";
 import { AnimatedCard } from "@/components/ui/animated-card";
 import { IconBadge } from "@/components/ui/icon-badge";
-import { Building2, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router";
 import type { LucideIcon } from "lucide-react";
+import { SITE_CONFIG } from "@/lib/constants";
 
 interface FeaturedItem {
   title: string;
   description: string;
   link?: string;
-  icon: LucideIcon;
+  icon?: LucideIcon;
+  iconImage?: string;
 }
 
 const featuredItems: FeaturedItem[] = [
   {
-    title: "My Memoir Of Moves",
+    title: "My Memoir of Moves",
     description:
-      "My three-year journey leading the team that built Moves Financial’s core banking platform and transformed cash advances for gig workers.",
+      "My three-year journey leading the team that built Moves Financial's core banking platform and transformed cash advances for gig workers.",
     link: "/experience/moves",
-    icon: Building2,
+    iconImage: "/moves/moves-app-icon.png",
   },
 ];
 
@@ -45,7 +47,17 @@ const FeaturedExperience = () => {
               >
                 <CardHeader>
                   <div className="flex items-center gap-4">
-                    <IconBadge icon={item.icon} variant="primary" size="md" />
+                    {item.iconImage ? (
+                      <div className="overflow-hidden rounded-lg">
+                        <img
+                          src={`${SITE_CONFIG.basePath}${item.iconImage}`}
+                          alt={`${item.title} icon`}
+                          className="h-12 w-12 object-cover"
+                        />
+                      </div>
+                    ) : item.icon ? (
+                      <IconBadge icon={item.icon} variant="primary" size="md" />
+                    ) : null}
                     <div className="flex-1">
                       <CardTitle className="text-2xl font-bold text-foreground">
                         {item.title}

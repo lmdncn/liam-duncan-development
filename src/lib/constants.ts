@@ -58,5 +58,5 @@ export const OG_IMAGES = {
 
 // Feature Flags
 export const FEATURE_FLAGS = {
-  showFeaturedSection: false,
+  showFeaturedSection: true,
 } as const;
