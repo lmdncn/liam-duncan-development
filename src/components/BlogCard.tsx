@@ -12,7 +12,7 @@ import type { BlogCardProps } from "@/types";
 
 const BlogCard = ({ post }: BlogCardProps) => {
   return (
-    <Card className="shadow-card bg-gradient-card border-border/50 animate-fade-in cursor-pointer transition-all duration-300 hover:shadow-hover hover:scale-[1.02]">
+    <Card className="shadow-card bg-gradient-card border-border/50 animate-fade-in transition-all duration-300 hover:shadow-hover hover:scale-[1.02] cursor-pointer">
       <Link to={`/blog/${post.slug}`}>
         <CardHeader>
           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">

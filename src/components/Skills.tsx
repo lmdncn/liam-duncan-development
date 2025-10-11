@@ -1,5 +1,8 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Section } from "@/components/ui/section";
+import { SectionHeader } from "@/components/ui/section-header";
+import { AnimatedCard } from "@/components/ui/animated-card";
 import { Code, Database, Cloud, Wrench, Laptop, Server } from "lucide-react";
 
 const skillCategories = [
@@ -84,20 +87,18 @@ const skillCategories = [
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-20 bg-background">
+    <Section id="skills">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-            Technical Skills
-          </h2>
-        </div>
+        <SectionHeader title="Technical Skills" />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {skillCategories.map((category, index) => (
-            <Card
+            <AnimatedCard
               key={index}
-              className="shadow-card bg-gradient-card border-border/50 animate-scale-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              index={index}
+              animationDelay={0.1}
+              enableHover={false}
+              variant="flat"
             >
               <CardHeader className="pb-4">
                 <div className="flex items-center gap-3">
@@ -122,11 +123,11 @@ const Skills = () => {
                   ))}
                 </div>
               </CardContent>
-            </Card>
+            </AnimatedCard>
           ))}
         </div>
       </div>
-    </section>
+    </Section>
   );
 };
 

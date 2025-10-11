@@ -7,7 +7,7 @@ const About = () => {
       <Container size="narrow">
         <div className="text-center">
           <p className="text-lg md:text-xl leading-relaxed text-foreground/90">
-            I am a Software Engineer with proven processes leveraging AI agents to
+            Software Engineer with proven processes leveraging AI agents to
             supercharge the development of scalable full-stack applications and
             microservices.
           </p>

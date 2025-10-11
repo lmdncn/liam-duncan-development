@@ -41,7 +41,7 @@ const TimelineItem = React.forwardRef<HTMLDivElement, TimelineItemProps>(
       <>
         <Card className={cn(
           "md:ml-16 shadow-card bg-gradient-card border-border/50",
-          link && "transition-all hover:shadow-lg hover:border-primary/30 cursor-pointer"
+          link && "transition-all duration-300 hover:shadow-hover hover:scale-[1.02] cursor-pointer"
         )}>
           <CardHeader>
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">

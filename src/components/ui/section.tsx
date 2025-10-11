@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 interface SectionProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
-  variant?: "default" | "alternate";
+  variant?: "default" | "alternate" | "featured";
   size?: "default" | "compact" | "spacious";
 }
 
@@ -17,6 +17,7 @@ const Section = React.forwardRef<HTMLElement, SectionProps>(
     const variantClasses = {
       default: "bg-background",
       alternate: "bg-secondary/30",
+      featured: "bg-primary/5",
     };
 
     const sizeClasses = {

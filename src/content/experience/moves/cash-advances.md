@@ -54,7 +54,7 @@ Each service emitted and subscribed to events using a shared event library that 
 
 The lifecycle of a cash advance was asynchronous and event-driven. Stages emitted domain events that triggered downstream processes across services. The system relied on message queues, change data capture (CDC) streams, and sagas to process operations efficiently, maintain extensibility, and ensure high availability through eventual consistency.
 
-![Early Stage Designs of the Cash Advance Service](/bca-service-diagram.jpeg)
+![Early Stage Designs of the Cash Advance Service](/moves/bca-service-diagram.jpeg)
 
 ---
 

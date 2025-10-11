@@ -1,34 +1,32 @@
 import {
-  Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Section } from "@/components/ui/section";
+import { SectionHeader } from "@/components/ui/section-header";
+import { Container } from "@/components/ui/container";
+import { AnimatedCard } from "@/components/ui/animated-card";
+import { IconBadge } from "@/components/ui/icon-badge";
 import { GraduationCap, Award, Calendar } from "lucide-react";
 
 const Education = () => {
   return (
-    <section id="education" className="py-20 bg-secondary/30">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-            Education
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Strong foundation in software engineering and computer science
-          </p>
-        </div>
+    <Section id="education" variant="alternate">
+      <Container>
+        <SectionHeader
+          title="Education"
+          subtitle="Strong foundation in software engineering and computer science"
+        />
 
         <div className="max-w-3xl mx-auto">
-          <Card className="shadow-card bg-gradient-card border-border/50 animate-fade-in">
+          <AnimatedCard index={0} enableHover={false}>
             <CardHeader>
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-primary/10 rounded-full">
-                    <GraduationCap className="h-8 w-8 text-primary" />
-                  </div>
+                  <IconBadge icon={GraduationCap} variant="rounded" size="lg" />
                   <div>
                     <CardTitle className="text-2xl font-bold text-foreground">
                       Western University
@@ -59,10 +57,10 @@ const Education = () => {
                 learning.
               </p>
             </CardContent>
-          </Card>
+          </AnimatedCard>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 };
 

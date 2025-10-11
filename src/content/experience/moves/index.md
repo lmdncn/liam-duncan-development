@@ -25,7 +25,7 @@ Moves set out to build financial services around how gig workers actually earn a
 
 But for cash advances to work long-term, they couldn't just be a transaction. They had to be the beginning of an ongoing financial relationship, one built on trust, visibility, and fairness.
 
-![Platform designed for gig workers' unique income patterns (2022)](/what-is-moves-financial.jpg)
+![Platform designed for gig workers' unique income patterns (2022)](/moves/what-is-moves-financial.jpg)
 
 ### Where Things Stood When I Joined
 
@@ -68,7 +68,7 @@ We rebuilt onboarding to make that happen as fast as possible:
 
 Onboarding time dropped from a week to the same day. Most members now hit their “aha” moment the first time they open the app.
 
-![Streamlined onboarding from signup to first gig deposit (2022)](/why-choose-moves.jpg)
+![Streamlined onboarding from signup to first gig deposit (2022)](/moves/why-choose-moves.jpg)
 
 ### 2. Primary Banking: The Everyday Account
 
@@ -88,7 +88,7 @@ To change that, we focused on building habits and reasons to use Moves every day
 
 Over time, Moves became the primary spending account for many gig workers. It anchored relationships, improved retention, and turned a transactional product into a trusted relationship.
 
-![Integrated platform combining banking, earnings tracking, and rewards (2023)](/gig-flow.jpg)
+![Integrated platform combining banking, earnings tracking, and rewards (2023)](/moves/gig-flow.jpg)
 
 ### 3. Cash Advances: Our Core Product
 
@@ -107,7 +107,7 @@ Cash advances became something members could rely on, and something we could sus
 
 [Moves Cash Advances: Building Cash Flow That Worked for Gig Workers →](/experience/moves/cash-advances)
 
-![Cash advance eligibility based on gig deposit history (2022)](/bca-flow.jpg)
+![Cash advance eligibility based on gig deposit history (2022)](/moves/bca-flow.jpg)
 
 ## Building the Engine Behind Moves
 
@@ -143,7 +143,7 @@ Moves proved that financial inclusion and sustainability could coexist. It gave 
 
 By Q4 2023, originations had tripled year over year, revenue from cash advances was up 900 percent, and the product had evolved from an experiment into a stable, profitable business. More importantly, it showed that fair design and strong systems could turn a simple advance into a lasting financial relationship.
 
-![Customer review highlighting transfers and primary banking (2023)](/moves-review-1.jpg)
+![Customer review highlighting transfers and primary banking (2023)](/moves/moves-review-1.jpg)
 
 ### Lessons Learned
 
@@ -167,4 +167,4 @@ Moves ultimately did not survive as a company, but the experience changed me. I 
 
 I’m proud of what we built and grateful for the lessons I carry forward. It reminded me that the best systems do not just move money, they move people.
 
-![App Store presence with screenshots (2023)](/moves-itunes.jpg)
+![App Store presence with screenshots (2023)](/moves/moves-itunes.jpg)

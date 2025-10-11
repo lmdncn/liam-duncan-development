@@ -8,7 +8,7 @@ import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 import SEO from "@/components/SEO";
-import { SEO_CONFIG, OG_IMAGES } from "@/lib/constants";
+import { SEO_CONFIG, OG_IMAGES, FEATURE_FLAGS } from "@/lib/constants";
 
 const Index = () => {
   return (
@@ -25,7 +25,7 @@ const Index = () => {
           <Hero />
         </div>
         <About />
-        <FeaturedExperience />
+        {FEATURE_FLAGS.showFeaturedSection && <FeaturedExperience />}
         <Experience />
         <Projects />
         <Education />

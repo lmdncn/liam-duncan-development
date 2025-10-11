@@ -55,3 +55,8 @@ export const OG_IMAGES = {
   resume: "/resume-screenshot.png",
   blog: "/blog-screenshot.png",
 } as const;
+
+// Feature Flags
+export const FEATURE_FLAGS = {
+  showFeaturedSection: false,
+} as const;
