@@ -8,8 +8,7 @@ import { ActionButtonGroup, type ActionButton } from "@/components/ui/action-but
 // Rotating text options
 const ROTATING_ROLES = [
   "Engineer",
-  "Builder",
-  "AI Explorer",
+  "AI Builder",
   "Problem Solver",
   "System Architect",
 ];
