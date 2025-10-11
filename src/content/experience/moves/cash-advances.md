@@ -1,15 +1,15 @@
 ---
 title: "Moves Cash Advances: Engineering Liquidity for the Gig Economy"
-subtitle: "A deep technical dive into designing a resilient, event-driven credit system for irregular income."
+subtitle: "A technical deep dive into the design of a resilient, event-driven credit system for irregular income."
 type: "experience"
 category: "Engineering"
 date: "2024"
 readTime: "10 min read"
 seoTitle: "Moves Cash Advances - Technical Deep Dive"
-seoDescription: "How we built a distributed, event-driven cash advance system for gig workers with irregular income at Moves Financial."
+seoDescription: "The design of a distributed, event-driven cash advance system for gig workers with irregular income at Moves Financial."
 url: "/experience/moves/cash-advances"
-backButton: '{"to": "/experience/moves", "label": "Back to Moves Memoir"}'
-footer: '{"backTo": "/experience/moves", "backLabel": "Back to Moves Memoir"}'
+backButton: '{"to": "/experience/moves", "label": "Back to My Moves of Memoir"}'
+footer: '{"backTo": "/experience/moves", "backLabel": "Back to My Moves of Memoir"}'
 ---
 
 When I joined Moves, cash advances were managed through LoanPro. The system handled traditional lending workflows, but it was built around fixed weekly payments that didn't align with how gig workers earned.
@@ -52,9 +52,9 @@ Each service emitted and subscribed to events using a shared event library that 
 
 ## Event Flow: The Lifecycle of a Cash Advance
 
-The lifecycle of a cash advance was asynchronous and fully event-driven. Stages emitted domain events that triggered downstream processes across services. The system relied on message queues, change data capture (CDC) streams, and sagas to process operations efficiently, maintain extensibility, and ensure high availability through eventual consistency.
+The lifecycle of a cash advance was asynchronous and event-driven. Stages emitted domain events that triggered downstream processes across services. The system relied on message queues, change data capture (CDC) streams, and sagas to process operations efficiently, maintain extensibility, and ensure high availability through eventual consistency.
 
-![Rough Design of the Cash Advance Service](/bca-service-diagram.jpeg)
+![Early Stage Designs of the Cash Advance Service](/bca-service-diagram.jpeg)
 
 ---
 
@@ -158,8 +158,8 @@ When a cash advance was marked as settled, a MongoDB CDC event triggered the Cas
 
 Downstream consumers responded accordingly:
 
-- **Adjudication Service** recalculated eligibility for future cash advances.
-- **Origination Service** marked the member eligible for their next cash advance request.
+- Adjudication Service recalculated eligibility for future cash advances.
+- Origination Service marked the member eligible for their next cash advance request.
 
 ---
 

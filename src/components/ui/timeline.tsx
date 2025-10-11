@@ -9,6 +9,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Calendar, MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router";
 
 interface TimelineItemProps {
   title: string;
@@ -18,37 +19,30 @@ interface TimelineItemProps {
   prevPosition?: string | string[];
   description: string[];
   skills: string[];
+  link?: string;
   index: number;
   isLast: boolean;
 }
 
 const TimelineItem = React.forwardRef<HTMLDivElement, TimelineItemProps>(
-  ({ 
-    title, 
-    position, 
-    duration, 
-    location, 
-    prevPosition, 
-    description, 
-    skills, 
-    index, 
-    isLast 
+  ({
+    title,
+    position,
+    duration,
+    location,
+    prevPosition,
+    description,
+    skills,
+    link,
+    index,
+    isLast
   }, ref) => {
-    return (
-      <div
-        ref={ref}
-        className="relative mb-12 animate-fade-in"
-        style={{ animationDelay: `${index * 0.1}s` }}
-      >
-        {/* Timeline line */}
-        {!isLast && (
-          <div className="absolute left-6 top-16 w-0.5 h-full bg-border hidden md:block"></div>
-        )}
-
-        {/* Timeline dot */}
-        <div className="absolute left-4 top-8 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-card hidden md:block"></div>
-
-        <Card className="md:ml-16 shadow-card bg-gradient-card border-border/50">
+    const cardContent = (
+      <>
+        <Card className={cn(
+          "md:ml-16 shadow-card bg-gradient-card border-border/50",
+          link && "transition-all hover:shadow-lg hover:border-primary/30 cursor-pointer"
+        )}>
           <CardHeader>
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
@@ -116,6 +110,30 @@ const TimelineItem = React.forwardRef<HTMLDivElement, TimelineItemProps>(
             )}
           </CardContent>
         </Card>
+      </>
+    );
+
+    return (
+      <div
+        ref={ref}
+        className="relative mb-12 animate-fade-in"
+        style={{ animationDelay: `${index * 0.1}s` }}
+      >
+        {/* Timeline line */}
+        {!isLast && (
+          <div className="absolute left-6 top-16 w-0.5 h-full bg-border hidden md:block"></div>
+        )}
+
+        {/* Timeline dot */}
+        <div className="absolute left-4 top-8 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-card hidden md:block"></div>
+
+        {link ? (
+          <Link to={link} className="block">
+            {cardContent}
+          </Link>
+        ) : (
+          cardContent
+        )}
       </div>
     );
   },
@@ -132,6 +150,7 @@ interface TimelineProps {
     prevPosition?: string | string[];
     description: string[];
     skills: string[];
+    link?: string;
   }>;
   className?: string;
 }
@@ -150,6 +169,7 @@ const Timeline = React.forwardRef<HTMLDivElement, TimelineProps>(
             prevPosition={item.prevPosition}
             description={item.description}
             skills={item.skills}
+            link={item.link}
             index={index}
             isLast={index === items.length - 1}
           />

@@ -10,6 +10,7 @@ seoDescription: "My three year journey leading the team that built Moves Financi
 url: "/experience/moves"
 backButton: '{"to": "/", "label": "Back to Portfolio"}'
 footer: '{"backTo": "/", "backLabel": "Back to Portfolio"}'
+relatedArticles: '[{"slug": "cash-advances", "title": "Moves Cash Advances: Building Cash Flow That Worked for Gig Workers", "description": "A technical deep dive into the design of a resilient, event-driven credit system for irregular income.", "icon": "CreditCard"}]'
 ---
 
 ### A Better Option Than Payday Loans
@@ -103,6 +104,8 @@ Our proprietary cash advance platform handled every step:
 - End-to-end servicing for repayments, delinquency management, collections, and compliance
 
 Cash advances became something members could rely on, and something we could sustain. Repayments improved, margins grew, and trust finally worked both ways.
+
+[Moves Cash Advances: Building Cash Flow That Worked for Gig Workers →](/experience/moves/cash-advances)
 
 ![Cash advance eligibility based on gig deposit history (2022)](/bca-flow.jpg)
 

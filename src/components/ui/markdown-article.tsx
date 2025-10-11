@@ -68,10 +68,21 @@ const MarkdownArticle = React.forwardRef<HTMLDivElement, MarkdownArticleProps>(
     // Process content if processor is provided
     const processedContent = contentProcessor ? contentProcessor(content) : content;
 
-    // Determine grid columns class
+    // Determine grid columns class based on item count and configuration
     const getGridColsClass = () => {
+      const itemCount = relatedItems?.length || 0;
       if (!relatedConfig?.columns) return "md:grid-cols-2";
-      return relatedConfig.columns === 3 ? "md:grid-cols-3" : "md:grid-cols-2";
+
+      // For 3 column layout
+      if (relatedConfig.columns === 3) {
+        if (itemCount === 1) return "md:grid-cols-1 max-w-md mx-auto";
+        if (itemCount === 2) return "md:grid-cols-2 max-w-3xl mx-auto";
+        return "md:grid-cols-3";
+      }
+
+      // For 2 column layout
+      if (itemCount === 1) return "md:grid-cols-1 max-w-md mx-auto";
+      return "md:grid-cols-2";
     };
 
     return (
@@ -120,25 +131,16 @@ const MarkdownArticle = React.forwardRef<HTMLDivElement, MarkdownArticleProps>(
 
                   <div className={`grid grid-cols-1 ${getGridColsClass()} gap-6`}>
                     {relatedItems.map((item) => {
-                      const IconComponent = relatedConfig.showIcons && item.icon && relatedConfig.iconMap
-                        ? relatedConfig.iconMap[item.icon]
-                        : null;
-
                       const itemDescription = item.description || item.excerpt;
 
                       return (
                         <a
                           key={item.slug}
-                          href={`${relatedConfig.basePath}/${item.slug}`}
+                          href={`${import.meta.env.BASE_URL}${relatedConfig.basePath}/${item.slug}`.replace(/\/+/g, '/')}
                           className="block"
                         >
                           <div className="hover:shadow-md transition-shadow bg-background/50 border border-border/50 rounded-lg p-6 h-full">
-                            <div className={IconComponent ? "flex items-center gap-3 mb-3" : "mb-2"}>
-                              {IconComponent && (
-                                <IconComponent className="h-4 w-4 text-muted-foreground" />
-                              )}
-                              <h4 className="text-lg font-medium">{item.title}</h4>
-                            </div>
+                            <h4 className="text-lg font-medium mb-3 leading-snug">{item.title}</h4>
                             {itemDescription && (
                               <p className="text-sm leading-relaxed text-muted-foreground">
                                 {itemDescription}

@@ -54,6 +54,7 @@ const experiences = [
       "Redis Streams",
       "Event Driven Architecture",
     ],
+    link: "/experience/moves",
   },
   {
     company: "Konrad",
