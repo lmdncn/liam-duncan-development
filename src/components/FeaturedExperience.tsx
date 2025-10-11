@@ -33,7 +33,7 @@ const FeaturedExperience = () => {
       <Container>
         <SectionHeader
           title="Featured"
-          subtitle="Highlighted projects and roles that showcase technical leadership and innovative solutions"
+          subtitle="In-depth stories exploring the journey, decisions, and impact behind key projects"
         />
 
         <div className="max-w-3xl mx-auto">
