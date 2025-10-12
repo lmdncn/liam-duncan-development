@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Calendar, MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router";
+import { SITE_CONFIG } from "@/lib/constants";
 
 interface TimelineItemProps {
   title: string;
@@ -20,6 +21,7 @@ interface TimelineItemProps {
   description: string[];
   skills: string[];
   link?: string;
+  iconImage?: string;
   index: number;
   isLast: boolean;
 }
@@ -34,6 +36,7 @@ const TimelineItem = React.forwardRef<HTMLDivElement, TimelineItemProps>(
     description,
     skills,
     link,
+    iconImage,
     index,
     isLast
   }, ref) => {
@@ -45,31 +48,42 @@ const TimelineItem = React.forwardRef<HTMLDivElement, TimelineItemProps>(
         )}>
           <CardHeader>
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div>
-                <CardTitle className="text-2xl font-bold text-foreground">
-                  {title}
-                </CardTitle>
-                <CardDescription className="text-lg font-medium text-primary mt-1">
-                  {position}
-                </CardDescription>
-                {prevPosition && (
-                  <div className="space-y-1">
-                    {Array.isArray(prevPosition) ? (
-                      prevPosition.map((pos, index) => (
-                        <CardDescription
-                          key={index}
-                          className="text-sm text-muted-foreground"
-                        >
-                          Previously: {pos}
-                        </CardDescription>
-                      ))
-                    ) : (
-                      <CardDescription className="text-sm text-muted-foreground">
-                        Previously: {prevPosition}
-                      </CardDescription>
-                    )}
+              <div className="flex items-center gap-4">
+                {iconImage && (
+                  <div className="overflow-hidden rounded-lg flex-shrink-0 border border-border/50">
+                    <img
+                      src={`${SITE_CONFIG.basePath}${iconImage}`}
+                      alt={`${title} icon`}
+                      className="h-12 w-12 object-cover"
+                    />
                   </div>
                 )}
+                <div>
+                  <CardTitle className="text-2xl font-bold text-foreground">
+                    {title}
+                  </CardTitle>
+                  <CardDescription className="text-lg font-medium text-primary mt-1">
+                    {position}
+                  </CardDescription>
+                  {prevPosition && (
+                    <div className="space-y-1">
+                      {Array.isArray(prevPosition) ? (
+                        prevPosition.map((pos, index) => (
+                          <CardDescription
+                            key={index}
+                            className="text-sm text-muted-foreground"
+                          >
+                            Previously: {pos}
+                          </CardDescription>
+                        ))
+                      ) : (
+                        <CardDescription className="text-sm text-muted-foreground">
+                          Previously: {prevPosition}
+                        </CardDescription>
+                      )}
+                    </div>
+                  )}
+                </div>
               </div>
               <div className="flex flex-col sm:items-end gap-2">
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -151,6 +165,7 @@ interface TimelineProps {
     description: string[];
     skills: string[];
     link?: string;
+    iconImage?: string;
   }>;
   className?: string;
 }
@@ -170,6 +185,7 @@ const Timeline = React.forwardRef<HTMLDivElement, TimelineProps>(
             description={item.description}
             skills={item.skills}
             link={item.link}
+            iconImage={item.iconImage}
             index={index}
             isLast={index === items.length - 1}
           />

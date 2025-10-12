@@ -22,6 +22,7 @@ const experiences = [
       "Snowflake",
       "Anthropic API",
     ],
+    iconImage: "/float-app-icon.png",
   },
   {
     company: "Career Break",
@@ -55,6 +56,7 @@ const experiences = [
       "Event Driven Architecture",
     ],
     link: "/experience/moves",
+    iconImage: "/moves/moves-app-icon.png",
   },
   {
     company: "Konrad",
@@ -94,6 +96,7 @@ const experiences = [
       "Openshift",
       "Docker",
     ],
+    iconImage: "/konrad-app-icon.png",
   },
   {
     company: "BrainStation",
@@ -119,6 +122,7 @@ const experiences = [
       "Google APIs",
       "AWS",
     ],
+    iconImage: "/brainstation-app-icon.png",
   },
 ];
 
