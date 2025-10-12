@@ -9,8 +9,8 @@ import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
 import { Container } from "@/components/ui/container";
 import { AnimatedCard } from "@/components/ui/animated-card";
-import { IconBadge } from "@/components/ui/icon-badge";
-import { GraduationCap, Award, Calendar } from "lucide-react";
+import { Award, Calendar } from "lucide-react";
+import { SITE_CONFIG } from "@/lib/constants";
 
 const Education = () => {
   return (
@@ -25,8 +25,14 @@ const Education = () => {
           <AnimatedCard index={0} enableHover={false}>
             <CardHeader>
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <div className="flex items-start gap-4">
-                  <IconBadge icon={GraduationCap} variant="rounded" size="lg" />
+                <div className="flex items-center gap-4">
+                  <div className="overflow-hidden rounded-lg flex-shrink-0 border border-border/50">
+                    <img
+                      src={`${SITE_CONFIG.basePath}/western-app-icon.png`}
+                      alt="Western University icon"
+                      className="h-12 w-12 object-cover"
+                    />
+                  </div>
                   <div>
                     <CardTitle className="text-2xl font-bold text-foreground">
                       Western University

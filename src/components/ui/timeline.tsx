@@ -11,6 +11,7 @@ import { Calendar, MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router";
 import { SITE_CONFIG } from "@/lib/constants";
+import { trackEvent } from "@/utils/analytics";
 
 interface TimelineItemProps {
   title: string;
@@ -142,9 +143,21 @@ const TimelineItem = React.forwardRef<HTMLDivElement, TimelineItemProps>(
         <div className="absolute left-4 top-8 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-card hidden md:block"></div>
 
         {link ? (
-          <Link to={link} className="block">
-            {cardContent}
-          </Link>
+          link.startsWith('http') ? (
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+              onClick={() => trackEvent('external_link', 'experience', title)}
+            >
+              {cardContent}
+            </a>
+          ) : (
+            <Link to={link} className="block">
+              {cardContent}
+            </Link>
+          )
         ) : (
           cardContent
         )}

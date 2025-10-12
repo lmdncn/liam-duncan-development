@@ -5,7 +5,7 @@ import { Timeline } from "@/components/ui/timeline";
 
 const experiences = [
   {
-    company: "Float",
+    company: "Float Financial",
     position: "Software Developer",
     duration: "Feb 2025 – Jul 2025",
     location: "Remote (Canada)",
@@ -22,6 +22,7 @@ const experiences = [
       "Snowflake",
       "Anthropic API",
     ],
+    link: "https://floatfinancial.com/",
     iconImage: "/float-app-icon.png",
   },
   {
@@ -35,7 +36,7 @@ const experiences = [
     skills: [],
   },
   {
-    company: "Moves",
+    company: "Moves Financial",
     position: "Engineering Technical Lead & Manager",
     duration: "Jul 2021 – Jan 2024",
     location: "Remote (Canada)",
@@ -55,7 +56,7 @@ const experiences = [
       "Redis Streams",
       "Event Driven Architecture",
     ],
-    link: "/experience/moves",
+    link: "https://pitchbook.com/profiles/company/442855-09#overview",
     iconImage: "/moves/moves-app-icon.png",
   },
   {
@@ -96,6 +97,7 @@ const experiences = [
       "Openshift",
       "Docker",
     ],
+    link: "https://www.konrad.com/",
     iconImage: "/konrad-app-icon.png",
   },
   {
@@ -122,6 +124,7 @@ const experiences = [
       "Google APIs",
       "AWS",
     ],
+    link: "https://brainstation.io/",
     iconImage: "/brainstation-app-icon.png",
   },
 ];
