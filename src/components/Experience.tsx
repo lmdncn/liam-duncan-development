@@ -34,6 +34,7 @@ const experiences = [
       "I took a year-long career break to achieve a long-planned goal, travelling around the world. During this time, I visited four continents and over 15 countries. This experience provided valuable global insights and renewed energy.",
     ],
     skills: [],
+    iconImage: "/travel-app-icon.png",
   },
   {
     company: "Moves Financial",
