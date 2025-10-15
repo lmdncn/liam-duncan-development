@@ -1,6 +1,6 @@
-# Markdown Content Guide
+# Content Guide
 
-Complete guide for adding and managing markdown-based content (blog posts and experience articles) in your portfolio.
+Complete guide for creating and managing blog posts and experience articles.
 
 ## Quick Start
 
@@ -25,22 +25,25 @@ Your markdown content here...
 
 ### Add an Experience Article
 
-1. Create `src/content/experience/project/index.md`
+**Main Article:**
+
+1. Create `src/content/experience/company/index.md`
 2. Add frontmatter and content:
 
 ```markdown
 ---
-title: "Project Title"
-subtitle: "Brief project description"
+title: "My Time at Company"
+subtitle: "What I built and learned"
 type: "experience"
 category: "Software Engineering"
 date: "2020-2024"
 readTime: "10 min read"
-seoTitle: "Full SEO Title"
-seoDescription: "Detailed description for search engines"
-url: "/experience/project"
+seoTitle: "My Experience at Company Name"
+seoDescription: "Full description for search engines"
+url: "/experience/company"
 backButton: '{"to": "/", "label": "Back to Portfolio"}'
-footer: '{"backTo": "/", "backLabel": "Back to Portfolio"}'
+footer: '{"backTo": "/", "backLabel": "View All Experience"}'
+relatedArticles: '[{"slug": "technical-deep-dive", "title": "Technical Deep Dive", "description": "Architecture details", "icon": "FileText"}]'
 ---
 
 ## Your Content
@@ -48,50 +51,18 @@ footer: '{"backTo": "/", "backLabel": "Back to Portfolio"}'
 Write your experience article here...
 ```
 
----
+**Sub-Article:**
 
-## System Architecture
-
-### Content Structure
-```
-src/content/
-├── blog/                          # Blog posts
-│   ├── post-1.md
-│   ├── post-2.md
-│   └── post-3.md
-└── experience/                    # Experience articles
-    └── project-name/
-        ├── index.md               # Main article
-        ├── deep-dive.md           # Sub-article
-        └── technical.md           # Sub-article
-```
-
-### How It Works
-
-**Build-time Processing**
-- Vite glob imports load all `.md` files
-- Frontmatter is parsed using custom YAML parser
-- Content is separated from metadata
-- Types are validated via TypeScript
-
-**Runtime Rendering**
-- React Router handles dynamic routes
-- ReactMarkdown renders content with custom components
-- Images are processed and styled automatically
-- Links are handled (internal via React Router, external open in new tab)
-
-**Key Files**
-- [lib/markdown.ts](src/lib/markdown.ts) - Frontmatter parsing utilities
-- [lib/blog.ts](src/lib/blog.ts) - Blog post loader
-- [lib/experience.ts](src/lib/experience.ts) - Experience article loader
-- [types/blog.ts](src/types/blog.ts) - Blog type definitions
-- [types/experience.ts](src/types/experience.ts) - Experience type definitions
+1. Create `src/content/experience/company/technical-deep-dive.md`
+2. Link back to main article with `backButton`
 
 ---
 
 ## Frontmatter Reference
 
 ### Blog Posts
+
+**Location**: `src/content/blog/*.md`
 
 | Field | Required | Type | Description | Example |
 |-------|----------|------|-------------|---------|
@@ -108,7 +79,23 @@ src/content/
 | `seoTitle` | No | string | SEO title (defaults to `title`) | `"SEO Optimized Title"` |
 | `seoDescription` | No | string | SEO description (defaults to `excerpt`) | `"Detailed SEO description"` |
 
+**Example:**
+```markdown
+---
+title: "My Blog Post"
+date: "October 2025"
+excerpt: "A brief description of my post"
+category: "Technology"
+readTime: "5 min"
+order: 1
+---
+
+Your content here...
+```
+
 ### Experience Articles
+
+**Location**: `src/content/experience/[company]/index.md` (main) or `[company]/[slug].md` (sub-articles)
 
 | Field | Required | Type | Description | Example |
 |-------|----------|------|-------------|---------|
@@ -125,13 +112,58 @@ src/content/
 | `footer` | No | JSON object | Footer navigation config | `'{"backTo": "/", "backLabel": "..."}'` |
 | `relatedArticles` | No | JSON array | Related experience articles | `'[{"slug": "...", "title": "...", "description": "...", "icon": "FileText"}]'` |
 
+**Example:**
+```markdown
+---
+title: "My Memoir Of Moves"
+subtitle: "My three year journey building the platform"
+type: "experience"
+category: "Financial Technology"
+date: "2021-2024"
+readTime: "12 min read"
+seoTitle: "My Memoir Of Moves - Liam Duncan"
+seoDescription: "My three year journey leading the team that built Moves Financial's core banking platform."
+url: "/experience/moves"
+backButton: '{"to": "/", "label": "Back to Portfolio"}'
+footer: '{"backTo": "/", "backLabel": "Back to Portfolio"}'
+relatedArticles: '[{"slug": "onboarding", "title": "The Onboarding Gauntlet", "description": "Overcoming identity verification challenges", "icon": "FileText"}]'
+---
+
+Your content here...
+```
+
+### JSON Fields Format
+
+**Related Posts (Blog):**
+```markdown
+relatedPosts: '[{"slug": "post-slug", "title": "Post Title", "excerpt": "Brief description"}]'
+```
+
+**Related Articles (Experience):**
+```markdown
+relatedArticles: '[{"slug": "article-slug", "title": "Article Title", "description": "Brief description", "icon": "FileText"}]'
+```
+
+Available icons (Lucide): `FileText`, `Building`, `CreditCard`, `Code`, `Database`, `GitBranch`, etc.
+
+**Navigation Objects:**
+```markdown
+backButton: '{"to": "/destination", "label": "Button Text"}'
+footer: '{"backTo": "/destination", "backLabel": "Footer Text"}'
+```
+
+**JSON Rules:**
+- Wrap entire JSON in single quotes
+- Use double quotes inside JSON
+- No trailing commas
+- Valid JSON syntax
+
 ---
 
 ## Markdown Features
 
-Both blog posts and experience articles support rich markdown formatting:
-
 ### Text Formatting
+
 ```markdown
 # Heading 1
 ## Heading 2
@@ -143,6 +175,7 @@ Both blog posts and experience articles support rich markdown formatting:
 ```
 
 ### Lists
+
 ```markdown
 - Unordered item 1
 - Unordered item 2
@@ -154,6 +187,7 @@ Both blog posts and experience articles support rich markdown formatting:
 ```
 
 ### Links
+
 ```markdown
 [Internal link](/blog/other-post)
 [External link](https://example.com)
@@ -174,6 +208,11 @@ Images automatically include:
 - Figcaption from alt text
 - Responsive sizing (max-w-3xl)
 
+**Tips:**
+- Use direct paths in markdown (e.g., `/image.jpg`)
+- Optimize images before adding (compress, resize appropriately)
+- Always include alt text for accessibility
+
 ### Code
 
 **Inline code:**
@@ -192,6 +231,7 @@ function hello() {
 ````
 
 ### Blockquotes
+
 ```markdown
 > Important quote or callout text
 > Can span multiple lines
@@ -200,38 +240,6 @@ function hello() {
 ---
 
 ## Advanced Features
-
-### Related Content
-
-**Blog Posts:**
-```markdown
----
-title: "Main Post"
-relatedPosts: '[{"slug": "related-post-slug", "title": "Related Post Title", "excerpt": "Brief description of the related post"}]'
----
-```
-
-**Experience Articles:**
-```markdown
----
-title: "Main Article"
-relatedArticles: '[{"slug": "deep-dive", "title": "Technical Deep Dive", "description": "Detailed technical analysis", "icon": "FileText"}]'
----
-```
-
-Available icons (Lucide): `FileText`, `Building`, `CreditCard`, `Code`, `Database`, `GitBranch`, etc.
-
-### Navigation Controls (Experience Articles)
-
-**Back Button:**
-```markdown
-backButton: '{"to": "/", "label": "Back to Portfolio"}'
-```
-
-**Footer:**
-```markdown
-footer: '{"backTo": "/experience", "backLabel": "View All Experience"}'
-```
 
 ### SEO Optimization
 
@@ -246,6 +254,18 @@ seoDescription: "A detailed description optimized for search engines that explai
 
 - `seoTitle` defaults to `title` if not provided
 - `seoDescription` defaults to `excerpt` if not provided
+
+### Navigation Controls (Experience Articles)
+
+**Back Button:**
+```markdown
+backButton: '{"to": "/", "label": "Back to Portfolio"}'
+```
+
+**Footer:**
+```markdown
+footer: '{"backTo": "/experience", "backLabel": "View All Experience"}'
+```
 
 ---
 
@@ -371,35 +391,7 @@ We used PostgreSQL with...
 
 ---
 
-## JSON Formatting Guide
-
-Frontmatter uses YAML-like syntax, but complex objects must be valid JSON strings.
-
-**Rules:**
-- Wrap entire JSON in single quotes
-- Use double quotes inside JSON
-- No trailing commas
-- Valid JSON syntax
-
-### Related Posts (Blog)
-```markdown
-relatedPosts: '[{"slug": "post-slug", "title": "Post Title", "excerpt": "Brief description"}, {"slug": "another-slug", "title": "Another Title", "excerpt": "More text"}]'
-```
-
-### Related Articles (Experience)
-```markdown
-relatedArticles: '[{"slug": "article-slug", "title": "Article Title", "description": "Brief description", "icon": "FileText"}]'
-```
-
-### Navigation Objects
-```markdown
-backButton: '{"to": "/destination", "label": "Button Text"}'
-footer: '{"backTo": "/destination", "backLabel": "Footer Link Text"}'
-```
-
----
-
-## Tips & Best Practices
+## Best Practices
 
 ### Content Organization
 
@@ -408,11 +400,13 @@ footer: '{"backTo": "/destination", "backLabel": "Footer Link Text"}'
 3. **Group related articles** in subdirectories for experience content
 4. **Order blog posts** with the `order` field (lower numbers first)
 
-### Images
+### Writing Style
 
-1. **Use direct paths** in markdown (e.g., `/image.jpg`)
-2. **Optimize images** before adding (compress, resize appropriately)
-3. **Always include alt text** for accessibility
+1. **Start with context** - help readers understand why they should care
+2. **Use headings** to create clear structure
+3. **Break up text** with images, lists, and code blocks
+4. **Include examples** to illustrate concepts
+5. **End with takeaways** or next steps
 
 ### SEO
 
@@ -428,29 +422,23 @@ footer: '{"backTo": "/destination", "backLabel": "Footer Link Text"}'
 3. **Use an editor** with JSON syntax highlighting
 4. **Test locally** before deploying
 
-### Writing Style
-
-1. **Start with context** - help readers understand why they should care
-2. **Use headings** to create clear structure
-3. **Break up text** with images, lists, and code blocks
-4. **Include examples** to illustrate concepts
-5. **End with takeaways** or next steps
-
 ---
 
-## Testing Your Content
+## Testing & Troubleshooting
 
 ### Local Development
+
 ```bash
 # Start dev server
 npm run dev
 
 # Visit your content
-# Blog: http://localhost:5173/blog/your-post-slug
-# Experience: http://localhost:5173/experience/your-article
+# Blog: http://localhost:8080/blog/your-post-slug
+# Experience: http://localhost:8080/experience/your-article
 ```
 
 ### Build Test
+
 ```bash
 # Check for build errors
 npm run build
@@ -458,6 +446,37 @@ npm run build
 # Type check
 npx tsc --noEmit
 ```
+
+### Common Issues
+
+**Frontmatter Not Parsing:**
+- Ensure frontmatter is wrapped in `---` on separate lines
+```markdown
+---
+title: "My Title"
+---
+
+Content starts here
+```
+
+**JSON Parse Errors:**
+- Validate JSON syntax
+```markdown
+# Wrong
+images: '{"hero": '/path.jpg'}'
+
+# Correct
+images: '{"hero": "/path.jpg"}'
+```
+
+**Images Not Loading:**
+- Verify image path is correct and accessible
+- Use direct paths: `![Alt text](/path/to/image.jpg)`
+
+**Build Errors:**
+- Check required fields are present
+- Ensure types are correct
+- Run `npx tsc --noEmit` for detailed errors
 
 ### Pre-Deployment Checklist
 
@@ -473,132 +492,40 @@ npx tsc --noEmit
 
 ---
 
-## Troubleshooting
+## System Architecture
 
-### Frontmatter Not Parsing
+### Content Structure
 
-**Problem:** Content shows raw frontmatter
-**Solution:** Ensure frontmatter is wrapped in `---` on separate lines
-
-```markdown
----
-title: "My Title"
----
-
-Content starts here
+```
+src/content/
+├── blog/                          # Blog posts
+│   ├── post-1.md
+│   ├── post-2.md
+│   └── post-3.md
+└── experience/                    # Experience articles
+    └── project-name/
+        ├── index.md               # Main article
+        ├── deep-dive.md           # Sub-article
+        └── technical.md           # Sub-article
 ```
 
-### JSON Parse Errors
+### How It Works
 
-**Problem:** `undefined` for images or related content
-**Solution:** Validate JSON syntax
+**Build-time Processing:**
+- Vite glob imports load all `.md` files
+- Frontmatter is parsed using custom YAML parser
+- Content is separated from metadata
+- Types are validated via TypeScript
 
-```markdown
-# Wrong
-images: '{"hero": '/path.jpg'}'
+**Runtime Rendering:**
+- React Router handles dynamic routes
+- ReactMarkdown renders content with custom components
+- Images are processed and styled automatically
+- Links are handled (internal via React Router, external open in new tab)
 
-# Correct
-images: '{"hero": "/path.jpg"}'
-```
-
-### Images Not Loading
-
-**Problem:** Images don't appear in content
-**Solution:** Verify image path is correct and accessible
-
-```markdown
-![Alt text](/path/to/image.jpg)
-```
-
-### Build Errors
-
-**Problem:** TypeScript or build errors
-**Solution:** Check required fields are present and types are correct
-
-```bash
-# See detailed error
-npx tsc --noEmit
-
-# Check specific file
-npm run dev
-```
-
----
-
-## Migration Guide
-
-### Converting Existing React Components to Markdown
-
-**Before (React):**
-```tsx
-export const MyArticle = () => (
-  <div>
-    <h1>My Article</h1>
-    <img src="/path.jpg" alt="Alt" />
-    <p>Content here...</p>
-  </div>
-);
-```
-
-**After (Markdown):**
-```markdown
----
-title: "My Article"
-type: "experience"
-category: "Category"
-date: "2024"
-readTime: "5 min read"
-seoTitle: "My Article"
-seoDescription: "Description"
-url: "/experience/my-article"
----
-
-# My Article
-
-![Alt](/path.jpg)
-
-Content here...
-```
-
-### Updating Routes
-
-Experience articles use dynamic routing - no route updates needed!
-
-Blog posts are automatically discovered via glob imports.
-
----
-
-## Future Enhancements
-
-The system is designed to support:
-
-- **Projects** - Add `src/content/projects/` following same pattern
-- **Case Studies** - Specialized article types
-- **Table of Contents** - Auto-generated from headings
-- **Search** - Content indexing and discovery
-- **RSS Feeds** - Automatic generation from markdown
-- **Syntax Highlighting** - Code block language detection
-- **Embedded Media** - Video, audio, interactive demos
-
----
-
-## Summary
-
-You now have a unified markdown system that:
-
-✅ Supports both blog posts and experience articles
-✅ Provides rich media and advanced features
-✅ Maintains type safety and code quality
-✅ Delivers excellent editing experience
-✅ Ensures optimal performance
-✅ Scales to additional content types
-✅ Maintains SEO best practices
-
-**Quick links:**
-- [lib/markdown.ts](src/lib/markdown.ts) - Parsing logic
-- [lib/blog.ts](src/lib/blog.ts) - Blog loader
-- [lib/experience.ts](src/lib/experience.ts) - Experience loader
-- [types/blog.ts](src/types/blog.ts) - Blog types
-- [types/experience.ts](src/types/experience.ts) - Experience types
-
-Happy writing! 🚀
+**Key Files:**
+- `lib/markdown.ts` - Frontmatter parsing utilities
+- `lib/blog.ts` - Blog post loader
+- `lib/experience.ts` - Experience article loader
+- `types/blog.ts` - Blog type definitions
+- `types/experience.ts` - Experience type definitions

@@ -1,39 +1,37 @@
 # Liam Duncan Resume
 
-Modern, responsive resume website showcasing full-stack development experience.
-
-## Features
-
-- Interactive resume with sections for experience, projects, education & skills
-- Blog with markdown content support and reading time estimates
-- SEO optimized with meta tags and Open Graph images
-- Mobile-responsive design with dark/light theme support
-- PDF resume download functionality
+Type-safe resume website built with React, TypeScript, and YAML-driven content.
 
 ## Quick Start
 
 ```sh
 npm install
-npm run dev
+npm run dev      # http://localhost:8080
 ```
 
 ## Stack
 
-- **Frontend**: React + TypeScript, React Router v7
-- **Styling**: Tailwind CSS + shadcn/ui components
-- **Build**: Vite with SWC
-- **Content**: Markdown blog posts with gray-matter
-- **Deploy**: GitHub Pages
+React 18 • TypeScript • Vite • Tailwind CSS • React Query • Zod validation
 
-## Scripts
+## Architecture
 
-```sh
-npm run build    # Production build with prerendering
-npm run lint     # ESLint with TypeScript support
-npm run format   # Prettier formatting
-npm run deploy   # Deploy to GitHub Pages
-```
+Service layer pattern with clean separation:
+
+- **Data**: YAML files → Zod schemas → Type-safe services
+- **State**: React Query for caching/loading
+- **UI**: Presentation components with custom hooks
+
+## Content Editing
+
+- **Resume**: Edit YAML in `src/content/data/`
+- **Blog/Articles**: Add markdown in `src/content/blog/` or `src/content/experience/`
+
+See [docs/CONTENT_GUIDE.md](docs/CONTENT_GUIDE.md) for details.
 
 ## Deploy
 
-Deployed at: <https://lmdncn.github.io/liam-duncan-development/>
+```sh
+npm run deploy   # Deploy to GitHub Pages
+```
+
+Live: <https://lmdncn.github.io/liam-duncan-development/>
