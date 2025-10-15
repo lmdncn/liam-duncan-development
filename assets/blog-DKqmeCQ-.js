@@ -1,15 +1,14 @@
-import{h as i}from"./index-D-SL4cAc.js";import{g as r,p as l,e as d}from"./markdown-B-zspkDX.js";/**
+import{h as i}from"./index-CKA67kQF.js";import{g as r,p as l,e as d}from"./markdown-BpDB2PCZ.js";/**
  * @license lucide-react v0.462.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
- */const w=i("Clock",[["circle",{cx:"12",cy:"12",r:"10",key:"1mglay"}],["polyline",{points:"12 6 12 12 16 14",key:"68esgv"}]]),h=`---
+ */const f=i("Clock",[["circle",{cx:"12",cy:"12",r:"10",key:"1mglay"}],["polyline",{points:"12 6 12 12 16 14",key:"68esgv"}]]),h=`---
 title: "Devs Are Dead: My Rebirth as an AI Agent Manager"
-date: "September 2025"
+date: "2025-09-08"
 excerpt: "After a decade of sharpening my coding skills, I realized the developer role is being redefined. My journey into AI-first programming tools shows why the future belongs to AI Agent Managers."
 category: "AI & Engineering"
 readTime: "5 min"
-order: 2
 ---
 Like many developers, my AI journey started with GitHub Copilot. Inside VS Code, it felt like autocomplete on steroids. Later, moving to Cursor gave me a smoother UI and better ways to pass context. But the tools had limits. Without carefully feeding them instruction files and file context, they struggled to truly understand the systems I was working on. Helpful, yes, but transformative? Not yet.
 
@@ -32,11 +31,10 @@ And this shift isn’t trivial. Coding knowledge is becoming less valuable on it
 I've spent the last decade of my life sharpening coding skills, so I don't say this lightly. But the truth is: the world has changed. The developer, as we knew it, is gone. The future belongs to the AI Agent Manager.
 `,c=`---
 title: "Getting Claude Code Right: Best Practices from the Trenches"
-date: "October 2025"
+date: "2025-10-06"
 excerpt: "My personal playbook of tactics, macros, and workflows that make Claude Code a reliable teammate instead of a frustrating black box."
 category: "AI & Engineering"
 readTime: "7 min"
-order: 4
 ---
 
 # Getting Claude Code Right: Best Practices from the Trenches
@@ -217,11 +215,10 @@ That’s been my experience from the trenches.
 What’s in your playbook?  
 `,u=`---
 title: "How a Year Off Rewired My Perspective"
-date: "September 2025"
+date: "2025-09-01"
 excerpt: "After six years in tech, I stepped away for a year to travel across four continents. That break rewired how I think, reset my energy, and gave me fresh perspective on work and life."
 category: "Career"
 readTime: "3 min"
-order: 1
 ---
 After six years of working as a software engineer and tech lead, I hit pause. Not because I was burned out. Not because I hated my work. I just wanted perspective. I’d always dreamed of traveling the world, and last year I finally took the leap. A year-long career break across four continents and more than 15 countries.
 
@@ -236,11 +233,10 @@ And when I came back, the timing could not have been crazier. Right in the middl
 If you have ever thought about stepping away, I can’t recommend it enough. The world keeps moving whether you are in the race or not. Sometimes the best way to catch up is to stop running.
 `,g=`---
 title: "When All My Friends Became Developers Too"
-date: "September 2025"
-excerpt: "AI has lowered the barrier to software, letting friends from completely different worlds build apps. But when they get lost in the sauce, that’s where engineering experience still matters."
+date: "2025-09-15"
+excerpt: "AI has lowered the barrier to software, letting friends from completely different worlds build apps. But when they get lost in the sauce, that's where engineering experience still matters."
 category: "AI & Engineering"
 readTime: "4 min"
-order: 3
 ---
 Over the past year, a wave of friends has reached out to me for help on their projects. Not friends from engineering school. Not people who spent years debugging APIs or designing systems. These are friends from business, design, and completely different worlds. And here’s the wild part: they’re building apps.  
 
@@ -257,4 +253,4 @@ At first, I wasn’t sure how to feel. I’ve spent years building scalable syst
 Because it’s not about everyone becoming an engineer. It’s about more people being able to ship ideas. Some projects will outgrow no-code or AI-assisted beginnings, and that’s when experience still matters. But the fact that my friends can now move from idea to product without the old hurdles, that’s powerful.  
 
 It’s made me rethink my role. Maybe being an engineer today isn’t only about writing optimized code. Maybe it’s also about being a guide, a partner, and sometimes a translator between people’s ideas and the systems that bring them to life. That feels like a future worth leaning into.  
-`,m=(e,t)=>e.order!==void 0&&t.order!==void 0?t.order-e.order:e.order!==void 0&&t.order===void 0?-1:e.order===void 0&&t.order!==void 0?1:0,p=Object.assign({"../content/blog/devs-are-dead-my-rebirth-as-an-ai-agent-manager.md":h,"../content/blog/getting-claude-code-right-best-practices-from-the-trenches.md":c,"../content/blog/how-a-year-off-rewired-my-perspective.md":u,"../content/blog/when-all-my-friends-became-developers-too.md":g}),o=Object.entries(p).map(([e,t])=>{const a=e.split("/").pop()||"",s=r(a),n=l(t,s);return n.readTime||(n.readTime=d(n.content)),n}).sort(m),b=()=>o,v=e=>o.find(t=>t.slug===e);export{w as C,v as a,b as g};
+`,m=(e,t)=>{const a=new Date(e.date);return new Date(t.date).getTime()-a.getTime()},p=Object.assign({"../content/blog/devs-are-dead-my-rebirth-as-an-ai-agent-manager.md":h,"../content/blog/getting-claude-code-right-best-practices-from-the-trenches.md":c,"../content/blog/how-a-year-off-rewired-my-perspective.md":u,"../content/blog/when-all-my-friends-became-developers-too.md":g}),s=Object.entries(p).map(([e,t])=>{const a=e.split("/").pop()||"",o=r(a),n=l(t,o);return n.readTime||(n.readTime=d(n.content)),n}).sort(m),b=()=>s,k=e=>s.find(t=>t.slug===e);export{f as C,k as a,b as g};
