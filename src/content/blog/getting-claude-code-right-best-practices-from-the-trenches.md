@@ -1,10 +1,9 @@
 ---
 title: "Getting Claude Code Right: Best Practices from the Trenches"
-date: "October 2025"
+date: "2025-10-06"
 excerpt: "My personal playbook of tactics, macros, and workflows that make Claude Code a reliable teammate instead of a frustrating black box."
 category: "AI & Engineering"
 readTime: "7 min"
-order: 4
 ---
 
 # Getting Claude Code Right: Best Practices from the Trenches

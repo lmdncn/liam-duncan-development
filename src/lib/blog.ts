@@ -2,29 +2,17 @@ import { parseBlogPost, generateSlug, estimateReadingTime } from "./markdown";
 import type { BlogPost } from "@/types";
 
 /**
- * Sorts blog posts by order field only
- * 1. Posts with order field (descending: highest numbers first)
- * 2. Posts without order field (maintain original array order)
+ * Sorts blog posts by date (descending: most recent first)
  * @param a - First blog post to compare
  * @param b - Second blog post to compare
  * @returns Comparison result for Array.sort()
  */
 const sortBlogPosts = (a: BlogPost, b: BlogPost): number => {
-  // Both posts have order: sort by order (descending)
-  if (a.order !== undefined && b.order !== undefined) {
-    return b.order - a.order;
-  }
+  const dateA = new Date(a.date);
+  const dateB = new Date(b.date);
 
-  // Posts with order come before posts without order
-  if (a.order !== undefined && b.order === undefined) {
-    return -1;
-  }
-  if (a.order === undefined && b.order !== undefined) {
-    return 1;
-  }
-
-  // Both posts have no order: maintain original order
-  return 0;
+  // Sort descending (most recent first)
+  return dateB.getTime() - dateA.getTime();
 };
 
 // Use Vite's glob import to load all markdown files at build time
@@ -34,7 +22,7 @@ const blogModules = import.meta.glob("../content/blog/*.md", {
   eager: true,
 });
 
-// Parse all blog posts and sort by order field
+// Parse all blog posts and sort by date (descending)
 const allBlogPosts: BlogPost[] = Object.entries(blogModules)
   .map(([path, content]) => {
     const filename = path.split("/").pop() || "";
@@ -51,7 +39,7 @@ const allBlogPosts: BlogPost[] = Object.entries(blogModules)
   .sort(sortBlogPosts);
 
 /**
- * Retrieves all blog posts sorted by order field (descending)
+ * Retrieves all blog posts sorted by date (descending: most recent first)
  * @returns Array of all blog posts with metadata
  */
 export const getAllBlogPosts = (): BlogPost[] => {

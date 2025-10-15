@@ -11,6 +11,15 @@ import { Link } from "react-router";
 import type { BlogCardProps } from "@/types";
 
 const BlogCard = ({ post }: BlogCardProps) => {
+  // Format date for display (e.g., "September 1, 2025")
+  // Parse date components directly to avoid timezone issues
+  const [year, month, day] = post.date.split('-').map(Number);
+  const formattedDate = new Date(year, month - 1, day).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+
   return (
     <Card className="shadow-card bg-gradient-card border-border/50 animate-fade-in transition-all duration-300 hover:shadow-hover hover:scale-[1.02] cursor-pointer">
       <Link to={`/blog/${post.slug}`}>
@@ -23,7 +32,7 @@ const BlogCard = ({ post }: BlogCardProps) => {
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <Calendar className="h-4 w-4" />
-                  {post.date}
+                  {formattedDate}
                 </div>
                 {post.readTime && (
                   <div className="flex items-center gap-2">

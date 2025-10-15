@@ -1,10 +1,9 @@
 ---
 title: "Devs Are Dead: My Rebirth as an AI Agent Manager"
-date: "September 2025"
+date: "2025-09-08"
 excerpt: "After a decade of sharpening my coding skills, I realized the developer role is being redefined. My journey into AI-first programming tools shows why the future belongs to AI Agent Managers."
 category: "AI & Engineering"
 readTime: "5 min"
-order: 2
 ---
 Like many developers, my AI journey started with GitHub Copilot. Inside VS Code, it felt like autocomplete on steroids. Later, moving to Cursor gave me a smoother UI and better ways to pass context. But the tools had limits. Without carefully feeding them instruction files and file context, they struggled to truly understand the systems I was working on. Helpful, yes, but transformative? Not yet.
 
