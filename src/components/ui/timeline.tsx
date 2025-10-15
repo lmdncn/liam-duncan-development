@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 import { Link } from "react-router";
 import { SITE_CONFIG } from "@/lib/constants";
 import { trackEvent } from "@/utils/analytics";
+import type { Experience } from "@/services/schemas";
 
 interface TimelineItemProps {
   title: string;
@@ -169,17 +170,7 @@ const TimelineItem = React.forwardRef<HTMLDivElement, TimelineItemProps>(
 TimelineItem.displayName = "TimelineItem";
 
 interface TimelineProps {
-  items: Array<{
-    company: string;
-    position: string;
-    duration: string;
-    location: string;
-    prevPosition?: string | string[];
-    description: string[];
-    skills: string[];
-    link?: string;
-    iconImage?: string;
-  }>;
+  items: Experience[];
   className?: string;
 }
 
