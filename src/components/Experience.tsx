@@ -57,7 +57,7 @@ const experiences = [
       "Redis Streams",
       "Event Driven Architecture",
     ],
-    link: "https://pitchbook.com/profiles/company/442855-09#overview",
+    link: "https://betakit.com/gig-economy-banking-app-moves-raises-5-million-in-omers-led-seed-round/",
     iconImage: "/moves/moves-app-icon.png",
   },
   {
