@@ -3,129 +3,79 @@ import { Badge } from "@/components/ui/badge";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
 import { AnimatedCard } from "@/components/ui/animated-card";
+import { LoadingState } from "@/components/ui/loading-state";
+import { ErrorState } from "@/components/ui/error-state";
 import { Code, Database, Cloud, Wrench, Laptop, Server } from "lucide-react";
+import { useSkills } from "@/hooks/useSkills";
 
-const skillCategories = [
-  {
-    title: "Frontend Development",
-    icon: Laptop,
-    skills: [
-      "JavaScript",
-      "TypeScript",
-      "React",
-      "React Native",
-      "Angular",
-      "HTML/CSS",
-      "Tailwind CSS",
-    ],
-    color: "bg-blue-500/10 text-blue-600 border-blue-500/20",
-  },
-  {
-    title: "Backend Development",
-    icon: Server,
-    skills: [
-      "Node.js",
-      "Python",
-      "Django",
-      "Express.js",
-      "C#",
-      ".NET",
-      "GraphQL",
-      "Microservices",
-      "Event Streaming",
-    ],
-    color: "bg-green-500/10 text-green-600 border-green-500/20",
-  },
-  {
-    title: "Databases",
-    icon: Database,
-    skills: [
-      "PostgreSQL",
-      "MongoDB",
-      "Redis",
-      "MySQL",
-      "Snowflake",
-      "Query Optimization",
-    ],
-    color: "bg-purple-500/10 text-purple-600 border-purple-500/20",
-  },
-  {
-    title: "Cloud & DevOps",
-    icon: Cloud,
-    skills: ["AWS", "Azure", "Docker", "Kubernetes", "GitLab CI/CD"],
-    color: "bg-orange-500/10 text-orange-600 border-orange-500/20",
-  },
-  {
-    title: "Testing & Tools",
-    icon: Wrench,
-    skills: [
-      "Jest",
-      "Mocha",
-      "Puppeteer",
-      "Git",
-      "Jira",
-      "Confluence",
-      "Datadog",
-      "Raygun",
-    ],
-    color: "bg-red-500/10 text-red-600 border-red-500/20",
-  },
-  {
-    title: "AI & Developer Tools",
-    icon: Code,
-    skills: [
-      "Claude Code",
-      "GitHub Copilot",
-      "OpenAI API",
-      "Lovable",
-      "Cursor",
-      "Prompt Engineering",
-    ],
-    color: "bg-indigo-500/10 text-indigo-600 border-indigo-500/20",
-  },
-];
+// Icon mapping
+const iconMap: Record<string, any> = {
+  Laptop,
+  Server,
+  Database,
+  Cloud,
+  Wrench,
+  Code,
+};
 
 const Skills = () => {
+  const { data: skillCategories, isLoading, error, refetch } = useSkills();
+
   return (
     <Section id="skills">
       <div className="container mx-auto px-6">
         <SectionHeader title="Technical Skills" />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {skillCategories.map((category, index) => (
-            <AnimatedCard
-              key={index}
-              index={index}
-              animationDelay={0.1}
-              enableHover={false}
-              variant="flat"
-            >
-              <CardHeader className="pb-4">
-                <div className="flex items-center gap-3">
-                  <div className={`p-2 rounded-lg ${category.color}`}>
-                    <category.icon className="h-6 w-6" />
-                  </div>
-                  <CardTitle className="text-lg font-semibold text-foreground">
-                    {category.title}
-                  </CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill, skillIndex) => (
-                    <Badge
-                      key={skillIndex}
-                      variant="secondary"
-                      className="bg-secondary/80 text-secondary-foreground text-xs"
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </AnimatedCard>
-          ))}
-        </div>
+        {isLoading && <LoadingState message="Loading skills..." />}
+
+        {error && (
+          <ErrorState
+            message="Failed to load skills data"
+            onRetry={() => refetch()}
+          />
+        )}
+
+        {skillCategories && (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {skillCategories.map((category, index) => {
+              const IconComponent = iconMap[category.icon] || Code;
+
+              return (
+                <AnimatedCard
+                  key={category.id}
+                  index={index}
+                  animationDelay={0.1}
+                  enableHover={false}
+                  variant="flat"
+                >
+                  <CardHeader className="pb-4">
+                    <div className="flex items-center gap-3">
+                      <div className={`p-2 rounded-lg ${category.color.bg} ${category.color.text} ${category.color.border}`}>
+                        <IconComponent className="h-6 w-6" />
+                      </div>
+                      <CardTitle className="text-lg font-semibold text-foreground">
+                        {category.title}
+                      </CardTitle>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-wrap gap-2">
+                      {category.skills.map((skill, skillIndex) => (
+                        <Badge
+                          key={skillIndex}
+                          variant="secondary"
+                          className="bg-secondary/80 text-secondary-foreground text-xs"
+                        >
+                          {skill}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </AnimatedCard>
+              );
+            })}
+          </div>
+        )}
       </div>
     </Section>
   );

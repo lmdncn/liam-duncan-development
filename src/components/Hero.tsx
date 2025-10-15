@@ -1,20 +1,39 @@
 import { Download, MapPin, ArrowRight, Linkedin, BookOpen } from "lucide-react";
 import { Link } from "react-router";
 import { useDownloadResume } from "@/hooks/useDownloadResume";
+import { useHeroData } from "@/hooks/useHeroData";
 import { PERSONAL_INFO } from "@/lib/constants";
 import { RotatingText } from "@/components/ui/rotating-text";
 import { ActionButtonGroup, type ActionButton } from "@/components/ui/action-button-group";
-
-// Rotating text options
-const ROTATING_ROLES = [
-  "Engineer",
-  "AI Builder",
-  "Problem Solver",
-  "System Architect",
-];
+import { LoadingState } from "@/components/ui/loading-state";
+import { ErrorState } from "@/components/ui/error-state";
 
 const Hero = () => {
   const { downloadResume } = useDownloadResume();
+  const { data: heroData, isLoading, error, refetch } = useHeroData();
+
+  // Loading state
+  if (isLoading) {
+    return (
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-hero overflow-hidden">
+        <LoadingState message="Loading hero section..." />
+      </section>
+    );
+  }
+
+  // Error state
+  if (error || !heroData) {
+    return (
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-hero overflow-hidden">
+        <ErrorState
+          message="Failed to load hero section"
+          onRetry={() => refetch()}
+        />
+      </section>
+    );
+  }
+
+  const { rotatingRoles, headline, subheadline } = heroData;
 
   const scrollToExperience = () => {
     const element = document.querySelector("#experience");
@@ -86,7 +105,7 @@ const Hero = () => {
             </h1>
             <RotatingText
               prefix="Software"
-              options={ROTATING_ROLES}
+              options={rotatingRoles}
               className="text-2xl md:text-3xl mb-8"
             />
           </div>
@@ -94,15 +113,14 @@ const Hero = () => {
           {/* Main headline */}
           <div className="animate-fade-in" style={{ animationDelay: "0.3s" }}>
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-8 tracking-tight leading-tight max-w-4xl mx-auto opacity-90">
-              Building scalable, AI-powered web applications
+              {headline}
             </h2>
           </div>
 
           {/* Subheadline */}
           <div className="animate-fade-in" style={{ animationDelay: "0.6s" }}>
             <p className="text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed opacity-90 font-medium">
-              I turn complex problems into scalable systems and AI-driven
-              solutions that drive real results.
+              {subheadline}
             </p>
           </div>
 

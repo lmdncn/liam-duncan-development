@@ -1,0 +1,62 @@
+projects:
+  - id: triptribe
+    title: TripTribe
+    year: "2025"
+    event: Personal Project
+    awards: []
+    description: "Architected and built a full-stack social travel platform using a microservices architecture, event-driven design, and domain-driven principles."
+    technologies:
+      - Next.js
+      - React
+      - TypeScript
+      - Node.js
+      - PostgreSQL
+      - MongoDB
+      - Prisma ORM
+      - Redis PubSub
+      - OpenAI API
+      - Git worktree
+    highlights:
+      - "Improved development velocity and practices by leveraging AI coding tools, running multiple parallel agents on separate worktrees to supercharge iteration and delivery."
+      - "Integrated with AI to extract structured travel data and engineered a matching microservice that delivered real-time suggestions, connecting travellers with similar plans."
+    order: 1
+
+  - id: lifeline
+    title: LifeLine
+    year: "2017"
+    event: Delta Hacks 3
+    awards:
+      - Best hardware hack
+      - 2nd place overall
+    description: "Drowsy driving combatant headpiece with Arduino integration and companion Android application. Designed to detect driver fatigue and alert users to prevent accidents."
+    technologies:
+      - Arduino
+      - Go
+      - Java
+      - Android
+      - Hardware Integration
+    highlights:
+      - "Won best hardware hack at major hackathon"
+      - "Achieved 2nd place overall among 200+ teams"
+      - "Innovative safety solution for automotive industry"
+    order: 2
+
+  - id: wrcstats
+    title: WRCStats
+    year: "2017"
+    event: Personal Project
+    awards:
+      - Over 3K users
+    description: "Web application displaying Western Recreation Center attendance and analytics obtained through Twitter API and web scraping. Helped students plan their gym visits based on trend projections."
+    technologies:
+      - MongoDB
+      - Express
+      - Angular
+      - Node.js
+      - Cheerio
+      - Twitter API
+    highlights:
+      - "Reached over 3,000 active users"
+      - "Real-time data processing and visualization"
+      - "Solved real campus problem for students"
+    order: 3

@@ -1,0 +1,101 @@
+skillCategories:
+  - id: frontend
+    title: Frontend Development
+    icon: Laptop
+    skills:
+      - JavaScript
+      - TypeScript
+      - React
+      - React Native
+      - Angular
+      - HTML/CSS
+      - Tailwind CSS
+    color:
+      bg: bg-blue-500/10
+      text: text-blue-600
+      border: border-blue-500/20
+    order: 1
+
+  - id: backend
+    title: Backend Development
+    icon: Server
+    skills:
+      - Node.js
+      - Python
+      - Django
+      - Express.js
+      - C#
+      - .NET
+      - GraphQL
+      - Microservices
+      - Event Streaming
+    color:
+      bg: bg-green-500/10
+      text: text-green-600
+      border: border-green-500/20
+    order: 2
+
+  - id: databases
+    title: Databases
+    icon: Database
+    skills:
+      - PostgreSQL
+      - MongoDB
+      - Redis
+      - MySQL
+      - Snowflake
+      - Query Optimization
+    color:
+      bg: bg-purple-500/10
+      text: text-purple-600
+      border: border-purple-500/20
+    order: 3
+
+  - id: cloud-devops
+    title: Cloud & DevOps
+    icon: Cloud
+    skills:
+      - AWS
+      - Azure
+      - Docker
+      - Kubernetes
+      - GitLab CI/CD
+    color:
+      bg: bg-orange-500/10
+      text: text-orange-600
+      border: border-orange-500/20
+    order: 4
+
+  - id: testing-tools
+    title: Testing & Tools
+    icon: Wrench
+    skills:
+      - Jest
+      - Mocha
+      - Puppeteer
+      - Git
+      - Jira
+      - Confluence
+      - Datadog
+      - Raygun
+    color:
+      bg: bg-red-500/10
+      text: text-red-600
+      border: border-red-500/20
+    order: 5
+
+  - id: ai-tools
+    title: AI & Developer Tools
+    icon: Code
+    skills:
+      - Claude Code
+      - GitHub Copilot
+      - OpenAI API
+      - Lovable
+      - Cursor
+      - Prompt Engineering
+    color:
+      bg: bg-indigo-500/10
+      text: text-indigo-600
+      border: border-indigo-500/20
+    order: 6
