@@ -16,7 +16,7 @@ import type { Experience } from "@/services/schemas";
 
 interface TimelineItemProps {
   title: string;
-  position: string;
+  position?: string;
   duration: string;
   location: string;
   prevPosition?: string | string[];
@@ -64,9 +64,11 @@ const TimelineItem = React.forwardRef<HTMLDivElement, TimelineItemProps>(
                   <CardTitle className="text-2xl font-bold text-foreground">
                     {title}
                   </CardTitle>
-                  <CardDescription className="text-lg font-medium text-primary mt-1">
-                    {position}
-                  </CardDescription>
+                  {position && (
+                    <CardDescription className="text-lg font-medium text-primary mt-1">
+                      {position}
+                    </CardDescription>
+                  )}
                   {prevPosition && (
                     <div className="space-y-1">
                       {Array.isArray(prevPosition) ? (

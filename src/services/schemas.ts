@@ -21,7 +21,7 @@ const NonEmptyStringSchema = z.string().min(1);
 export const ExperienceSchema = z.object({
   id: IdSchema,
   company: NonEmptyStringSchema,
-  position: z.string(),
+  position: NonEmptyStringSchema.optional(),
   duration: NonEmptyStringSchema,
   location: NonEmptyStringSchema,
   prevPosition: z.union([NonEmptyStringSchema, z.array(NonEmptyStringSchema)]).optional(),
