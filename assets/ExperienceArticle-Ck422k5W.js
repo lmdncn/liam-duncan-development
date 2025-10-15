@@ -1,4 +1,4 @@
-import{h as o,u as c,j as r,i as l,S as h}from"./index-BnP_CnIg.js";import{g as u,a as m}from"./markdown-C40toCYS.js";import{M as p,e as g}from"./markdown-components-D9MukLi5.js";/**
+import{h as o,u as c,j as r,i as l,S as h}from"./index-BeZElB_T.js";import{g as u,a as m}from"./markdown-CWyqNFFW.js";import{M as p,e as g}from"./markdown-components-BcU0MldA.js";/**
  * @license lucide-react v0.462.0 - ISC
  *
  * This source code is licensed under the ISC license.
@@ -20,28 +20,32 @@ type: "experience"
 category: "Engineering"
 date: "2024"
 readTime: "10 min read"
-seoTitle: "Moves Cash Advances - Technical Deep Dive"
-seoDescription: "The design of a distributed, event-driven cash advance system for gig workers with irregular income at Moves Financial."
+seoTitle: "Moves Cash Advances: Engineering Liquidity for the Gig Economy"
+seoDescription: "A technical deep dive into the design of a resilient, event-driven credit system for irregular income."
 url: "/experience/moves/cash-advances"
 backButton: '{"to": "/experience/moves", "label": "Back to My Moves of Memoir"}'
 footer: '{"backTo": "/experience/moves", "backLabel": "Back to My Moves of Memoir"}'
 ---
 
-When I joined Moves, cash advances were managed through LoanPro. The system handled traditional lending workflows, but it was built around fixed weekly payments that didn't align with how gig workers earned.
+When I joined Moves, cash advances were managed through [LoanPro](https://www.loanpro.io/). The system handled traditional lending workflows, but it was built around fixed weekly payments that didn't align with how gig workers earned.
 
-For people with unpredictable income, that model quickly broke down. Payments were missed, repayment schedules drifted, and defaults increased. It wasn't a matter of intent but of structure — the system itself couldn't adapt to the rhythm of gig work.
+For people with unpredictable income, that model quickly broke down. Payments were missed, repayment schedules drifted, and defaults increased. It wasn't a matter of intent but of structure. 
+
+The system itself couldn't adapt to the rhythm of gig work.
 
 The challenge was clear: we needed a distributed, real-time system that could understand income patterns, disburse funds instantly, and handle repayments dynamically. Every transaction, from a new deposit to a repayment event, needed to execute with banking-grade reliability.
 
 That became my focus: designing a resilient, event-driven credit engine that could align with irregular income and maintain precision.
 
+![Early prototype of requesting a cash advance (2022)](/moves/bca-old-flow.jpg)
+
 ---
 
 ## Architecture Overview
 
-I built the core of the system around four domain microservices, each with a single responsibility and clear event boundaries.
+The core of the system was built around four domain microservices, each with a single responsibility and clear domain boundaries.
 
-- **Adjudication Service**: Consumed gig deposit and behavior events, recalculated eligibility, and persisted eligibility snapshots that represented a member’s up-to-date borrowing capacity.
+- **Adjudication Service**: Consumed gig deposit and financial behavior events, recalculated eligibility, and persisted eligibility snapshots that represented a member’s up-to-date borrowing capacity.
 
 - **Origination Service**: Handled user-initiated advance requests, coordinated eligibility checks, and kicked off the multi-step saga that governed the lifecycle of a cash advance.
 
@@ -69,17 +73,13 @@ Each service emitted and subscribed to events using a shared event library that 
 
 The lifecycle of a cash advance was asynchronous and event-driven. Stages emitted domain events that triggered downstream processes across services. The system relied on message queues, change data capture (CDC) streams, and sagas to process operations efficiently, maintain extensibility, and ensure high availability through eventual consistency.
 
-![Early Stage Designs of the Cash Advance Service](/moves/bca-service-diagram.jpeg)
-
----
+![Early rough designs of the Cash Advance Service (2022)](/moves/bca-service-diagram.jpeg)
 
 ### 1. Request and Origination
 
 The process began when a member requested a cash advance through the Moves app. The Origination Service received the request and called the Adjudication Service via gRPC to retrieve the most recent eligibility snapshot.
 
 If the member qualified, the Origination Service emitted an \`origination:created\` event that initiated the cash advance saga. This event signaled that the request had been approved and began the disbursement workflow.
-
----
 
 ### 2. Disbursement
 
@@ -90,13 +90,11 @@ The Disbursement Service consumed the origination event and initiated a funds tr
 
 This event represented the transition from "requested" to "active" and served as the trigger for the servicing lifecycle.
 
----
-
 ### 3. Servicing Setup
 
 The Servicing Service consumed the \`advance:disbursed\` event and created a new cash advance record in the servicing database, which acted as the single source of truth for the repayment lifecycle. This record stored configuration details, cash advance state, and progress tracking.
 
-Active cash advances were identified through active originations — each cash advance corresponded to exactly one origination. When the client application received an active origination ID, it used that identifier as the cash advance ID. This mapping allowed the frontend to fetch and display an active cash advance through endpoints such as:
+Active cash advances were identified through active originations, where each cash advance corresponded to exactly one origination. When the client application received an active origination ID, it used that identifier as the cash advance ID. This mapping allowed the frontend to fetch and display an active cash advance through endpoints such as:
 
 \`GET /user/cash-advance/{id}\`
 
@@ -110,8 +108,6 @@ For example:
 - Additional channels, such as Instant Pay or scheduled repayment, could be configured as secondary mechanisms.
 
 Each repayment channel was stored and managed independently but linked to the same cash advance record. This design kept repayment channels decoupled and interchangeable, allowing the servicing logic to evolve without changing the underlying cash advance schema. It also made it easy to experiment with new repayment channels or add future products without rewriting the servicing layer.
-
----
 
 ### 4. Repayment
 
@@ -149,8 +145,6 @@ A parallel internal endpoint existed for the support team to perform similar act
 
 The request was processed through the Instant Pay Executor, which passed control to the shared Repayment Executor downstream.
 
----
-
 ### 5. Due Date Executor and Credit Collection
 
 If a cash advance reached its due date and remained unpaid, the Due Date Executor took over. This scheduled process ran daily and identified advances that had exceeded their grace period. When a due cash advance was found, the executor triggered the Credit Collection Flow, which attempted to fully recover the outstanding balance.
@@ -158,8 +152,6 @@ If a cash advance reached its due date and remained unpaid, the Due Date Executo
 If sufficient funds weren't available, credit collection entered a recovery state that automatically captured 100% of future incoming deposits until the balance was repaid in full. Each collection event was executed as a credit transaction repayment attempt, prioritized for immediate processing through the shared Repayment Executor.
 
 This flow ensured overdue cash advances were recovered as quickly and safely as possible while preserving transactional integrity and consistency across all repayment operations.
-
----
 
 ### 6. Cool-Off and Completion
 
@@ -241,7 +233,7 @@ seoDescription: "My three year journey leading the team that built Moves Financi
 url: "/experience/moves"
 backButton: '{"to": "/", "label": "Back to Portfolio"}'
 footer: '{"backTo": "/", "backLabel": "Back to Portfolio"}'
-relatedArticles: '[{"slug": "cash-advances", "title": "Moves Cash Advances: Building Cash Flow That Worked for Gig Workers", "description": "A technical deep dive into the design of a resilient, event-driven credit system for irregular income.", "icon": "CreditCard"}]'
+relatedArticles: '[{"slug": "cash-advances", "title": "Moves Cash Advances: Engineering Liquidity for the Gig Economy", "description": "A technical deep dive into the design of a resilient, event-driven credit system for irregular income.", "icon": "CreditCard"}]'
 ---
 
 ### A Better Option Than Payday Loans
@@ -437,4 +429,4 @@ footer: '{"backTo": "/experience/moves", "backLabel": "Back to My Memoir of Move
 This deep dive into how Moves became customers' primary bank is currently being written. It will cover the technical details of how we built comprehensive banking features that transformed customer behavior and engagement.
 
 Check back soon for the complete technical breakdown.
-`,M=(n,t)=>0,T=Object.assign({"../content/experience/moves/cash-advances.md":b,"../content/experience/moves/index.md":w,"../content/experience/moves/onboarding.md":k,"../content/experience/moves/primary-bank.md":x}),A=Object.entries(T).map(([n,t])=>{const a=n.split("/"),e=a.pop()||"",i=a[a.length-1]||"",s=e==="index.md"?i:u(e),d=e==="index.md"?s:`${i}/${s}`;return m(t,d)}).sort(M),I=n=>A.find(t=>t.slug===n),P=()=>{const{slug:n,subSlug:t}=c(),a=t?`${n}/${t}`:n,e=I(a||"");if(!e)return r.jsx(l,{to:"/404",replace:!0});const i={FileText:f,Building:y,CreditCard:v};return r.jsx(p,{title:e.title,subtitle:e.subtitle,backButton:e.backButton,footer:e.footer,content:e.content,markdownComponents:g,relatedItems:e.relatedArticles,relatedConfig:e.relatedArticles?{title:"The story isn't over",description:"Explore the technical architecture and pivotal decisions that shaped Moves:",columns:3,basePath:e.slug==="moves"?"/experience/moves":"/experience",showIcons:!0,iconMap:i,fullWidthSection:!0}:void 0,children:r.jsx(h,{title:e.seoTitle,description:e.seoDescription,image:"/og-image.jpg",url:e.url})})};export{P as default};
+`,M=(n,t)=>0,T=Object.assign({"../content/experience/moves/cash-advances.md":b,"../content/experience/moves/index.md":w,"../content/experience/moves/onboarding.md":k,"../content/experience/moves/primary-bank.md":x}),A=Object.entries(T).map(([n,t])=>{const a=n.split("/"),e=a.pop()||"",i=a[a.length-1]||"",s=e==="index.md"?i:u(e),d=e==="index.md"?s:`${i}/${s}`;return m(t,d)}).sort(M),I=n=>A.find(t=>t.slug===n),E=()=>{const{slug:n,subSlug:t}=c(),a=t?`${n}/${t}`:n,e=I(a||"");if(!e)return r.jsx(l,{to:"/404",replace:!0});const i={FileText:f,Building:y,CreditCard:v};return r.jsx(p,{title:e.title,subtitle:e.subtitle,backButton:e.backButton,footer:e.footer,content:e.content,markdownComponents:g,relatedItems:e.relatedArticles,relatedConfig:e.relatedArticles?{title:"The story isn't over",description:"Explore the technical architecture and pivotal decisions that shaped Moves:",columns:3,basePath:e.slug==="moves"?"/experience/moves":"/experience",showIcons:!0,iconMap:i,fullWidthSection:!0}:void 0,children:r.jsx(h,{title:e.seoTitle,description:e.seoDescription,image:"/og-image.jpg",url:e.url})})};export{E as default};
