@@ -4,13 +4,13 @@
 
 import { useQuery } from '@tanstack/react-query';
 import { experiencesAPI } from '@/services/api';
-import type { Experience } from '@/types';
+import type { Experience, Experiences } from '@/services/schemas';
 
 /**
  * Hook to fetch all experiences
  */
 export const useExperiences = () => {
-  return useQuery<Experience[], Error>({
+  return useQuery<Experiences, Error>({
     queryKey: ['experiences'],
     queryFn: experiencesAPI.getAll,
     staleTime: 5 * 60 * 1000, // 5 minutes
@@ -33,7 +33,7 @@ export const useExperience = (id: string) => {
  * Hook to fetch featured experiences
  */
 export const useFeaturedExperiences = () => {
-  return useQuery<Experience[], Error>({
+  return useQuery<Experiences, Error>({
     queryKey: ['experiences', 'featured'],
     queryFn: experiencesAPI.getFeatured,
     staleTime: 5 * 60 * 1000,

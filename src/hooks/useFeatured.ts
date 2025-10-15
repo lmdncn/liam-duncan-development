@@ -3,13 +3,14 @@
  */
 
 import { useQuery } from '@tanstack/react-query';
-import { featuredAPI, type FeaturedItem } from '@/services/api';
+import { featuredAPI } from '@/services/api';
+import type { FeaturedItem, FeaturedItems } from '@/services/schemas';
 
 /**
  * Hook to fetch all featured items
  */
 export const useFeatured = () => {
-  return useQuery<FeaturedItem[], Error>({
+  return useQuery<FeaturedItems, Error>({
     queryKey: ['featured'],
     queryFn: featuredAPI.getAll,
     staleTime: 5 * 60 * 1000, // 5 minutes

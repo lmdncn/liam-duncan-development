@@ -3,13 +3,14 @@
  */
 
 import { useQuery } from '@tanstack/react-query';
-import { educationAPI, type EducationItem } from '@/services/api';
+import { educationAPI } from '@/services/api';
+import type { EducationItem, EducationItems } from '@/services/schemas';
 
 /**
  * Hook to fetch all education items
  */
 export const useEducation = () => {
-  return useQuery<EducationItem[], Error>({
+  return useQuery<EducationItems, Error>({
     queryKey: ['education'],
     queryFn: educationAPI.getAll,
     staleTime: 10 * 60 * 1000, // 10 minutes - education rarely changes

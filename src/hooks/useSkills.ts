@@ -3,13 +3,14 @@
  */
 
 import { useQuery } from '@tanstack/react-query';
-import { skillsAPI, type SkillCategory } from '@/services/api';
+import { skillsAPI } from '@/services/api';
+import type { SkillCategory, SkillCategories } from '@/services/schemas';
 
 /**
  * Hook to fetch all skill categories
  */
 export const useSkills = () => {
-  return useQuery<SkillCategory[], Error>({
+  return useQuery<SkillCategories, Error>({
     queryKey: ['skills'],
     queryFn: skillsAPI.getAll,
     staleTime: 10 * 60 * 1000, // 10 minutes - skills rarely change

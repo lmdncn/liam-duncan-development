@@ -4,14 +4,14 @@
  */
 
 import { dataClient } from '../client';
-import type { Experience } from '@/types';
+import type { Experience, Experiences } from '../schemas';
 
 export const experiencesAPI = {
   /**
    * Get all work experiences
    */
-  getAll: async (): Promise<Experience[]> => {
-    return dataClient.get<Experience[]>('experiences');
+  getAll: async (): Promise<Experiences> => {
+    return dataClient.get<Experiences>('experiences');
   },
 
   /**
@@ -22,10 +22,10 @@ export const experiencesAPI = {
   },
 
   /**
-   * Get featured experiences (if needed in the future)
+   * Get featured experiences
    */
-  getFeatured: async (): Promise<Experience[]> => {
+  getFeatured: async (): Promise<Experiences> => {
     const all = await experiencesAPI.getAll();
-    return all.filter((exp: any) => exp.featured === true);
+    return all.filter((exp) => exp.featured === true);
   },
 };

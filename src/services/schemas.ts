@@ -1,112 +1,155 @@
 /**
  * Zod schemas for runtime validation
- * These schemas validate data loaded from YAML files or API responses
+ * These schemas are the SINGLE SOURCE OF TRUTH for all data types
+ * TypeScript types are inferred from these schemas
  */
 
 import { z } from 'zod';
 
 /**
+ * Base schemas for reusable patterns
+ */
+const IdSchema = z.string().min(1);
+const UrlSchema = z.string().url();
+const OrderSchema = z.number().int().positive();
+const NonEmptyStringSchema = z.string().min(1);
+
+/**
  * Experience schema
+ * Represents work experience data
  */
 export const ExperienceSchema = z.object({
-  id: z.string(),
-  company: z.string(),
+  id: IdSchema,
+  company: NonEmptyStringSchema,
   position: z.string(),
-  duration: z.string(),
-  location: z.string(),
-  prevPosition: z.union([z.string(), z.array(z.string())]).optional(),
-  description: z.array(z.string()),
-  skills: z.array(z.string()),
-  link: z.string().url().optional(),
+  duration: NonEmptyStringSchema,
+  location: NonEmptyStringSchema,
+  prevPosition: z.union([NonEmptyStringSchema, z.array(NonEmptyStringSchema)]).optional(),
+  description: z.array(NonEmptyStringSchema).min(1),
+  skills: z.array(NonEmptyStringSchema),
+  link: UrlSchema.optional(),
   iconImage: z.string().optional(),
-  order: z.number().optional(),
+  order: OrderSchema.optional(),
+  featured: z.boolean().optional(),
 });
 
 export const ExperiencesSchema = z.array(ExperienceSchema);
 
 /**
- * Skills schema
+ * Skills color configuration schema
  */
-export const SkillCategorySchema = z.object({
-  id: z.string(),
-  title: z.string(),
-  icon: z.string(),
-  skills: z.array(z.string()),
-  color: z.object({
-    bg: z.string(),
-    text: z.string(),
-    border: z.string(),
-  }),
-  order: z.number(),
+const SkillColorSchema = z.object({
+  bg: NonEmptyStringSchema,
+  text: NonEmptyStringSchema,
+  border: NonEmptyStringSchema,
 });
 
-export const SkillsSchema = z.array(SkillCategorySchema);
+/**
+ * Skill category schema
+ * Represents a category of technical skills
+ */
+export const SkillCategorySchema = z.object({
+  id: IdSchema,
+  title: NonEmptyStringSchema,
+  icon: NonEmptyStringSchema,
+  skills: z.array(NonEmptyStringSchema).min(1),
+  color: SkillColorSchema,
+  order: OrderSchema,
+});
+
+export const SkillCategoriesSchema = z.array(SkillCategorySchema);
 
 /**
- * Projects schema
+ * Project schema
+ * Represents personal or professional projects
  */
 export const ProjectSchema = z.object({
-  id: z.string(),
-  title: z.string(),
-  year: z.string(),
-  event: z.string(),
-  awards: z.array(z.string()),
-  description: z.string(),
-  technologies: z.array(z.string()),
-  highlights: z.array(z.string()),
-  demoUrl: z.string().url().optional(),
-  githubUrl: z.string().url().optional(),
-  order: z.number(),
+  id: IdSchema,
+  title: NonEmptyStringSchema,
+  year: NonEmptyStringSchema,
+  event: NonEmptyStringSchema,
+  awards: z.array(NonEmptyStringSchema),
+  description: NonEmptyStringSchema,
+  technologies: z.array(NonEmptyStringSchema).min(1),
+  highlights: z.array(NonEmptyStringSchema).min(1),
+  demoUrl: UrlSchema.optional(),
+  githubUrl: UrlSchema.optional(),
+  order: OrderSchema,
 });
 
 export const ProjectsSchema = z.array(ProjectSchema);
 
 /**
  * Education schema
+ * Represents educational background
  */
 export const EducationItemSchema = z.object({
-  id: z.string(),
-  institution: z.string(),
-  degree: z.string(),
-  duration: z.string(),
-  location: z.string(),
-  description: z.string(),
-  honors: z.array(z.string()).optional(),
+  id: IdSchema,
+  institution: NonEmptyStringSchema,
+  degree: NonEmptyStringSchema,
+  duration: NonEmptyStringSchema,
+  location: NonEmptyStringSchema,
+  description: NonEmptyStringSchema,
+  honors: z.array(NonEmptyStringSchema).optional(),
   iconImage: z.string().optional(),
-  order: z.number(),
+  gpa: z.string().optional(),
+  order: OrderSchema,
 });
 
 export const EducationSchema = z.array(EducationItemSchema);
 
 /**
- * Featured items schema
+ * Featured item schema
+ * Represents featured content items
  */
 export const FeaturedItemSchema = z.object({
-  id: z.string(),
-  title: z.string(),
-  description: z.string(),
+  id: IdSchema,
+  title: NonEmptyStringSchema,
+  description: NonEmptyStringSchema,
   link: z.string().optional(),
   iconImage: z.string().optional(),
-  order: z.number(),
+  order: OrderSchema,
 });
 
-export const FeaturedSchema = z.array(FeaturedItemSchema);
+export const FeaturedItemsSchema = z.array(FeaturedItemSchema);
 
 /**
  * Hero data schema
+ * Represents hero section configuration
  */
 export const HeroDataSchema = z.object({
-  rotatingRoles: z.array(z.string()),
-  headline: z.string(),
-  subheadline: z.string(),
+  rotatingRoles: z.array(NonEmptyStringSchema).min(1),
+  headline: NonEmptyStringSchema,
+  subheadline: NonEmptyStringSchema,
 });
 
 /**
- * Type exports inferred from schemas
+ * TypeScript types inferred from Zod schemas
+ * These are the canonical types used throughout the application
  */
 export type Experience = z.infer<typeof ExperienceSchema>;
 export type SkillCategory = z.infer<typeof SkillCategorySchema>;
+export type SkillColor = z.infer<typeof SkillColorSchema>;
 export type Project = z.infer<typeof ProjectSchema>;
 export type EducationItem = z.infer<typeof EducationItemSchema>;
 export type FeaturedItem = z.infer<typeof FeaturedItemSchema>;
 export type HeroData = z.infer<typeof HeroDataSchema>;
+
+/**
+ * Readonly versions for immutable data
+ */
+export type ReadonlyExperience = Readonly<Experience>;
+export type ReadonlyProject = Readonly<Project>;
+export type ReadonlyEducationItem = Readonly<EducationItem>;
+export type ReadonlySkillCategory = Readonly<SkillCategory>;
+export type ReadonlyFeaturedItem = Readonly<FeaturedItem>;
+export type ReadonlyHeroData = Readonly<HeroData>;
+
+/**
+ * Array types for collections
+ */
+export type Experiences = Experience[];
+export type Projects = Project[];
+export type SkillCategories = SkillCategory[];
+export type EducationItems = EducationItem[];
+export type FeaturedItems = FeaturedItem[];

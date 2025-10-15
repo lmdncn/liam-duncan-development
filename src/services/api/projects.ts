@@ -4,14 +4,14 @@
  */
 
 import { dataClient } from '../client';
-import type { Project } from '@/types';
+import type { Project, Projects } from '../schemas';
 
 export const projectsAPI = {
   /**
    * Get all projects
    */
-  getAll: async (): Promise<Project[]> => {
-    return dataClient.get<Project[]>('projects');
+  getAll: async (): Promise<Projects> => {
+    return dataClient.get<Projects>('projects');
   },
 
   /**
@@ -24,7 +24,7 @@ export const projectsAPI = {
   /**
    * Get projects by year
    */
-  getByYear: async (year: string): Promise<Project[]> => {
+  getByYear: async (year: string): Promise<Projects> => {
     const all = await projectsAPI.getAll();
     return all.filter((project) => project.year === year);
   },

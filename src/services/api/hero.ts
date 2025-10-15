@@ -4,12 +4,7 @@
  */
 
 import { dataClient } from '../client';
-
-export interface HeroData {
-  rotatingRoles: string[];
-  headline: string;
-  subheadline: string;
-}
+import type { HeroData } from '../schemas';
 
 export const heroAPI = {
   /**

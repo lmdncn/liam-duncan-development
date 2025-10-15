@@ -4,25 +4,14 @@
  */
 
 import { dataClient } from '../client';
-
-export interface EducationItem {
-  id: string;
-  institution: string;
-  degree: string;
-  duration: string;
-  location: string;
-  description: string;
-  honors?: string[];
-  iconImage?: string;
-  order: number;
-}
+import type { EducationItem, EducationItems } from '../schemas';
 
 export const educationAPI = {
   /**
    * Get all education items
    */
-  getAll: async (): Promise<EducationItem[]> => {
-    return dataClient.get<EducationItem[]>('education');
+  getAll: async (): Promise<EducationItems> => {
+    return dataClient.get<EducationItems>('education');
   },
 
   /**

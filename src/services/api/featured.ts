@@ -4,24 +4,14 @@
  */
 
 import { dataClient } from '../client';
-import type { LucideIcon } from 'lucide-react';
-
-export interface FeaturedItem {
-  id: string;
-  title: string;
-  description: string;
-  link?: string;
-  icon?: LucideIcon;
-  iconImage?: string;
-  order: number;
-}
+import type { FeaturedItem, FeaturedItems } from '../schemas';
 
 export const featuredAPI = {
   /**
    * Get all featured items
    */
-  getAll: async (): Promise<FeaturedItem[]> => {
-    return dataClient.get<FeaturedItem[]>('featured');
+  getAll: async (): Promise<FeaturedItems> => {
+    return dataClient.get<FeaturedItems>('featured');
   },
 
   /**

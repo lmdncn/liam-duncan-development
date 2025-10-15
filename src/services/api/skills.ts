@@ -4,26 +4,14 @@
  */
 
 import { dataClient } from '../client';
-
-export interface SkillCategory {
-  id: string;
-  title: string;
-  icon: string;
-  skills: string[];
-  color: {
-    bg: string;
-    text: string;
-    border: string;
-  };
-  order: number;
-}
+import type { SkillCategory, SkillCategories } from '../schemas';
 
 export const skillsAPI = {
   /**
    * Get all skill categories
    */
-  getAll: async (): Promise<SkillCategory[]> => {
-    return dataClient.get<SkillCategory[]>('skills');
+  getAll: async (): Promise<SkillCategories> => {
+    return dataClient.get<SkillCategories>('skills');
   },
 
   /**

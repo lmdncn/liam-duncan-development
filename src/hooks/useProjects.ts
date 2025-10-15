@@ -4,13 +4,13 @@
 
 import { useQuery } from '@tanstack/react-query';
 import { projectsAPI } from '@/services/api';
-import type { Project } from '@/types';
+import type { Project, Projects } from '@/services/schemas';
 
 /**
  * Hook to fetch all projects
  */
 export const useProjects = () => {
-  return useQuery<Project[], Error>({
+  return useQuery<Projects, Error>({
     queryKey: ['projects'],
     queryFn: projectsAPI.getAll,
     staleTime: 5 * 60 * 1000, // 5 minutes
@@ -33,7 +33,7 @@ export const useProject = (id: string) => {
  * Hook to fetch projects by year
  */
 export const useProjectsByYear = (year: string) => {
-  return useQuery<Project[], Error>({
+  return useQuery<Projects, Error>({
     queryKey: ['projects', 'year', year],
     queryFn: () => projectsAPI.getByYear(year),
     enabled: !!year,

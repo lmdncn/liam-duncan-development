@@ -3,7 +3,8 @@
  */
 
 import { useQuery } from '@tanstack/react-query';
-import { heroAPI, type HeroData } from '@/services/api';
+import { heroAPI } from '@/services/api';
+import type { HeroData } from '@/services/schemas';
 
 /**
  * Hook to fetch hero section data

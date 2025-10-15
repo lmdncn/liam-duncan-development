@@ -8,10 +8,10 @@ import type { DataClient, DataResource } from './types';
 import { DataServiceError } from './types';
 import {
   ExperiencesSchema,
-  SkillsSchema,
+  SkillCategoriesSchema,
   ProjectsSchema,
   EducationSchema,
-  FeaturedSchema,
+  FeaturedItemsSchema,
   HeroDataSchema,
 } from './schemas';
 import type { z } from 'zod';
@@ -21,10 +21,10 @@ import type { z } from 'zod';
  */
 const schemaMap: Record<DataResource, z.ZodType<any>> = {
   experiences: ExperiencesSchema,
-  skills: SkillsSchema,
+  skills: SkillCategoriesSchema,
   projects: ProjectsSchema,
   education: EducationSchema,
-  featured: FeaturedSchema,
+  featured: FeaturedItemsSchema,
   hero: HeroDataSchema,
 };
 

@@ -1,64 +1,21 @@
-// Experience and project related types
+/**
+ * Experience and project related types
+ *
+ * DEPRECATED: These types are now defined in @/services/schemas
+ * This file re-exports them for backwards compatibility
+ *
+ * Migrate to importing directly from '@/services/schemas' instead
+ */
 
-export interface Experience {
-  company: string;
-  position: string;
-  duration: string;
-  location: string;
-  prevPosition?: string | string[];
-  description: string[];
-  skills: string[];
-}
+// Re-export from schemas (single source of truth)
+export type {
+  Experience,
+  Project,
+  EducationItem as Education,
+  SkillCategory as Skill,
+} from '@/services/schemas';
 
-export interface Project {
-  title: string;
-  year: string;
-  event: string;
-  awards: string[];
-  description: string;
-  technologies: string[];
-  highlights: string[];
-  demoUrl?: string;
-  githubUrl?: string;
-}
-
-export interface Education {
-  institution: string;
-  degree: string;
-  duration: string;
-  location: string;
-  description?: string[];
-  gpa?: string;
-  honors?: string[];
-}
-
-export interface Skill {
-  category: string;
-  items: string[];
-}
-
-// Component props
-export interface ExperienceCardProps {
-  experience: Experience;
-  index: number;
-}
-
-export interface ProjectCardProps {
-  project: Project;
-  index: number;
-}
-
-export interface EducationCardProps {
-  education: Education;
-  index: number;
-}
-
-export interface SkillCategoryProps {
-  skill: Skill;
-  index: number;
-}
-
-// Experience article types
+// Experience article types (still defined here - these are for markdown content, not YAML data)
 export interface BackButton {
   to: string;
   label: string;
@@ -101,7 +58,27 @@ export interface ExperienceArticle extends ExperienceMetadata {
   content: string;
 }
 
-// Experience article component props
+// Legacy component props (deprecated - prefer using types from schemas directly)
+export interface ExperienceCardProps {
+  experience: Experience;
+  index: number;
+}
+
+export interface ProjectCardProps {
+  project: Project;
+  index: number;
+}
+
+export interface EducationCardProps {
+  education: Education;
+  index: number;
+}
+
+export interface SkillCategoryProps {
+  skill: Skill;
+  index: number;
+}
+
 export interface ExperienceArticleCardProps {
   article: ExperienceArticle;
 }
