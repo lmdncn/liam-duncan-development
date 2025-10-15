@@ -15,7 +15,7 @@ const Index = () => {
     <div className="min-h-screen">
       <SEO
         title={SEO_CONFIG.siteName}
-        description="Full-Stack Developer & AI Agent Manager. Experienced in React, TypeScript, Node.js, and modern AI-powered development tools."
+        description="As a Full-Stack Developer, I turn complex problems into scalable systems and AI-driven solutions that drive real results."
         image={OG_IMAGES.resume}
         url="/"
       />
