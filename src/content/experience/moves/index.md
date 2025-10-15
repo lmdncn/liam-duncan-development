@@ -10,7 +10,7 @@ seoDescription: "My three year journey leading the team that built Moves Financi
 url: "/experience/moves"
 backButton: '{"to": "/", "label": "Back to Portfolio"}'
 footer: '{"backTo": "/", "backLabel": "Back to Portfolio"}'
-relatedArticles: '[{"slug": "cash-advances", "title": "Moves Cash Advances: Building Cash Flow That Worked for Gig Workers", "description": "A technical deep dive into the design of a resilient, event-driven credit system for irregular income.", "icon": "CreditCard"}]'
+relatedArticles: '[{"slug": "cash-advances", "title": "Moves Cash Advances: Engineering Liquidity for the Gig Economy", "description": "A technical deep dive into the design of a resilient, event-driven credit system for irregular income.", "icon": "CreditCard"}]'
 ---
 
 ### A Better Option Than Payday Loans
