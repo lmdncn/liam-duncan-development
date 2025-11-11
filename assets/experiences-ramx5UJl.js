@@ -5,7 +5,7 @@ const n=`experiences:
     duration: Oct 2025 – Present
     location: Vancouver, Canada
     description:
-      - "Building a SaaS API platform in Node.js and TypeScript that powers mobile wallet experiences for enterprise brands, enabling wallet pass creation, push notifications, and location-based engagement."
+      - "Developing scalable backend APIs and infrastructure to power mobile wallet experiences for enterprise brands, enabling rapid feature delivery and platform growth."
     skills:
       - TypeScript
       - Node.js
