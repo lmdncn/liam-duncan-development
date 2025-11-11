@@ -1,23 +1,42 @@
 const n=`experiences:
+  - id: badge
+    company: Badge
+    position: Software Engineer
+    duration: Oct 2025 – Present
+    location: Vancouver, Canada
+    description:
+      - "Building a SaaS API platform in Node.js and TypeScript that powers mobile wallet experiences for enterprise brands, enabling wallet pass creation, push notifications, and location-based engagement."
+    skills:
+      - TypeScript
+      - Node.js
+      - React
+      - Express.js
+      - Prisma
+      - PostgreSQL
+      - API Development
+    link: https://www.badge.dev/
+    iconImage: /badge-app-icon.jpeg
+    order: 1
+
   - id: float-financial
     company: Float Financial
     position: Software Developer
     duration: Feb 2025 – Jul 2025
-    location: Remote (Canada)
+    location: Toronto, Canada
     description:
       - "Modernized a $100M+ payments API, enabling faster rollout of payout workflows, by migrating from Django DRF to Pydantic and applying Template Method, Strategy, and Policy patterns to decouple domain logic and improve extensibility."
       - "Built an automated data pipeline with Claude AI integration to enrich transactions with Canadian business classification and scoring, delivering enhanced spending insights through client updates and a Retool admin interface."
       - "Cut endpoint response times 50%, improving customer satisfaction, by optimizing queries and backend logic for high-volume retrieval."
     skills:
       - Python
+      - TypeScript
       - Django
       - React
-      - TypeScript
       - Snowflake
       - Anthropic API
     link: https://floatfinancial.com/
     iconImage: /float-app-icon.png
-    order: 1
+    order: 2
 
   - id: career-break
     company: Career Break
@@ -27,13 +46,13 @@ const n=`experiences:
       - "I took a year-long career break to achieve a long-planned goal, travelling around the world. During this time, I visited four continents and over 15 countries. This experience provided valuable global insights and renewed energy."
     skills: []
     iconImage: /travel-app-icon.png
-    order: 2
+    order: 3
 
   - id: moves-financial
     company: Moves Financial
     position: Engineering Technical Lead & Manager
     duration: Jul 2021 – Jan 2024
-    location: Remote (Canada)
+    location: Toronto, Canada (Remote)
     prevPosition: Senior Software Developer (Jul 2021 – Nov 2021)
     description:
       - "Led the banking vertical team, coding and shipping core features while managing engineers and product delivery."
@@ -41,8 +60,9 @@ const n=`experiences:
       - "Built proprietary adjudication and repayment services, improving cash advance margins by 200+ points."
       - "Mentored and grew a high-performing team, earning 4.8/5 manager feedback."
     skills:
-      - React Native
+      - TypeScript
       - Node.js
+      - React Native
       - Express.js
       - Redis
       - MongoDB
@@ -50,7 +70,7 @@ const n=`experiences:
       - Event Driven Architecture
     link: https://betakit.com/gig-economy-banking-app-moves-raises-5-million-in-omers-led-seed-round/
     iconImage: /moves/moves-app-icon.png
-    order: 3
+    order: 4
 
   - id: konrad
     company: Konrad
@@ -69,27 +89,27 @@ const n=`experiences:
       - "Drove developer learning culture, by creating and delivering Power Hours on new technologies."
       - "Strengthened team capability by mentoring junior developers and conducting candidate interviews during the hiring process."
     skills:
-      - React
-      - Apollo
-      - NestJs
-      - GraphQL
-      - PostgreSQL
-      - Jest
-      - Puppeteer
       - Node.js
+      - React
+      - NestJs
       - Express
-      - FlywayDB
+      - Apollo
+      - GraphQL
+      - Jest
       - Mocha
       - Chai
+      - PostgreSQL
+      - Puppeteer
+      - FlywayDB
       - Webpack
       - Cordova
-      - GitLab CI/CD
+      - Docker
       - Kubernetes
       - Openshift
-      - Docker
+      - GitLab CI/CD
     link: https://www.konrad.com/
     iconImage: /konrad-app-icon.png
-    order: 4
+    order: 5
 
   - id: brainstation
     company: BrainStation
@@ -102,18 +122,18 @@ const n=`experiences:
       - "Enhanced marketing and sales effectiveness by developing websites, analytics tools, and API integrations."
       - "Applied DevOps and Agile practices, shipping biweekly releases."
     skills:
-      - React
-      - Redux
       - C#
-      - .NET
       - SQL
+      - React
+      - .NET
+      - Redux
+      - AWS
       - Amazon Chime SDK
       - SendGrid
       - Salesforce
       - Intercom
       - Google APIs
-      - AWS
     link: https://brainstation.io/
     iconImage: /brainstation-app-icon.png
-    order: 5
+    order: 6
 `;export{n as default};

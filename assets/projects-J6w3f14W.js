@@ -6,13 +6,13 @@ const e=`projects:
     awards: []
     description: "Architected and built a full-stack social travel platform using a microservices architecture, event-driven design, and domain-driven principles."
     technologies:
-      - Next.js
-      - React
       - TypeScript
       - Node.js
+      - Next.js
+      - React
+      - Prisma ORM
       - PostgreSQL
       - MongoDB
-      - Prisma ORM
       - Redis PubSub
       - OpenAI API
       - Git worktree
@@ -30,9 +30,9 @@ const e=`projects:
       - 2nd place overall
     description: "Drowsy driving combatant headpiece with Arduino integration and companion Android application. Designed to detect driver fatigue and alert users to prevent accidents."
     technologies:
-      - Arduino
       - Go
       - Java
+      - Arduino
       - Android
       - Hardware Integration
     highlights:
@@ -49,10 +49,10 @@ const e=`projects:
       - Over 3K users
     description: "Web application displaying Western Recreation Center attendance and analytics obtained through Twitter API and web scraping. Helped students plan their gym visits based on trend projections."
     technologies:
-      - MongoDB
-      - Express
-      - Angular
       - Node.js
+      - Angular
+      - Express
+      - MongoDB
       - Cheerio
       - Twitter API
     highlights:
