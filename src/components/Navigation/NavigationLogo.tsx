@@ -9,10 +9,14 @@ const NavigationLogo = ({ scrolled }: NavigationLogoProps) => {
   return (
     <Link
       to="/"
-      className="font-bold text-xl cursor-pointer transition-colors duration-300 hover:text-primary"
+      className="font-bold text-xl cursor-pointer transition-all duration-300 hover:text-primary"
     >
       <span
-        className={scrolled ? "text-foreground" : "text-primary-foreground"}
+        className={`transition-all duration-300 ${
+          scrolled
+            ? "text-foreground opacity-100"
+            : "text-primary-foreground opacity-0"
+        }`}
       >
         {PERSONAL_INFO.name}
       </span>
