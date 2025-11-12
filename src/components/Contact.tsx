@@ -5,7 +5,7 @@ import { SectionHeader } from "@/components/ui/section-header";
 import { Container } from "@/components/ui/container";
 import { Mail, Linkedin, MapPin, Download, Github } from "lucide-react";
 import { useDownloadResume } from "@/hooks/useDownloadResume";
-import { PERSONAL_INFO, EMAIL_TEMPLATES } from "@/lib/constants";
+import { PERSONAL_INFO, EMAIL_TEMPLATES, SITE_CONFIG } from "@/lib/constants";
 import { trackEvent } from "@/utils/analytics";
 
 const Contact = () => {
@@ -14,6 +14,15 @@ const Contact = () => {
   return (
     <Section id="contact">
       <Container>
+        <div className="flex flex-col items-center mb-8">
+          <div className="overflow-hidden rounded-lg border-2 border-border/50 shadow-card w-32 h-32">
+            <img
+              src={`${SITE_CONFIG.basePath}/liam-at-desk.jpeg`}
+              alt="Liam Duncan"
+              className="h-32 w-32 object-cover"
+            />
+          </div>
+        </div>
         <SectionHeader
           title="Let's Connect"
           subtitle="Ready to discuss opportunities or collaborate on exciting projects"
