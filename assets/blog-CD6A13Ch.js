@@ -1,4 +1,4 @@
-import{h as i}from"./index-DrizZdzG.js";import{g as r,p as h,e as d}from"./markdown-D-fYWD4s.js";/**
+import{h as i}from"./index-DEc_FhFY.js";import{g as r,p as h,e as d}from"./markdown-xhDj9Bff.js";/**
  * @license lucide-react v0.462.0 - ISC
  *
  * This source code is licensed under the ISC license.
@@ -233,7 +233,7 @@ And when I came back, the timing could not have been crazier. Right in the middl
 If you have ever thought about stepping away, I can’t recommend it enough. The world keeps moving whether you are in the race or not. Sometimes the best way to catch up is to stop running.
 `,m=`---
 title: "Onboarding Has Changed: How AI Tools Cut Ramp-Up Time in Half"
-date: "2025-11-27"
+date: "2025-11-13"
 excerpt: "Two weeks into my new role at Badge.dev, I'm shipping features instead of drowning in docs. AI tools have completely transformed how engineers ramp up on new codebases."
 category: "AI & Engineering"
 readTime: "7 min"
@@ -259,7 +259,7 @@ My setup at [Badge.dev](https://www.badge.dev/): Claude Code with Opus 4.5, Curs
 
 When I hit a part of the code I don't understand, I don't grep around for 20 minutes trying to build context. I ask:
 
-\`\`\`
+\`\`\`text
 Walk me through how a pass gets created and distributed
 to a user's wallet. Start from the API endpoint and trace
 through to the wallet provider integration.
@@ -269,7 +269,7 @@ And I get an actual explanation that traces the data flow, names the relevant fi
 
 When I need to understand how entities relate to each other, I ask for a diagram:
 
-\`\`\`
+\`\`\`text
 Generate a Mermaid diagram showing the relationships between
 Organization, Pass Template, Pass, and User entities. Include
 the key fields that link them.
