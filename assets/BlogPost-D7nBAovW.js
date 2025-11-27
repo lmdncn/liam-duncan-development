@@ -1,4 +1,4 @@
-import{f as h,u as x,j as s,g as u,L as y,c as p,S as b}from"./index-CF1lLdiX.js";import{a as w,C as v}from"./blog-C3l4IrUm.js";import{M as j,b as N}from"./markdown-components-tTqCVoA5.js";import"./markdown-DiVPeL8D.js";const $=e=>{const{title:t,category:a,date:r,author:c="Liam Duncan"}=e,i=85,f=(t.length>i?`${t.substring(0,i)}...`:t).split(" "),n=[];let o="";f.forEach(l=>{const m=o?`${o} ${l}`:l;m.length>45&&o?(n.push(o),o=l):o=m}),o&&n.push(o);const d=`
+import{f as h,u as x,j as s,g as u,L as y,c as p,S as b}from"./index-DrizZdzG.js";import{a as w,C as v}from"./blog-DzushOqq.js";import{M as j,b as N}from"./markdown-components-BnXC6Pr6.js";import"./markdown-D-fYWD4s.js";const $=e=>{const{title:t,category:a,date:r,author:c="Liam Duncan"}=e,i=85,f=(t.length>i?`${t.substring(0,i)}...`:t).split(" "),n=[];let o="";f.forEach(l=>{const m=o?`${o} ${l}`:l;m.length>45&&o?(n.push(o),o=l):o=m}),o&&n.push(o);const d=`
     <svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
