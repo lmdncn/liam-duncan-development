@@ -12,7 +12,7 @@ Instead, I've already built multiple endpoints, shipped bug fixes, and contribut
 
 ## The old way was brutal for everyone
 
-I spent four years at Moves, a fintech startup where I led the team building the banking platform. I onboarded plenty of engineers during that time, and I remember exactly how it went.
+I spent three years at Moves, a fintech startup where I led the team building the banking platform. I onboarded plenty of engineers during that time, and I remember exactly how it went.
 
 New hire shows up. We'd point them at our Notion docs, most of which were written 18 months ago and hadn't aged well. They'd read for a few days, absorbing maybe 30% of it, overwhelmed by context they couldn't yet place. Then came the calendar invites: sessions with me and other senior engineers walking through the architecture, explaining how data flows through the system, why we made certain decisions, where the bodies are buried.
 
