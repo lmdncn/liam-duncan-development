@@ -35,7 +35,10 @@ export const generateBlogPostSEO = (post: BlogPost) => {
 export const formatDateForISO = (dateString: string): string => {
   let date: Date;
 
-  if (dateString.includes(",")) {
+  if (/^\d{4}-\d{2}-\d{2}$/.test(dateString)) {
+    // Handle "2025-09-08" ISO format (YYYY-MM-DD)
+    date = new Date(dateString);
+  } else if (dateString.includes(",")) {
     // Handle "September 24, 2025" format
     date = new Date(dateString);
   } else {
@@ -58,7 +61,7 @@ export const formatDateForISO = (dateString: string): string => {
     const monthIndex = monthNames.indexOf(month);
 
     if (monthIndex === -1) {
-      console.warn(`Invalid month name: ${month}`);
+      console.warn(`Invalid month name: ${dateString}`);
       date = new Date(); // fallback to current date
     } else {
       // Use Date constructor with numeric parameters (mobile-safe)
