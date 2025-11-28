@@ -1,0 +1,1 @@
+This PR introduces a GitHub Actions workflow to automate the deployment process using the `npm run deploy` command.
