@@ -1,4 +1,4 @@
-import{f as h,u as x,j as s,g as u,L as y,c as p,S as b}from"./index-CUsr2G87.js";import{a as w,C as v}from"./blog-DeRseuF6.js";import{M as j,b as $}from"./markdown-components-DSL1H_cV.js";import"./markdown-8oerI4z7.js";const N=e=>{const{title:t,category:a,date:n,author:c="Liam Duncan"}=e,i=85,g=(t.length>i?`${t.substring(0,i)}...`:t).split(" "),r=[];let o="";g.forEach(l=>{const m=o?`${o} ${l}`:l;m.length>45&&o?(r.push(o),o=l):o=m}),o&&r.push(o);const d=`
+import{f as h,u as x,j as s,g as u,L as y,c as p,S as b}from"./index-Cfz9N1DN.js";import{a as w,C as v}from"./blog-DhrBurh-.js";import{M as j,b as $}from"./markdown-components-D8xS59hf.js";import"./markdown-CSBuJYfX.js";const N=e=>{const{title:t,category:a,date:n,author:c="Liam Duncan"}=e,i=85,g=(t.length>i?`${t.substring(0,i)}...`:t).split(" "),r=[];let o="";g.forEach(l=>{const m=o?`${o} ${l}`:l;m.length>45&&o?(r.push(o),o=l):o=m}),o&&r.push(o);const d=`
     <svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -37,7 +37,7 @@ import{f as h,u as x,j as s,g as u,L as y,c as p,S as b}from"./index-CUsr2G87.js
       
       <!-- Blog indicator -->
       <text x="80" y="580" font-family="system-ui, -apple-system, sans-serif" 
-            font-size="18" font-weight="400" fill="#6b7280">lmdncn.github.io/liam-duncan-development</text>
+            font-size="18" font-weight="400" fill="#6b7280">duncandevelopment.ca/liam-duncan</text>
             
       <!-- Decorative element -->
       <circle cx="1050" cy="150" r="60" fill="rgba(59, 130, 246, 0.1)" stroke="rgba(59, 130, 246, 0.3)" stroke-width="2"/>
