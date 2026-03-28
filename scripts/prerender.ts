@@ -6,6 +6,8 @@ import {
   mkdirSync,
   writeFileSync,
   existsSync,
+  renameSync,
+  cpSync,
 } from "node:fs";
 import matter from "gray-matter";
 
@@ -364,13 +366,61 @@ experienceArticles.forEach((article) => {
   });
 });
 
+// --- Step 1: Restructure dist so all content lives under /liam-duncan/ ---
+// Vite outputs everything to dist/ but assets reference /liam-duncan/...
+// We need to move everything into dist/liam-duncan/ so paths resolve on the server.
+
+const subDir = path.join(distDir, "liam-duncan");
+const rootKeep = new Set(["404.html", "CNAME", "liam-duncan"]);
+
+// Create the subdirectory
+ensureDirectory(subDir);
+
+// Move all files/dirs except root-level ones into liam-duncan/
+const distEntries = readdirSync(distDir, { withFileTypes: true });
+for (const entry of distEntries) {
+  if (rootKeep.has(entry.name)) continue;
+  const src = path.join(distDir, entry.name);
+  const dest = path.join(subDir, entry.name);
+  renameSync(src, dest);
+}
+
+// The app's index.html is now at dist/liam-duncan/index.html — that's correct.
+// Prerendered sub-routes also go under dist/liam-duncan/.
+
+console.log("📁  Restructured dist/ → dist/liam-duncan/");
+
+// --- Step 2: Prerender sub-routes under the new structure ---
 routes.forEach((route) => {
-  const outputDir = path.join(distDir, route.path);
+  const outputDir = path.join(subDir, route.path);
   ensureDirectory(outputDir);
 
   const html = buildHtml(baseHtml, route);
   writeFileSync(path.join(outputDir, "index.html"), html, "utf8");
-  console.log(`   → prerendered /${route.path}`);
+  console.log(`   → prerendered /liam-duncan/${route.path}`);
 });
+
+// --- Step 3: Create root redirect index.html ---
+const redirectHtml = `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content="0;url=/liam-duncan/" />
+    <title>Redirecting…</title>
+    <script>window.location.replace("/liam-duncan/");</script>
+  </head>
+  <body>
+    <p>Redirecting to <a href="/liam-duncan/">/liam-duncan/</a>…</p>
+  </body>
+</html>`;
+
+writeFileSync(path.join(distDir, "index.html"), redirectHtml, "utf8");
+console.log("   → created root redirect → /liam-duncan/");
+
+// --- Step 4: Copy 404.html into liam-duncan/ as well for sub-route SPA fallback ---
+const root404 = path.join(distDir, "404.html");
+if (existsSync(root404)) {
+  cpSync(root404, path.join(subDir, "404.html"));
+}
 
 console.log("✅  Social meta prerendering complete.");

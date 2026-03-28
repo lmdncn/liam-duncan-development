@@ -14,8 +14,11 @@ export default defineConfig(({ mode }) => ({
       name: "rewrite-middleware",
       configureServer(server) {
         server.middlewares.use((req, _res, next) => {
-          if (req.url === "/liam-duncan-development") {
-            req.url = "/liam-duncan-development/";
+          if (req.url === "/liam-duncan") {
+            req.url = "/liam-duncan/";
+          }
+          if (req.url === "/") {
+            req.url = "/liam-duncan/";
           }
           next();
         });
@@ -27,7 +30,7 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: "/liam-duncan-development/",
+  base: "/liam-duncan/",
   build: {
     rollupOptions: {
       output: {

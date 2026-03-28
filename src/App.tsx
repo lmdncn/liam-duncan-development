@@ -55,7 +55,7 @@ const App = () => (
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <BrowserRouter basename="/liam-duncan-development">
+          <BrowserRouter basename="/liam-duncan">
             <AnalyticsTracker />
             <ScrollToTop />
             <Suspense fallback={<PageLoader />}>

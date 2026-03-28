@@ -32,17 +32,17 @@ export const EMAIL_TEMPLATES: Record<string, EmailTemplate> = {
 // Resume Configuration
 export const RESUME_CONFIG: ResumeConfig = {
   filename: "Liam_Duncan_Resume_2025_09.pdf",
-  path: "/liam-duncan-development/Liam_Duncan_Resume_2025_09.pdf",
+  path: "/liam-duncan/Liam_Duncan_Resume_2025_09.pdf",
 };
 
 // Site Configuration
 export const SITE_CONFIG: SiteConfig = {
-  basePath: "/liam-duncan-development",
+  basePath: "/liam-duncan",
 };
 
 // SEO Configuration
 export const SEO_CONFIG = {
-  baseUrl: "https://lmdncn.github.io/liam-duncan-development",
+  baseUrl: "https://duncandevelopment.ca/liam-duncan",
   siteName: PERSONAL_INFO.name,
   locale: "en_US",
   themeColor: "#000000",
