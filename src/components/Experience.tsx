@@ -13,6 +13,7 @@ const Experience = () => {
     <Section id="experience">
       <Container>
         <SectionHeader
+          index={2}
           title="Professional Experience"
           subtitle="A journey through innovative companies, leading teams, and building scalable solutions"
         />

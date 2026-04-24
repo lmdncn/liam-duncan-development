@@ -46,7 +46,7 @@ const PageHeader = React.forwardRef<HTMLElement, PageHeaderProps>(
               </div>
             )}
 
-            <div className="text-primary-foreground">
+            <div className="text-foreground">
               {badge && meta && (
                 <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
                   <Badge className={cn(

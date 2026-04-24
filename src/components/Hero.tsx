@@ -1,156 +1,185 @@
-import { Download, MapPin, ArrowRight, Linkedin, BookOpen } from "lucide-react";
-import { Link } from "react-router";
+import { Download, MapPin, ArrowRight } from "lucide-react";
 import { useDownloadResume } from "@/hooks/useDownloadResume";
 import { useHeroData } from "@/hooks/useHeroData";
 import { PERSONAL_INFO } from "@/lib/constants";
+import { scrollToAnchor } from "@/lib/utils";
 import { RotatingText } from "@/components/ui/rotating-text";
-import { ActionButtonGroup, type ActionButton } from "@/components/ui/action-button-group";
-import { LoadingState } from "@/components/ui/loading-state";
+import { Button } from "@/components/ui/button";
 import { ErrorState } from "@/components/ui/error-state";
+
+const EMPTY_ROLES: string[] = [];
+
+const DOT_GRID_STYLE: React.CSSProperties = {
+  backgroundImage: "radial-gradient(circle, hsl(218 14% 72% / 0.5) 1px, transparent 1px)",
+  backgroundSize: "28px 28px",
+  maskImage: "radial-gradient(ellipse 65% 70% at 85% 20%, black 10%, transparent 75%)",
+  WebkitMaskImage: "radial-gradient(ellipse 65% 70% at 85% 20%, black 10%, transparent 75%)",
+};
+
+const FINE_GRID_STYLE: React.CSSProperties = {
+  backgroundImage:
+    "linear-gradient(hsl(var(--border) / 0.6) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--border) / 0.6) 1px, transparent 1px)",
+  backgroundSize: "56px 56px",
+  maskImage: "radial-gradient(ellipse 50% 60% at 90% 25%, black 0%, transparent 70%)",
+  WebkitMaskImage: "radial-gradient(ellipse 50% 60% at 90% 25%, black 0%, transparent 70%)",
+  animation: "heroGridDrift 24s linear infinite",
+};
+
+const GLOW_STYLE: React.CSSProperties = {
+  background:
+    "radial-gradient(circle at 82% 22%, hsl(var(--primary) / 0.22), transparent 55%)",
+  animation: "heroGlow 9s ease-in-out infinite",
+};
+
+const scrollToWork = () => scrollToAnchor("#experience");
 
 const Hero = () => {
   const { downloadResume } = useDownloadResume();
-  const { data: heroData, isLoading, error, refetch } = useHeroData();
+  const { data: heroData, error, refetch } = useHeroData();
 
-  // Loading state
-  if (isLoading) {
+  if (error) {
     return (
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-hero overflow-hidden">
-        <LoadingState message="Loading hero section..." />
+      <section className="relative min-h-screen flex items-center justify-center bg-background overflow-hidden">
+        <ErrorState message="Failed to load" onRetry={() => refetch()} />
       </section>
     );
   }
 
-  // Error state
-  if (error || !heroData) {
-    return (
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-hero overflow-hidden">
-        <ErrorState
-          message="Failed to load hero section"
-          onRetry={() => refetch()}
-        />
-      </section>
-    );
-  }
-
-  const { rotatingRoles, headline, subheadline } = heroData;
-
-  const scrollToExperience = () => {
-    const element = document.querySelector("#experience");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  const actionButtons: ActionButton[] = [
-    {
-      label: "Blog",
-      icon: <BookOpen className="mr-2 h-4 w-4" />,
-      to: "/blog",
-    },
-    {
-      label: "Resume",
-      icon: <Download className="mr-2 h-4 w-4" />,
-      onClick: downloadResume,
-    },
-    {
-      label: "Connect",
-      icon: <Linkedin className="mr-2 h-4 w-4" />,
-      onClick: () => window.open(PERSONAL_INFO.linkedin.url, "_blank"),
-    },
-  ];
-
-  const mainButton: ActionButton = {
-    label: "More About Me",
-    icon: <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />,
-    onClick: scrollToExperience,
-    variant: "default",
-  };
+  const rotatingRoles = heroData?.rotatingRoles ?? EMPTY_ROLES;
+  const subheadline = heroData?.subheadline ?? "";
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-hero overflow-hidden">
-      {/* Enhanced background effects */}
-      <div className="absolute inset-0">
-        {/* Gradient overlay */}
-        <div className="w-full h-full bg-gradient-to-br from-primary-glow/20 via-transparent to-accent-glow/10"></div>
+    <section id="home" className="relative min-h-screen flex items-center bg-background overflow-hidden">
+      <div
+        className="absolute inset-0 pointer-events-none select-none"
+        style={FINE_GRID_STYLE}
+        aria-hidden
+      />
+      <div
+        className="absolute inset-0 pointer-events-none select-none"
+        style={DOT_GRID_STYLE}
+        aria-hidden
+      />
+      <div
+        className="absolute inset-0 pointer-events-none select-none"
+        style={GLOW_STYLE}
+        aria-hidden
+      />
 
-        {/* Floating geometric shapes */}
-        <div className="absolute top-20 left-10 w-32 h-32 bg-primary/5 rounded-full blur-xl animate-pulse"></div>
-        <div
-          className="absolute bottom-32 right-16 w-24 h-24 bg-accent/10 rounded-full blur-lg animate-pulse"
-          style={{ animationDelay: "1s" }}
-        ></div>
-        <div
-          className="absolute top-1/2 left-1/4 w-16 h-16 bg-primary/8 rotate-45 blur-lg animate-pulse"
-          style={{ animationDelay: "2s" }}
-        ></div>
+      <svg
+        className="absolute top-0 right-0 pointer-events-none select-none hidden md:block"
+        width="340"
+        height="260"
+        viewBox="0 0 340 260"
+        fill="none"
+        aria-hidden
+      >
+        <g stroke="hsl(var(--primary) / 0.35)" strokeWidth="1">
+          <path d="M60 200 L140 140 L220 160 L300 80" fill="none" />
+          <path d="M100 230 L180 180 L260 120" fill="none" strokeDasharray="2 4" />
+        </g>
+        <g fill="hsl(var(--primary))">
+          <circle cx="60" cy="200" r="3" style={{ animation: "heroNodePulse 3.2s ease-in-out infinite" }} />
+          <circle cx="140" cy="140" r="3" style={{ animation: "heroNodePulse 3.2s ease-in-out 0.4s infinite" }} />
+          <circle cx="220" cy="160" r="3" style={{ animation: "heroNodePulse 3.2s ease-in-out 0.8s infinite" }} />
+          <circle cx="300" cy="80" r="3.5" style={{ animation: "heroNodePulse 3.2s ease-in-out 1.2s infinite" }} />
+          <circle cx="180" cy="180" r="2" style={{ animation: "heroNodePulse 3.2s ease-in-out 0.6s infinite" }} />
+          <circle cx="260" cy="120" r="2" style={{ animation: "heroNodePulse 3.2s ease-in-out 1s infinite" }} />
+        </g>
+      </svg>
 
-        {/* Subtle grid pattern */}
+      <div
+        className="absolute bottom-10 right-8 hidden lg:flex flex-col items-start gap-1 font-mono text-[10px] tracking-[0.18em] uppercase text-muted-foreground/50 animate-fade-in"
+        style={{ animationDelay: "0.5s" }}
+        aria-hidden
+      >
+        <span>{"● claude code · session active"}</span>
+        <span className="text-primary/60">{"● building with intent"}</span>
+      </div>
+
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-border" />
+
+      <div className="relative z-10 container mx-auto max-w-7xl px-6 pt-28 pb-24 w-full">
         <div
-          className="absolute inset-0 opacity-[0.02]"
+          className="flex items-center gap-2 mb-10 animate-fade-in"
+          style={{ animationDelay: "0.05s" }}
+        >
+          <MapPin className="h-3.5 w-3.5 text-primary flex-shrink-0" />
+          <span className="font-mono text-[11px] tracking-[0.22em] uppercase text-primary">
+            {PERSONAL_INFO.location}
+          </span>
+        </div>
+
+        <h1
+          className="font-display font-bold text-foreground leading-[0.9] tracking-tight mb-8 animate-fade-in"
           style={{
-            backgroundImage:
-              "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0)",
-            backgroundSize: "50px 50px",
+            fontSize: "clamp(3rem, 8.5vw, 9rem)",
+            animationDelay: "0.12s",
           }}
-        ></div>
-      </div>
+        >
+          Liam
+          <br />
+          Duncan
+        </h1>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center text-primary-foreground">
-          {/* Name with stagger animation */}
-          <div className="mb-8 animate-fade-in">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 tracking-tight">
-              {PERSONAL_INFO.name}
-            </h1>
-            <RotatingText
-              prefix="Software"
-              options={rotatingRoles}
-              className="text-2xl md:text-3xl mb-8"
-            />
-          </div>
+        <div
+          className="flex items-center gap-5 mb-8 animate-fade-in"
+          style={{ animationDelay: "0.22s" }}
+        >
+          <div className="h-px w-8 bg-border flex-shrink-0" />
+          <RotatingText
+            prefix="Software"
+            options={rotatingRoles}
+            className="text-xl md:text-2xl lg:text-3xl text-foreground/55"
+          />
+        </div>
 
-          {/* Main headline */}
-          <div className="animate-fade-in" style={{ animationDelay: "0.3s" }}>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-8 tracking-tight leading-tight max-w-4xl mx-auto opacity-90">
-              {headline}
-            </h2>
-          </div>
+        <p
+          className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed mb-10 font-light animate-fade-in"
+          style={{ animationDelay: "0.32s" }}
+        >
+          {subheadline}
+        </p>
 
-          {/* Subheadline */}
-          <div className="animate-fade-in" style={{ animationDelay: "0.6s" }}>
-            <p className="text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed opacity-90 font-medium">
-              {subheadline}
-            </p>
-          </div>
-
-          {/* Enhanced CTA buttons */}
-          <div className="animate-fade-in" style={{ animationDelay: "0.9s" }}>
-            <div className="flex flex-col gap-4 justify-center items-center mb-12">
-              <ActionButtonGroup
-                buttons={actionButtons}
-                mainButton={mainButton}
-                layout="responsive"
-              />
-            </div>
-          </div>
-
-          {/* Location with enhanced styling */}
-          <div className="animate-fade-in" style={{ animationDelay: "1.2s" }}>
-            <div className="text-sm opacity-70 flex items-center justify-center gap-2">
-              <MapPin className="h-4 w-4 text-accent" />
-              <span className="font-medium">{PERSONAL_INFO.location}</span>
-            </div>
-          </div>
+        <div
+          className="flex flex-wrap items-center gap-3 animate-fade-in"
+          style={{ animationDelay: "0.42s" }}
+        >
+          <Button
+            onClick={scrollToWork}
+            className="group bg-primary text-primary-foreground hover:bg-primary/90 font-medium gap-2 rounded-sm"
+          >
+            View Work
+            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+          </Button>
+          <Button
+            variant="outline"
+            onClick={downloadResume}
+            className="border-border text-foreground hover:bg-secondary gap-2 rounded-sm"
+          >
+            <Download className="h-4 w-4" />
+            Download Resume
+          </Button>
         </div>
       </div>
 
-      {/* Enhanced scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary-foreground/50 rounded-full flex justify-center backdrop-blur-sm bg-primary-foreground/5">
-          <div className="w-1 h-3 bg-accent rounded-full mt-2 animate-pulse"></div>
-        </div>
-      </div>
+      <button
+        type="button"
+        onClick={scrollToWork}
+        aria-label="Scroll to experience"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-3 text-muted-foreground hover:text-foreground transition-colors duration-300 animate-fade-in group"
+        style={{ animationDelay: "0.6s" }}
+      >
+        <span className="font-mono text-[10px] tracking-[0.32em] uppercase">
+          Scroll
+        </span>
+        <span className="relative block h-10 w-px bg-border overflow-hidden">
+          <span
+            className="absolute inset-0 block bg-primary"
+            style={{ animation: "scrollLine 6s ease-in-out infinite" }}
+          />
+        </span>
+      </button>
     </section>
   );
 };

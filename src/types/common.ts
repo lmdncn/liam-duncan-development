@@ -9,6 +9,10 @@ export interface PersonalInfo {
     url: string;
     displayUrl: string;
   };
+  github: {
+    url: string;
+    displayUrl: string;
+  };
   location: string;
   availability: string;
 }

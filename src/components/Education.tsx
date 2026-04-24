@@ -22,6 +22,7 @@ const Education = () => {
     <Section id="education" variant="alternate">
       <Container>
         <SectionHeader
+          index={4}
           title="Education"
           subtitle="Strong foundation in software engineering and computer science"
         />
@@ -36,7 +37,7 @@ const Education = () => {
         )}
 
         {education && (
-          <div className="max-w-3xl mx-auto">
+          <div className="space-y-8">
             {education.map((item, index) => (
               <AnimatedCard key={item.id} index={index} enableHover={false}>
                 <CardHeader>

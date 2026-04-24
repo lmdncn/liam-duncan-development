@@ -12,25 +12,23 @@ const Section = React.forwardRef<HTMLElement, SectionProps>(
     { className, children, variant = "default", size = "default", ...props },
     ref,
   ) => {
-    const baseClasses = "w-full";
-
     const variantClasses = {
       default: "bg-background",
-      alternate: "bg-secondary/30",
-      featured: "bg-primary/5",
+      alternate: "bg-card",
+      featured: "bg-card",
     };
 
     const sizeClasses = {
-      compact: "py-12",
-      default: "py-20",
-      spacious: "py-32",
+      compact: "py-16",
+      default: "py-24",
+      spacious: "py-36",
     };
 
     return (
       <section
         ref={ref}
         className={cn(
-          baseClasses,
+          "w-full",
           variantClasses[variant],
           sizeClasses[size],
           className,

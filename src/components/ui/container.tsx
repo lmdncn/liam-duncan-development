@@ -10,8 +10,8 @@ const Container = React.forwardRef<HTMLDivElement, ContainerProps>(
   ({ className, children, size = "default", ...props }, ref) => {
     const sizeClasses = {
       narrow: "max-w-3xl",
-      default: "max-w-4xl",
-      wide: "max-w-6xl",
+      default: "max-w-6xl",
+      wide: "max-w-7xl",
     };
 
     return (

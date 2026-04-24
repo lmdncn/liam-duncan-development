@@ -1,15 +1,12 @@
-import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Section } from "@/components/ui/section";
+import { Container } from "@/components/ui/container";
 import { SectionHeader } from "@/components/ui/section-header";
-import { AnimatedCard } from "@/components/ui/animated-card";
 import { LoadingState } from "@/components/ui/loading-state";
 import { ErrorState } from "@/components/ui/error-state";
 import { Code, Database, Cloud, Wrench, Laptop, Server } from "lucide-react";
 import { useSkills } from "@/hooks/useSkills";
 
-// Icon mapping
-const iconMap: Record<string, any> = {
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Laptop,
   Server,
   Database,
@@ -23,8 +20,8 @@ const Skills = () => {
 
   return (
     <Section id="skills">
-      <div className="container mx-auto px-6">
-        <SectionHeader title="Technical Skills" />
+      <Container>
+        <SectionHeader title="Technical Skills" index={5} />
 
         {isLoading && <LoadingState message="Loading skills..." />}
 
@@ -36,47 +33,40 @@ const Skills = () => {
         )}
 
         {skillCategories && (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-x-16 gap-y-10">
             {skillCategories.map((category, index) => {
               const IconComponent = iconMap[category.icon] || Code;
-
               return (
-                <AnimatedCard
+                <div
                   key={category.id}
-                  index={index}
-                  animationDelay={0.1}
-                  enableHover={false}
-                  variant="flat"
+                  className="animate-fade-in"
+                  style={{ animationDelay: `${index * 0.06}s` }}
                 >
-                  <CardHeader className="pb-4">
-                    <div className="flex items-center gap-3">
-                      <div className={`p-2 rounded-lg ${category.color.bg} ${category.color.text} ${category.color.border}`}>
-                        <IconComponent className="h-6 w-6" />
-                      </div>
-                      <CardTitle className="text-lg font-semibold text-foreground">
-                        {category.title}
-                      </CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex flex-wrap gap-2">
-                      {category.skills.map((skill, skillIndex) => (
-                        <Badge
-                          key={skillIndex}
-                          variant="secondary"
-                          className="bg-secondary/80 text-secondary-foreground text-xs"
-                        >
-                          {skill}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-                </AnimatedCard>
+                  <div className="flex items-center gap-2.5 mb-3">
+                    <IconComponent className="h-3.5 w-3.5 text-primary flex-shrink-0" />
+                    <h3 className="font-mono text-[11px] tracking-[0.18em] uppercase text-primary font-medium">
+                      {category.title}
+                    </h3>
+                  </div>
+                  <div className="flex flex-wrap gap-x-3 gap-y-1.5">
+                    {category.skills.map((skill, i) => (
+                      <span
+                        key={`${category.id}-${skill}`}
+                        className="text-sm text-muted-foreground font-light"
+                      >
+                        {skill}
+                        {i < category.skills.length - 1 && (
+                          <span className="ml-3 text-border">·</span>
+                        )}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               );
             })}
           </div>
         )}
-      </div>
+      </Container>
     </Section>
   );
 };

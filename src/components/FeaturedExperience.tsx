@@ -18,6 +18,7 @@ const FeaturedExperience = () => {
     <Section id="featured-experience" variant="featured">
       <Container>
         <SectionHeader
+          index={1}
           title="Featured"
           subtitle="In-depth stories exploring the journey, decisions, and impact behind key projects"
         />
@@ -32,7 +33,7 @@ const FeaturedExperience = () => {
         )}
 
         {featuredItems && (
-          <div className="max-w-3xl mx-auto">
+          <div className="space-y-8">
             {featuredItems.map((item, index) => {
               const cardContent = (
                 <AnimatedCard
