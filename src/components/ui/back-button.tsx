@@ -21,7 +21,7 @@ const BackButton = React.forwardRef<HTMLButtonElement, BackButtonProps>(
         size={size}
         asChild
         className={cn(
-          "text-primary-foreground hover:bg-primary-foreground/10",
+          "text-foreground hover:bg-foreground/10",
           className,
         )}
         {...props}

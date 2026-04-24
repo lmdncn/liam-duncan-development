@@ -1,13 +1,4 @@
 import React from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Calendar, MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router";
 import { SITE_CONFIG } from "@/lib/constants";
@@ -40,131 +31,124 @@ const TimelineItem = React.forwardRef<HTMLDivElement, TimelineItemProps>(
     link,
     iconImage,
     index,
-    isLast
+    isLast,
   }, ref) => {
-    const cardContent = (
-      <>
-        <Card className={cn(
-          "md:ml-16 shadow-card bg-gradient-card border-border/50",
-          link && "transition-all duration-300 hover:shadow-hover hover:scale-[1.02] cursor-pointer"
-        )}>
-          <CardHeader>
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div className="flex items-center gap-4">
-                {iconImage && (
-                  <div className="overflow-hidden rounded-lg flex-shrink-0 border border-border/50">
-                    <img
-                      src={`${SITE_CONFIG.basePath}${iconImage}`}
-                      alt={`${title} icon`}
-                      className="h-12 w-12 object-cover"
-                    />
-                  </div>
-                )}
-                <div>
-                  <CardTitle className="text-2xl font-bold text-foreground">
-                    {title}
-                  </CardTitle>
-                  {position && (
-                    <CardDescription className="text-lg font-medium text-primary mt-1">
-                      {position}
-                    </CardDescription>
-                  )}
-                  {prevPosition && (
-                    <div className="space-y-1">
-                      {Array.isArray(prevPosition) ? (
-                        prevPosition.map((pos, index) => (
-                          <CardDescription
-                            key={index}
-                            className="text-sm text-muted-foreground"
-                          >
-                            Previously: {pos}
-                          </CardDescription>
-                        ))
-                      ) : (
-                        <CardDescription className="text-sm text-muted-foreground">
-                          Previously: {prevPosition}
-                        </CardDescription>
-                      )}
-                    </div>
-                  )}
-                </div>
-              </div>
-              <div className="flex flex-col sm:items-end gap-2">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Calendar className="h-4 w-4" />
-                  {duration}
-                </div>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <MapPin className="h-4 w-4" />
-                  {location}
-                </div>
-              </div>
-            </div>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <ul className="space-y-2">
-              {description.map((desc, descIndex) => (
-                <li
-                  key={descIndex}
-                  className="text-foreground leading-relaxed flex items-start gap-2"
-                >
-                  <span className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></span>
-                  {desc}
-                </li>
-              ))}
-            </ul>
-            {skills.length > 0 && (
-              <div className="flex flex-wrap gap-2 pt-4 border-t border-border/50">
-                {skills.map((skill, skillIndex) => (
-                  <Badge
-                    key={skillIndex}
-                    variant="secondary"
-                    className="bg-secondary/80 text-secondary-foreground"
-                  >
-                    {skill}
-                  </Badge>
-                ))}
-              </div>
+    const isExternal = link?.startsWith("http");
+
+    const content = (
+      <div
+        className={cn(
+          "py-10 group lg:grid lg:grid-cols-12 lg:gap-10",
+          !isLast && "border-b border-border",
+          link && "cursor-pointer",
+        )}
+      >
+        <div className="lg:col-span-3 mb-4 lg:mb-0 flex flex-row lg:flex-col sm:items-start gap-x-4 gap-y-1">
+          <span className="font-mono text-xs tracking-wide text-muted-foreground">
+            {duration}
+          </span>
+          <span className="font-mono text-xs text-muted-foreground/60">
+            {location}
+          </span>
+        </div>
+
+        <div className="lg:col-span-9">
+          <div className="flex items-center gap-4 mb-5">
+            {iconImage && (
+              <img
+                src={`${SITE_CONFIG.basePath}${iconImage}`}
+                alt={`${title} icon`}
+                className="h-9 w-9 rounded object-cover border border-border flex-shrink-0"
+              />
             )}
-          </CardContent>
-        </Card>
-      </>
+            <div>
+              <h3
+                className={cn(
+                  "text-xl font-bold text-foreground leading-tight transition-colors duration-200",
+                  link && "group-hover:text-primary",
+                )}
+              >
+                {title}
+                {link && (
+                  <span className="ml-2 text-primary text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    →
+                  </span>
+                )}
+              </h3>
+              {position && (
+                <div className="text-primary font-medium text-sm mt-1">
+                  {position}
+                </div>
+              )}
+              {prevPosition && (
+                <div className="text-muted-foreground/60 text-xs mt-1 font-mono">
+                  Previously:{" "}
+                  {Array.isArray(prevPosition)
+                    ? prevPosition.join(" · ")
+                    : prevPosition}
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="space-y-2 mb-5">
+            {description.map((desc, i) => (
+              <div
+                key={`${title}-desc-${i}`}
+                className="flex items-start gap-3 text-muted-foreground text-sm leading-relaxed"
+              >
+                <span className="w-1 h-1 rounded-full bg-primary mt-[0.55rem] flex-shrink-0" />
+                {desc}
+              </div>
+            ))}
+          </div>
+
+          {skills.length > 0 && (
+            <div className="flex flex-wrap gap-1.5">
+              {skills.map((skill) => (
+                <span
+                  key={`${title}-skill-${skill}`}
+                  className="font-mono text-[11px] text-muted-foreground/60 bg-secondary px-2 py-0.5 rounded-sm border border-border/50"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
     );
 
-    return (
+    const wrapper = (
       <div
         ref={ref}
-        className="relative mb-12 animate-fade-in"
-        style={{ animationDelay: `${index * 0.1}s` }}
+        className="animate-fade-in"
+        style={{ animationDelay: `${index * 0.05}s` }}
       >
-        {/* Timeline line */}
-        {!isLast && (
-          <div className="absolute left-6 top-16 w-0.5 h-full bg-border hidden md:block"></div>
-        )}
-
-        {/* Timeline dot */}
-        <div className="absolute left-4 top-8 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-card hidden md:block"></div>
-
-        {link ? (
-          link.startsWith('http') ? (
-            <a
-              href={link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block"
-              onClick={() => trackEvent('external_link', 'experience', title)}
-            >
-              {cardContent}
-            </a>
-          ) : (
-            <Link to={link} className="block">
-              {cardContent}
-            </Link>
-          )
-        ) : (
-          cardContent
-        )}
+        {content}
       </div>
+    );
+
+    if (!link) return wrapper;
+
+    if (isExternal) {
+      return (
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block"
+          onClick={() => trackEvent("external_link", "experience", title)}
+        >
+          {wrapper}
+        </a>
+      );
+    }
+
+    return (
+      <Link to={link} className="block">
+        {wrapper}
+      </Link>
     );
   },
 );
@@ -179,7 +163,7 @@ interface TimelineProps {
 const Timeline = React.forwardRef<HTMLDivElement, TimelineProps>(
   ({ items, className }, ref) => {
     return (
-      <div ref={ref} className={cn("max-w-4xl mx-auto", className)}>
+      <div ref={ref} className={cn("w-full", className)}>
         {items.map((item, index) => (
           <TimelineItem
             key={index}

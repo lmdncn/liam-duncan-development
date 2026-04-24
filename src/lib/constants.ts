@@ -16,8 +16,13 @@ export const PERSONAL_INFO: PersonalInfo = {
     url: "https://www.linkedin.com/in/liamduncan/",
     displayUrl: "linkedin.com/in/liamduncan",
   },
+  github: {
+    url: "https://github.com/lmdncn",
+    displayUrl: "github.com/lmdncn",
+  },
   location: "Vancouver, Canada (Open to relocation)",
-  availability: "Open to remote opportunities worldwide and on-site positions",
+  availability:
+    "Heads down on current projects — but always open to exciting new opportunities and conversations.",
 };
 
 // Email Templates

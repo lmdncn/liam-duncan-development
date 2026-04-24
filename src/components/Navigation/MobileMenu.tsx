@@ -8,77 +8,54 @@ interface MobileMenuProps {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
   navItems: NavItem[];
-  scrolled: boolean;
   handleNavigation: (href: string) => void;
 }
 
-const MobileMenu = ({
-  isOpen,
-  setIsOpen,
-  navItems,
-  scrolled,
-  handleNavigation,
-}: MobileMenuProps) => {
+const MobileMenu = ({ isOpen, setIsOpen, navItems, handleNavigation }: MobileMenuProps) => {
   const { downloadResume } = useDownloadResume();
 
   return (
     <>
-      {/* Mobile menu button */}
       <Button
         variant="ghost"
         size="sm"
-        className="md:hidden"
+        className="md:hidden text-muted-foreground hover:text-foreground hover:bg-secondary rounded-sm"
         onClick={() => setIsOpen(!isOpen)}
       >
-        {isOpen ? (
-          <X
-            className={`h-6 w-6 ${
-              scrolled ? "text-foreground" : "text-primary-foreground"
-            }`}
-          />
-        ) : (
-          <Menu
-            className={`h-6 w-6 ${
-              scrolled ? "text-foreground" : "text-primary-foreground"
-            }`}
-          />
-        )}
+        {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
       </Button>
 
-      {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md border-t border-border/50 animate-fade-in">
-          <div className="px-2 pt-2 pb-3 space-y-1">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-background/97 backdrop-blur-lg border-t border-b border-border animate-fade-in">
+          <div className="px-6 py-4 space-y-0.5">
             {navItems.map((item) => (
               <button
                 key={item.label}
                 onClick={() => handleNavigation(item.href)}
-                className="block w-full text-left px-3 py-2 text-foreground hover:text-primary hover:bg-secondary/50 rounded-md transition-colors duration-300 font-medium"
+                className="block w-full text-left px-0 py-3 text-foreground/70 hover:text-foreground border-b border-border/40 last:border-0 transition-colors duration-200 font-medium text-sm"
               >
                 {item.label}
               </button>
             ))}
-            <div className="px-3 py-2">
+            <div className="pt-4 flex flex-col gap-2">
               <Button
                 size="sm"
-                variant="outline"
+                variant="ghost"
                 asChild
-                className="w-full bg-accent/10 text-accent border-accent/30 hover:bg-accent hover:text-accent-foreground transition-all duration-300 mb-2"
+                className="w-full justify-start text-muted-foreground hover:text-foreground hover:bg-secondary gap-2 rounded-sm"
               >
                 <Link to="/blog">
-                  <BookOpen className="mr-2 h-4 w-4" />
-                  Read My Blog!
+                  <BookOpen className="h-4 w-4" />
+                  Blog
                 </Link>
               </Button>
-            </div>
-            <div className="px-3 py-2">
               <Button
                 size="sm"
-                className="w-full bg-primary hover:bg-primary/90 shadow-glow transition-all duration-300"
+                className="w-full justify-start bg-primary text-primary-foreground hover:bg-primary/90 gap-2 rounded-sm"
                 onClick={downloadResume}
               >
-                <Download className="mr-2 h-4 w-4" />
-                Resume
+                <Download className="h-4 w-4" />
+                Download Resume
               </Button>
             </div>
           </div>

@@ -1,23 +1,10 @@
 import { Link } from "react-router";
 import { PERSONAL_INFO } from "@/lib/constants";
 
-interface NavigationLogoProps {
-  scrolled: boolean;
-}
-
-const NavigationLogo = ({ scrolled }: NavigationLogoProps) => {
+const NavigationLogo = () => {
   return (
-    <Link
-      to="/"
-      className="font-bold text-xl cursor-pointer transition-all duration-300 hover:text-primary"
-    >
-      <span
-        className={`transition-all duration-300 ${
-          scrolled
-            ? "text-foreground opacity-100"
-            : "text-primary-foreground opacity-0"
-        }`}
-      >
+    <Link to="/" className="group flex items-center gap-2 cursor-pointer">
+      <span className="font-display font-bold text-lg tracking-tight text-foreground group-hover:text-primary transition-colors duration-300">
         {PERSONAL_INFO.name}
       </span>
     </Link>

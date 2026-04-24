@@ -23,6 +23,7 @@ const Projects = () => {
     <Section id="projects" variant="alternate">
       <Container>
         <SectionHeader
+          index={3}
           title="Personal Portfolio"
           subtitle="Innovative projects that showcase problem-solving skills and technical creativity"
         />
@@ -92,7 +93,7 @@ const Projects = () => {
                           key={highlightIndex}
                           className="text-muted-foreground flex items-start gap-2"
                         >
-                          <span className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></span>
+                          <span className="w-1.5 h-1.5 bg-primary rounded-full mt-[0.45rem] flex-shrink-0"></span>
                           {highlight}
                         </li>
                       ))}

@@ -6,57 +6,48 @@ import type { NavItem } from "@/types";
 
 interface NavigationItemsProps {
   navItems: NavItem[];
-  scrolled: boolean;
   handleNavigation: (href: string) => void;
 }
 
-const NavigationItems = ({
-  navItems,
-  scrolled,
-  handleNavigation,
-}: NavigationItemsProps) => {
+const NavigationItems = ({ navItems, handleNavigation }: NavigationItemsProps) => {
   const { downloadResume } = useDownloadResume();
 
-  if (!navItems.length) {
-    return null;
-  }
+  if (!navItems.length) return null;
 
   return (
-    <div className="hidden md:flex items-center space-x-8">
+    <div className="hidden md:flex items-center gap-7">
       {navItems.map((item) => (
         <button
           key={item.label}
           onClick={() => handleNavigation(item.href)}
-          className={`transition-colors duration-300 hover:text-primary font-medium ${
-            scrolled ? "text-foreground" : "text-primary-foreground"
-          }`}
+          className="relative text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 group"
         >
           {item.label}
+          <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-300" />
         </button>
       ))}
-      <Button
-        size="sm"
-        variant="outline"
-        asChild
-        className={`transition-all duration-300 hover:bg-accent hover:text-accent-foreground ${
-          scrolled
-            ? "bg-accent/10 text-accent border-accent/30"
-            : "bg-primary-foreground/10 text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground hover:text-primary"
-        }`}
-      >
-        <Link to="/blog">
-          <BookOpen className="mr-2 h-4 w-4" />
-          Read My Blog!
-        </Link>
-      </Button>
-      <Button
-        size="sm"
-        className="bg-primary hover:bg-primary/90 shadow-glow transition-all duration-300"
-        onClick={downloadResume}
-      >
-        <Download className="mr-2 h-4 w-4" />
-        Resume
-      </Button>
+
+      <div className="flex items-center gap-2 pl-5 border-l border-border">
+        <Button
+          size="sm"
+          variant="ghost"
+          asChild
+          className="text-muted-foreground hover:text-foreground hover:bg-secondary text-sm font-medium gap-1.5 rounded-sm"
+        >
+          <Link to="/blog">
+            <BookOpen className="h-3.5 w-3.5" />
+            Blog
+          </Link>
+        </Button>
+        <Button
+          size="sm"
+          className="bg-primary text-primary-foreground hover:bg-primary/90 text-sm font-medium gap-1.5 rounded-sm"
+          onClick={downloadResume}
+        >
+          <Download className="h-3.5 w-3.5" />
+          Resume
+        </Button>
+      </div>
     </div>
   );
 };
